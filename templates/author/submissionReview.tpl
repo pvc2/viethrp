@@ -9,7 +9,7 @@
  * $Id$
  *}
 {strip}
-{translate|assign:"pageTitleTranslated" key="submission.page.review" id=$submission->getId()}
+{translate|assign:"pageTitleTranslated" key="submission.page.review" id=$submission->getWhoId($submission->getLocale())}
 {assign var="pageCrumbTitle" value="submission.review"}
 {include file="common/header.tpl"}
 {/strip}
@@ -20,12 +20,14 @@
 	<!-- {* <li><a href="{url op="submissionEditing" path=$submission->getId()}">{translate key="submission.editing"}</a></li> *} -->
 </ul>
 
-
 {include file="author/submission/summary.tpl"}
 
 <div class="separator"></div>
+	
+{include file="author/submission/peerReview.tpl"}
 
-<!-- {* {include file="author/submission/peerReview.tpl"} *} -->
+<div class="separator"></div>
+
 {include file="author/submission/status.tpl"}
 
 <div class="separator"></div>

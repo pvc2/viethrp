@@ -42,59 +42,15 @@ class SectionEditorAction extends Action {
 			$sectionEditorSubmissionDao->updateSectionEditorSubmission($sectionEditorSubmission);
 		}
 	}
-
-	/**
-	 * Records an editor's submission decision.
-	 * @param $sectionEditorSubmission object
-	 * @param $decision int
-
-	 function recordDecision($sectionEditorSubmission, $decision) {
+	
+	function recordDecision($sectionEditorSubmission, $decision, $lastDecisionId = null, $resubmitCount, $dateDecided = null, $assignedReviewer = null, $technicalReview =null) {
 		$editAssignments =& $sectionEditorSubmission->getEditAssignments();
 		if (empty($editAssignments)) return;
 
 		$sectionEditorSubmissionDao =& DAORegistry::getDAO('SectionEditorSubmissionDAO');
-		$user =& Request::getUser();
-		$editorDecision = array(
-		'editDecisionId' => null,
-		'editorId' => $user->getId(),
-		'decision' => $decision,
-		'dateDecided' => date(Core::getCurrentDate())
-		);
-
-		if (!HookRegistry::call('SectionEditorAction::recordDecision', array(&$sectionEditorSubmission, $editorDecision))) {
-		$sectionEditorSubmission->setStatus(STATUS_QUEUED);
-		$sectionEditorSubmission->stampStatusModified();
-		$sectionEditorSubmission->addDecision($editorDecision, $sectionEditorSubmission->getCurrentRound());
-		$sectionEditorSubmissionDao->updateSectionEditorSubmission($sectionEditorSubmission);
-
-		$decisions = SectionEditorSubmission::getEditorDecisionOptions();
-		// Add log
-		import('classes.article.log.ArticleLog');
-		import('classes.article.log.ArticleEventLogEntry');
-		Locale::requireComponents(array(LOCALE_COMPONENT_APPLICATION_COMMON, LOCALE_COMPONENT_OJS_EDITOR));
-		ArticleLog::logEvent($sectionEditorSubmission->getArticleId(), ARTICLE_LOG_EDITOR_DECISION, ARTICLE_LOG_TYPE_EDITOR, $user->getId(), 'log.editor.decision', array('editorName' => $user->getFullName(), 'articleId' => $sectionEditorSubmission->getArticleId(), 'decision' => Locale::translate($decisions[$decision])));
-		}
-		}
-		*/
-
-	/**
-	 * Records an editor's submission decision. (Modified: Update if there is already an existing decision.)
-	 * @param $sectionEditorSubmission object
-	 * @param $decision int
-	 * @param $lastDecisionId int (Added)
-	 * Edited by Gay Figueroa
-	 * Last Update: 5/4/2011
-	 */
-	function recordDecision($sectionEditorSubmission, $decision, $lastDecisionId = null, $resubmitCount, $dateDecided = null) {
-		$editAssignments =& $sectionEditorSubmission->getEditAssignments();
-		if (empty($editAssignments)) return;
-
 		$user =& Request::getUser();
 		$journal =& Request::getJournal();
-		
-		$sectionEditorSubmissionDao =& DAORegistry::getDAO('SectionEditorSubmissionDAO');
-		$articleDao =& DaoRegistry::getDAO('ArticleDAO');
-		
+
 		$currentDate = date(Core::getCurrentDate());
 		$approvalDate = (($dateDecided == null) ? $currentDate : date($dateDecided));
 		$resubmitCount = ($decision == SUBMISSION_EDITOR_DECISION_RESUBMIT || $decision == SUBMISSION_EDITOR_DECISION_INCOMPLETE) ? $resubmitCount + 1 : $resubmitCount ;
@@ -103,36 +59,65 @@ class SectionEditorAction extends Action {
 				'editorId' => $user->getId(),
 				'decision' => $decision,
 				'dateDecided' => $currentDate,
-				'resubmitCount' => $resubmitCount
+				'resubmitCount' => $resubmitCount,
+				'technicalReview' => $technicalReview
 		);
 
 		/*
-		 * Last Update: April 13, 2012
-		 * If assigned for full erc review, do NOT automatically assign all users with REVIEWER role		 
-		if($decision == SUBMISSION_EDITOR_DECISION_ASSIGNED) {
+		 * If assigned for full erc review, show list of reviewer according the sectionId
+		 */
+		if($decision == SUBMISSION_EDITOR_DECISION_ASSIGNED || $decision == SUBMISSION_EDITOR_DECISION_EXPEDITED) {
+			if($assignedReviewer){
+				SectionEditorAction::addReviewer($sectionEditorSubmission, $assignedReviewer, $round = null);
+				$reviewId = $sectionEditorSubmissionDao->getReviewAssignmentIdByArticleAndReviewer($sectionEditorSubmission->getId(), $assignedReviewer);
+				SectionEditorAction::notifyReviewer($sectionEditorSubmission, $reviewId, true);
+			}
+			/*
 			$userDao =& DAORegistry::getDAO('UserDAO');
 			$reviewers =& $userDao->getUsersWithReviewerRole($journal->getId());
+			$sectionId = $sectionEditorSubmission->getSectionId();
 			foreach($reviewers as $reviewer) {
 				$reviewerId = $reviewer->getId();
+				if ((($sectionId == '1') && ($reviewer->isHsphMember()== true)) || (($sectionId == '2') && ($reviewer->isCrecMember()== true)))
 				SectionEditorAction::addReviewer($sectionEditorSubmission, $reviewerId, $round = null);
-			}
+			}*/
 		}
-		*/
-		
+
 		/*
 		 * If approved, insert approvalDate
 		 */
 		if($decision == SUBMISSION_EDITOR_DECISION_ACCEPT) {
+			$articleDao =& DaoRegistry::getDAO('ArticleDAO');
 			$articleDao->insertApprovalDate($sectionEditorSubmission, $approvalDate);
 		}
-		
-		if (!HookRegistry::call('SectionEditorAction::recordDecision', array(&$sectionEditorSubmission, $editorDecision))) {
+
+		// Send a notification to the user
+		import('lib.pkp.classes.notification.NotificationManager');
+		$notificationManager = new NotificationManager();
+		$url = Request::url($journal->getPath(), 'author', 'submission', array($sectionEditorSubmission->getArticleId()));
+
+		if ($decision == SUBMISSION_EDITOR_DECISION_COMPLETE) $message = 'notification.type.submissionComplete';
+		elseif ($decision == SUBMISSION_EDITOR_DECISION_INCOMPLETE) $message = 'notification.type.submissionIncomplete';		
+		elseif ($decision == SUBMISSION_EDITOR_DECISION_EXPEDITED) $message = 'notification.type.submissionExpedited';
+		elseif ($decision == SUBMISSION_EDITOR_DECISION_ASSIGNED) $message = 'notification.type.submissionAssigned';
+		elseif ($decision == SUBMISSION_EDITOR_DECISION_EXEMPTED) $message = 'notification.type.submissionExempted';
+		elseif ($decision == SUBMISSION_EDITOR_DECISION_DECLINE) $message = 'notification.type.submissionDecline';
+		elseif ($decision == SUBMISSION_EDITOR_DECISION_ACCEPT) $message = 'notification.type.submissionAccept';
+		elseif ($decision == SUBMISSION_EDITOR_DECISION_DONE) $message = 'notification.type.submissionDone';
+		elseif ($decision == SUBMISSION_EDITOR_DECISION_RESUBMIT) $message = 'notification.type.reviseAndResubmit';		
+
+
+		$notificationManager->createNotification(
+            $sectionEditorSubmission->getUserId(), $message,
+            $sectionEditorSubmission->getLocalizedTitle(), $url, 1, NOTIFICATION_TYPE_EDITOR_DECISION_COMMENT
+        ); 
+
+
+
+		if (!HookRegistry::call('SectionEditorAction::recordDecision', array($sectionEditorSubmission, $editorDecision))) {
 			$sectionEditorSubmission->setStatus(STATUS_QUEUED);
 			$sectionEditorSubmission->stampStatusModified();
 			$sectionEditorSubmission->addDecision($editorDecision, $sectionEditorSubmission->getCurrentRound());
-			if($decision == SUBMISSION_EDITOR_DECISION_DONE) {
-				$sectionEditorSubmission->setStatus(PROPOSAL_STATUS_COMPLETED);
-			}
 			$sectionEditorSubmissionDao->updateSectionEditorSubmission($sectionEditorSubmission);
 
 			$decisions = SectionEditorSubmission::getAllPossibleEditorDecisionOptions();
@@ -149,7 +134,7 @@ class SectionEditorAction extends Action {
 	 * @param $sectionEditorSubmission object
 	 * @param $reviewerId int
 	 */
-	function addReviewer($sectionEditorSubmission, $reviewerId, $round = null) {
+	function addReviewer($sectionEditorSubmission, $reviewerId, $round = null, $technicalReview = null) {
 		$sectionEditorSubmissionDao =& DAORegistry::getDAO('SectionEditorSubmissionDAO');
 		$reviewAssignmentDao =& DAORegistry::getDAO('ReviewAssignmentDAO');
 		$userDao =& DAORegistry::getDAO('UserDAO');
@@ -185,17 +170,24 @@ class SectionEditorAction extends Action {
 					$reviewAssignment->setReviewFormId($reviewFormId);
 				}
 			}
-
+			
+			if ($technicalReview == true) {
+				$reviewAssignment->setReviewType(4);
+			}
+			
 			$sectionEditorSubmission->addReviewAssignment($reviewAssignment);
 			$sectionEditorSubmissionDao->updateSectionEditorSubmission($sectionEditorSubmission);
-
-			$reviewAssignment = $reviewAssignmentDao->getReviewAssignment($sectionEditorSubmission->getArticleId(), $reviewerId, $round);
-
+			
+			if ($technicalReview == true) $reviewAssignment = $reviewAssignmentDao->getReviewAssignment($sectionEditorSubmission->getArticleId(), $reviewerId, $round, '4');
+			else $reviewAssignment = $reviewAssignmentDao->getReviewAssignment($sectionEditorSubmission->getArticleId(), $reviewerId, $round);
+			
 			$journal =& Request::getJournal();
 			$settingsDao =& DAORegistry::getDAO('JournalSettingsDAO');
 			$settings =& $settingsDao->getJournalSettings($journal->getId());
-			if (isset($settings['numWeeksPerReview'])) SectionEditorAction::setDueDate($sectionEditorSubmission->getArticleId(), $reviewAssignment->getId(), null, $settings['numWeeksPerReview'], false);
-
+			if (isset($settings['numWeeksPerReview'])) {
+				SectionEditorAction::setDueDate($sectionEditorSubmission->getArticleId(), $reviewAssignment->getId(), null, $settings['numWeeksPerReview'], false);
+			}
+			
 			// Add log
 			import('classes.article.log.ArticleLog');
 			import('classes.article.log.ArticleEventLogEntry');
@@ -239,12 +231,9 @@ class SectionEditorAction extends Action {
 		$sectionEditorSubmissionDao =& DAORegistry::getDAO('SectionEditorSubmissionDAO');
 		$reviewAssignmentDao =& DAORegistry::getDAO('ReviewAssignmentDAO');
 		$userDao =& DAORegistry::getDAO('UserDAO');
-
 		$journal =& Request::getJournal();
 		$user =& Request::getUser();
-
 		$reviewAssignment =& $reviewAssignmentDao->getById($reviewId);
-
 		$isEmailBasedReview = $journal->getSetting('mailSubmissionsToReviewers')==1?true:false;
 		$reviewerAccessKeysEnabled = $journal->getSetting('reviewerAccessKeysEnabled');
 
@@ -253,7 +242,6 @@ class SectionEditorAction extends Action {
 		// could CC or BCC someone else, or change the reviewer address,
 		// in order to get the access key.)
 		$preventAddressChanges = $reviewerAccessKeysEnabled;
-
 		import('classes.mail.ArticleMailTemplate');
 
 		$email = new ArticleMailTemplate($sectionEditorSubmission, $isEmailBasedReview?'REVIEW_REQUEST_ATTACHED':($reviewerAccessKeysEnabled?'REVIEW_REQUEST_ONECLICK':'REVIEW_REQUEST'), null, $isEmailBasedReview?true:null);
@@ -261,11 +249,10 @@ class SectionEditorAction extends Action {
 		if ($preventAddressChanges) {
 			$email->setAddressFieldsEnabled(false);
 		}
-
+					
 		if ($reviewAssignment->getSubmissionId() == $sectionEditorSubmission->getArticleId() && $reviewAssignment->getReviewFileId()) {
 			$reviewer =& $userDao->getUser($reviewAssignment->getReviewerId());
 			if (!isset($reviewer)) return true;
-
 			if (!$email->isEnabled() || ($send && !$email->hasErrors())) {
 				HookRegistry::call('SectionEditorAction::notifyReviewer', array(&$sectionEditorSubmission, &$reviewAssignment, &$email));
 				if ($email->isEnabled()) {
@@ -274,21 +261,53 @@ class SectionEditorAction extends Action {
 						import('lib.pkp.classes.security.AccessKeyManager');
 						import('pages.reviewer.ReviewerHandler');
 						$accessKeyManager = new AccessKeyManager();
-
 						// Key lifetime is the typical review period plus four weeks
 						$keyLifetime = ($journal->getSetting('numWeeksPerReview') + 4) * 7;
 
 						$email->addPrivateParam('ACCESS_KEY', $accessKeyManager->createKey('ReviewerContext', $reviewer->getId(), $reviewId, $keyLifetime));
 					}
+					
+					if (!Request::getUserVar('continued') || $preventAddressChanges) {
+						$weekLaterDate = strftime(Config::getVar('general', 'date_format_short'), strtotime('+1 week'));
 
-					if ($preventAddressChanges) {
+						if ($reviewAssignment->getDateDue() != null) {
+							$reviewDueDate = strftime(Config::getVar('general', 'date_format_short'), strtotime($reviewAssignment->getDateDue()));
+						} else {
+							$numWeeks = max((int) $journal->getSetting('numWeeksPerReview'), 2);
+							$reviewDueDate = strftime(Config::getVar('general', 'date_format_short'), strtotime('+' . $numWeeks . ' week'));
+						}
+						$submissionUrl = Request::url(null, 'reviewer', 'submission', $reviewId, $reviewerAccessKeysEnabled?array('key' => 'ACCESS_KEY'):array());
+					
+
+						$paramArray = array(
+							'reviewerName' => $reviewer->getFullName(),
+							'weekLaterDate' => $weekLaterDate,
+							'reviewDueDate' => $reviewDueDate,
+							'reviewerUsername' => $reviewer->getUsername(),
+							'reviewerPassword' => $reviewer->getPassword(),
+							'editorialContactSignature' => $user->getContactSignature(),
+							'reviewGuidelines' => String::html2text($journal->getLocalizedSetting('reviewGuidelines')),
+							'submissionReviewUrl' => $submissionUrl,
+							'abstractTermIfEnabled' => ($sectionEditorSubmission->getLocalizedAbstract() == ''?'':Locale::translate('article.abstract')),
+							'passwordResetUrl' => Request::url(null, 'login', 'resetPassword', $reviewer->getUsername(), array('confirm' => Validation::generatePasswordResetHash($reviewer->getId())))
+						);
+						$email->assignParams($paramArray);
+
 						// Ensure that this messages goes to the reviewer, and the reviewer ONLY.
 						$email->clearAllRecipients();
 						$email->addRecipient($reviewer->getEmail(), $reviewer->getFullName());
 					}
 					$email->send();
 				}
-
+				
+				import('lib.pkp.classes.notification.NotificationManager');
+				$notificationManager = new NotificationManager();
+				$url = Request::url($journal->getPath(), 'reviewer', 'submission', array($reviewId));
+				$notificationManager->createNotification(
+                	$reviewAssignment->getReviewerId(), 'notification.type.reviewAssignment',
+                	$sectionEditorSubmission->getLocalizedTitle(), $url, 1, NOTIFICATION_TYPE_EDITOR_DECISION_COMMENT
+            	);
+            	
 				$reviewAssignment->setDateNotified(Core::getCurrentDate());
 				$reviewAssignment->setCancelled(0);
 				$reviewAssignment->stampModified();
@@ -308,8 +327,8 @@ class SectionEditorAction extends Action {
 						$numWeeks = max((int) $journal->getSetting('numWeeksPerReview'), 2);
 						$reviewDueDate = strftime(Config::getVar('general', 'date_format_short'), strtotime('+' . $numWeeks . ' week'));
 					}
-
 					$submissionUrl = Request::url(null, 'reviewer', 'submission', $reviewId, $reviewerAccessKeysEnabled?array('key' => 'ACCESS_KEY'):array());
+					
 
 					$paramArray = array(
 						'reviewerName' => $reviewer->getFullName(),
@@ -324,6 +343,7 @@ class SectionEditorAction extends Action {
 						'passwordResetUrl' => Request::url(null, 'login', 'resetPassword', $reviewer->getUsername(), array('confirm' => Validation::generatePasswordResetHash($reviewer->getId())))
 					);
 					$email->assignParams($paramArray);
+
 					if ($isEmailBasedReview) {
 						// An email-based review process was selected. Attach
 						// the current review version.
@@ -342,7 +362,7 @@ class SectionEditorAction extends Action {
 		}
 		return true;
 	}
-
+	
 	/**
 	 * Cancels a review.
 	 * @param $sectionEditorSubmission object
@@ -380,7 +400,16 @@ class SectionEditorAction extends Action {
 					$reviewAssignment->stampModified();
 
 					$reviewAssignmentDao->updateReviewAssignment($reviewAssignment);
-
+					
+					//Send notification
+					import('lib.pkp.classes.notification.NotificationManager');
+					$notificationManager = new NotificationManager();
+					$url = Request::url($journal->getPath(), 'reviewer', 'submission', array($reviewId));
+					$notificationManager->createNotification(
+                		$reviewAssignment->getReviewerId(), 'notification.type.reviewAssignmentCanceled',
+                		$sectionEditorSubmission->getLocalizedTitle(), $url, 1, NOTIFICATION_TYPE_EDITOR_DECISION_COMMENT
+            		);
+            	
 					// Add log
 					import('classes.article.log.ArticleLog');
 					import('classes.article.log.ArticleEventLogEntry');
@@ -595,6 +624,8 @@ class SectionEditorAction extends Action {
 	function makeReviewerFileViewable($articleId, $reviewId, $fileId, $revision, $viewable = false) {
 		$reviewAssignmentDao =& DAORegistry::getDAO('ReviewAssignmentDAO');
 		$articleFileDao =& DAORegistry::getDAO('ArticleFileDAO');
+		
+		$articleDao =& DAORegistry::getDAO('ArticleDAO');
 
 		$reviewAssignment =& $reviewAssignmentDao->getById($reviewId);
 		$articleFile =& $articleFileDao->getArticleFile($fileId, $revision);
@@ -602,6 +633,24 @@ class SectionEditorAction extends Action {
 		if ($reviewAssignment->getSubmissionId() == $articleId && $reviewAssignment->getReviewerFileId() == $fileId && !HookRegistry::call('SectionEditorAction::makeReviewerFileViewable', array(&$reviewAssignment, &$articleFile, &$viewable))) {
 			$articleFile->setViewable($viewable);
 			$articleFileDao->updateArticleFile($articleFile);
+			
+			// Send a notification to the investigator
+			import('lib.pkp.classes.notification.NotificationManager');
+			$userDao =& DAORegistry::getDAO('UserDAO');
+			$notificationManager = new NotificationManager();
+			$article =& $articleDao->getArticle($articleId);
+			$notificationUsers = $article->getAssociatedUserIds(true, false, false, false);
+			$reviewer =& $userDao->getUser($reviewAssignment->getReviewerId());
+			if ($viewable) $message = 'notification.type.reviewerFile';
+			else $message = 'notification.type.reviewerFileDeleted';
+			$param = $article->getLocalizedWhoId().':<br/>'.$reviewer->getUsername();
+			foreach ($notificationUsers as $userRole) {
+				$url = Request::url(null, $userRole['role'], 'submissionReview', $article->getId(), null, 'peerReview');
+				$notificationManager->createNotification(
+            		$userRole['id'], $message,
+                	$param, $url, 1, NOTIFICATION_TYPE_REVIEWER_COMMENT
+                );
+			}
 		}
 	}
 
@@ -1894,6 +1943,13 @@ class SectionEditorAction extends Action {
 	function postPeerReviewComment(&$article, $reviewId, $emailComment) {
 		if (HookRegistry::call('SectionEditorAction::postPeerReviewComment', array(&$article, &$reviewId, &$emailComment))) return;
 
+		$user =& Request::getUser();
+		
+		$reviewAssignmentDao =& DAORegistry::getDAO('ReviewAssignmentDAO');
+		$userDao =& DAORegistry::getDAO('UserDAO');
+		$reviewAssignment =& $reviewAssignmentDao->getById($reviewId);
+		$reviewer =& $userDao->getUser($reviewAssignment->getReviewerId());
+		
 		import('classes.submission.form.comment.PeerReviewCommentForm');
 
 		$commentForm = new PeerReviewCommentForm($article, $reviewId, Validation::isEditor()?ROLE_ID_EDITOR:ROLE_ID_SECTION_EDITOR);
@@ -1902,21 +1958,24 @@ class SectionEditorAction extends Action {
 		if ($commentForm->validate()) {
 			$commentForm->execute();
 
-                        //Added by AIM, 02.17.2012
-                        $roleDao =& DAORegistry::getDAO('RoleDAO');
-
-			// Send a notification to associated users
+			// Send a notification to associated users (if exist, other secretaries of the committees and the concerned reviewer)
 			import('lib.pkp.classes.notification.NotificationManager');
 			$notificationManager = new NotificationManager();
-			$notificationUsers = $article->getAssociatedUserIds();
-                        foreach ($notificationUsers as $userRole) {
-                                if($userRole['role'] == $roleDao->getRolePath(ROLE_ID_EDITOR) || $userRole['role'] == $roleDao->getRolePath(ROLE_ID_SECTION_EDITOR)) { //If condition added by AIM, , send notification to Secretary only
-                                    $url = Request::url(null, $userRole['role'], 'submissionReview', $article->getId(), null, 'peerReview');
-                                    $notificationManager->createNotification(
-                                    $userRole['id'], 'notification.type.reviewerComment',
-                                    $article->getLocalizedTitle(), $url, 1, NOTIFICATION_TYPE_REVIEWER_COMMENT
-                                    );
-                                }
+			$notificationUsers = $article->getAssociatedUserIds(false, true);
+            foreach ($notificationUsers as $userRole) {
+            	$param = $article->getLocalizedWhoId().':<br/>'.$user->getUsername().' commented ';
+            	if ($userRole['role'] == 'sectionEditor') {
+            		$param = $param.'the review of '.$reviewer->getUsername();
+            		$url = Request::url(null, $userRole['role'], 'submissionReview', $article->getId(), null, 'peerReview');
+            	} else {
+            		$url = Request::url(null, $userRole['role'], 'submission', $reviewId);
+            		$param = $param.'your review';
+            	}
+                if (($userRole['role'] == 'sectionEditor' && $user->getId()!=$userRole['id']) || ($userRole['role'] == 'reviewer' && $reviewer->getId()==$userRole['id'])) $notificationManager->createNotification(
+                	$userRole['id'], 'notification.type.reviewerComment',
+                	$param, $url, 1, NOTIFICATION_TYPE_REVIEWER_COMMENT
+                );
+                
 			}
 
 			if ($emailComment) {
@@ -1951,24 +2010,27 @@ class SectionEditorAction extends Action {
 	 */
 	function postEditorDecisionComment($article, $emailComment) {
 		if (HookRegistry::call('SectionEditorAction::postEditorDecisionComment', array(&$article, &$emailComment))) return;
-
+		
+		$user =& Request::getUser();
+		
 		import('classes.submission.form.comment.EditorDecisionCommentForm');
-
+		
 		$commentForm = new EditorDecisionCommentForm($article, Validation::isEditor()?ROLE_ID_EDITOR:ROLE_ID_SECTION_EDITOR);
 		$commentForm->readInputData();
 
 		if ($commentForm->validate()) {
 			$commentForm->execute();
 
-			// Send a notification to associated users
+			// Send a notification to associated users 
 			import('lib.pkp.classes.notification.NotificationManager');
 			$notificationManager = new NotificationManager();
 			$notificationUsers = $article->getAssociatedUserIds(true, false);
+			$param = $article->getLocalizedWhoId().': <br/>'.$user->getFullName().', <i>'.$user->getFunctions().'</i>,';
 			foreach ($notificationUsers as $userRole) {
 				$url = Request::url(null, $userRole['role'], 'submissionReview', $article->getId(), null, 'editorDecision');
-				$notificationManager->createNotification(
-				$userRole['id'], 'notification.type.editorDecisionComment',
-				$article->getLocalizedTitle(), $url, 1, NOTIFICATION_TYPE_EDITOR_DECISION_COMMENT
+				if ($user->getId()!=$userRole['id']) $notificationManager->createNotification(
+					$userRole['id'], 'notification.type.editorDecisionComment',
+					$param, $url, 1, NOTIFICATION_TYPE_EDITOR_DECISION_COMMENT
 				);
 			}
 
@@ -1999,8 +2061,10 @@ class SectionEditorAction extends Action {
 
 		$decisionTemplateMap = array(
 		SUBMISSION_EDITOR_DECISION_ACCEPT => 'EDITOR_DECISION_ACCEPT',
+		SUBMISSION_EDITOR_DECISION_INCOMPLETE => 'EDITOR_DECISION_INCOMPLETE',
 		SUBMISSION_EDITOR_DECISION_RESUBMIT => 'EDITOR_DECISION_RESUBMIT',
-		SUBMISSION_EDITOR_DECISION_DECLINE => 'EDITOR_DECISION_DECLINE'
+		SUBMISSION_EDITOR_DECISION_DECLINE => 'EDITOR_DECISION_DECLINE',
+		SUBMISSION_EDITOR_DECISION_EXEMPTED => 'EDITOR_DECISION_EXEMPT'
 		);
 
 		$decisions = $sectionEditorSubmission->getDecisions();
@@ -2023,7 +2087,7 @@ class SectionEditorAction extends Action {
 			$articleComment->setCommentType(COMMENT_TYPE_EDITOR_DECISION);
 			$articleComment->setRoleId(Validation::isEditor()?ROLE_ID_EDITOR:ROLE_ID_SECTION_EDITOR);
 			$articleComment->setArticleId($sectionEditorSubmission->getArticleId());
-			$articleComment->setAuthorId($sectionEditorSubmission->getUserId());
+			$articleComment->setAuthorId($user->getUserId());
 			$articleComment->setCommentTitle($email->getSubject());
 			$articleComment->setComments($email->getBody());
 			$articleComment->setDatePosted(Core::getCurrentDate());
@@ -2037,8 +2101,9 @@ class SectionEditorAction extends Action {
 				$authorUser =& $userDao->getUser($sectionEditorSubmission->getUserId());
 				$authorEmail = $authorUser->getEmail();
 				$email->assignParams(array(
-					'editorialContactSignature' => $user->getContactSignature(),
+					'secretaryName' => $user->getFullName(),
 					'authorName' => $authorUser->getFullName(),
+					'url' => Request::url(null, 'author', 'submission', $sectionEditorSubmission->getArticleId()),
 					'journalTitle' => $journal->getLocalizedTitle()
 				));
 				$email->addRecipient($authorEmail, $authorUser->getFullName());
@@ -2348,6 +2413,19 @@ class SectionEditorAction extends Action {
 			$reviewAssignment->stampModified();
 			$reviewAssignmentDao->updateReviewAssignment($reviewAssignment);
 
+			// Send a notification to reviewer
+			import('lib.pkp.classes.notification.NotificationManager');
+			$articleDao =& DAORegistry::getDAO('ArticleDAO');
+			$article =& $articleDao->getArticle($reviewAssignment->getSubmissionId());
+			$notificationManager = new NotificationManager();
+			if ($accept == 1) $message = $article->getLocalizedWhoId().':<br/>'.$user->getUsername().' confirmed your ability';
+			else $message = $article->getLocalizedWhoId().':<br/>'.$user->getUsername().' confirmed your inability';
+			$url = Request::url(null, 'reviewer', 'submission', $reviewAssignment->getId());
+            $notificationManager->createNotification(
+            		$reviewAssignment->getReviewerId(), 'notification.type.reviewConfirmedBySecretary',
+                	$message, $url, 1, NOTIFICATION_TYPE_REVIEWER_COMMENT
+            );
+            
 			// Add log
 			import('classes.article.log.ArticleLog');
 			import('classes.article.log.ArticleEventLogEntry');
@@ -2485,7 +2563,7 @@ class SectionEditorAction extends Action {
 		$preventAddressChanges = $reviewerAccessKeysEnabled;
 
 		import('classes.mail.MailTemplate');
-		$email = new MailTemplate($reviewerAccessKeysEnabled?'MEETING_NEW':'MEETING_NEW');
+		$email = new MailTemplate($reviewerAccessKeysEnabled?'NEW_MEETING':'NEW_MEETING');
 
 		if($preventAddressChanges) {
 			$email->setAddressFieldsEnabled(false);
@@ -2847,33 +2925,102 @@ class SectionEditorAction extends Action {
 		$articleFileManager = new ArticleFileManager($articleId);
 		$suppFileDao =& DAORegistry::getDAO('SuppFileDAO');
 		
-		$type = "Final Decision";
+		$type = "FINAL_DECISION";
 		
         // Upload file, if file selected.
 		if ($articleFileManager->uploadedFileExists($fileName)) {
 			$fileId = $articleFileManager->uploadSuppFile($fileName);
 			import('classes.search.ArticleSearchIndex');
 			ArticleSearchIndex::updateFileIndex($articleId, ARTICLE_SEARCH_SUPPLEMENTARY_FILE, $fileId);
+					//Insert new supplementary file
+			$suppFile = new SuppFile();
+			$suppFile->setArticleId($articleId);
+			$suppFile->setFileId($fileId);
+			$suppFile->setType($type);		
+
+			$suppFileDao->insertSuppFile($suppFile);
+						
+			return $suppFile->getId();	
 		} else {
 			$fileId = 0;
+			return $fileId; 
 		}
-
-		//Insert new supplementary file
-		$suppFile = new SuppFile();
-		$suppFile->setArticleId($articleId);
-		$suppFile->setFileId($fileId);
-		$suppFile->setType($type);		
-
-		$suppFileDao->insertSuppFile($suppFile);
 		/*import('classes.submission.form.SuppFileForm');
 		$suppFileForm = new SuppFileForm($submission, $journal);
 		$suppFileForm->setData('title', array($submission->getLocale() => Locale::translate('common.untitled')));
 		$suppFileForm->setData('type', $type);
 		$suppFileId = $suppFileForm->execute($fileName);
-		*/
-		return $suppFile->getId();			
+		*/		
 	}
-	
+
+
+        
+        function sendEmailNewMeeting($article, $technicalReview, $meetingDate, $meetingTime, $meetingLocation, $send=false) {
+
+            import('classes.mail.ArticleMailTemplate');
+            $email = new ArticleMailTemplate($article, 'NEW_MEETING');
+            
+            if (Request::getUserVar('send') && !$email->hasErrors()) {
+                HookRegistry::call('SectionEditorAction::sendEmailNewMeeting', array(&$send));
+                
+                $email->send();
+                
+            } else {
+                $sender =& Request::getUser();
+                $journal =& Request::getJournal();
+                $roleDao =& DAORegistry::getDAO('RoleDAO');
+                $userDao =& DAORegistry::getDAO('UserDAO');
+				$erc = $sender->getSecretaryEthicsCommittee();
+                
+                //Get ERC Members		
+				if ($technicalReview == "true"){
+					$reviewType = Locale::translate('submission.technicalReview');
+					$url = Request::url(null, 'reviewer', 'index', 'active');
+					$previousRound = $article->getCurrentRound();
+					$reviewAssignments = $article->getReviewAssignments($previousRound);
+					foreach ($reviewAssignments as $reviewAssignment) {			
+						$reviewer =& $userDao->getUser($reviewAssignment->getReviewerId());
+						$email->addRecipient($reviewer->getEmail(), $reviewer->getFullName());
+					}
+				} else {
+					$reviewType = Locale::translate('submission.ethicalReview');
+                	$reviewers = $roleDao->getUsersByRoleId(ROLE_ID_REVIEWER);
+                	$url = Request::url(null, 'reviewer', 'index', 'fullReview');
+                	//Get already added recipients
+                	$recipients =& $email->getRecipients();
+                	if(isset($recipients)) $totalRecipients = count($recipients);
+                	else $totalRecipients = 0;
+                	
+                	while (!$reviewers->eof()) {
+                	    $reviewer =& $reviewers->next();
+                	    
+                    	// Check if new recipient is not already added
+                    	$isNotInTheList = true;
+                    	if(isset($recipients)) foreach ($recipients as $recipient) if ($recipient['email'] == $reviewer->getEmail()) $isNotInTheList = false;
+                    	
+                    	//Add new recipients according the committee
+                    	if(($sender->getId() != $reviewer->getId()) && (($erc=="CREC" && $reviewer->isCrecMember()) || ($erc=="HSPH" && $reviewer->isHsphMember())) && ($isNotInTheList == true)) {
+                    	    $email->addRecipient($reviewer->getEmail(), $reviewer->getFullName());
+                    	    $totalRecipients++;
+                    	}
+                    	unset($reviewer);
+                	}				
+				}
+				$paramArray = array (
+					'reviewType' => $reviewType,
+					'meetingDate' => $meetingDate,
+					'meetingTime' => $meetingTime,
+					'meetingLocation' => $meetingLocation,
+					'sponsor' => $article->getLocalizedPrimarySponsorText(),
+					'url' => $url,
+					'urlPassword' => Request::url(null, 'login', 'lostPassword'),
+					'secretaryName' => $sender->getFullName()
+				);
+				$email->assignParams($paramArray);
+                $email->displayEditForm(Request::url(null, null, 'sendEmailNewMeeting'), null, 'email/email.tpl');
+            }     
+            Request::redirect(null, null, 'index');           
+        }
 }
 
 ?>

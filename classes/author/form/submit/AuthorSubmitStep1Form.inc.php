@@ -148,7 +148,7 @@ class AuthorSubmitStep1Form extends AuthorSubmitForm {
 			$user =& Request::getUser();
 
 			$this->article = new Article();
-			$this->article->setLocale($this->getData('locale'));
+			$this->article->setLocale('en_US');
 			$this->article->setUserId($user->getId());
 			$this->article->setJournalId($journal->getId());
 			$this->article->setSectionId($this->getData('sectionId'));
@@ -169,12 +169,12 @@ class AuthorSubmitStep1Form extends AuthorSubmitForm {
 			$author->setUrl($user->getUrl());
 			$author->setBiography($user->getBiography(null), null);
 			$author->setPrimaryContact(1);
+			
 			$this->article->addAuthor($author);
-
+			
 			$articleDao->insertArticle($this->article);
 			$this->articleId = $this->article->getId();
 		}
-
 		return $this->articleId;
 	}
 

@@ -82,7 +82,7 @@ class ReviewAssignmentDAO extends PKPReviewAssignmentDAO {
 		$returner =& $this->getByUserId($userId);
 		return $returner;
 	}
-
+	
 	/**
 	 * Get all review assignments for a review form.
 	 * @param $reviewFormId int
@@ -136,7 +136,7 @@ class ReviewAssignmentDAO extends PKPReviewAssignmentDAO {
 		$files = array();
 
 		$result =& $this->retrieve(
-			'SELECT	f.*, r.reviewer_id, r.review_id
+			'SELECT	f.*, r.reviewer_id, r.review_id, r.review_type
 			FROM	review_assignments r,
 				article_files f
 			WHERE	reviewer_file_id = file_id AND
@@ -306,6 +306,16 @@ class ReviewAssignmentDAO extends PKPReviewAssignmentDAO {
 	 */
 	function newDataObject() {
 		return new ReviewAssignment();
+	}
+
+
+	/*
+	 * Return a review id by article id and user id
+	 */
+	function &getReviewIdByArticleIdAndUserId($articleId, $userId){
+		$result =& $this->retrieve('SELECT review_id FROM review_assignments WHERE submission_id = '. $articleId . ' AND reviewer_id = '. $userId);
+		$row = $result->GetRowAssoc(false);
+		return $row['review_id'];
 	}
 
 	/**

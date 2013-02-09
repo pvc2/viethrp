@@ -34,19 +34,21 @@
                         {elseif $status==PROPOSAL_STATUS_ARCHIVED}
                             {assign var="decision" value=$submission->getMostRecentDecision()}
                             {if $decision==SUBMISSION_EDITOR_DECISION_DECLINE}
-                                Archived({translate key="submissions.proposal.decline"})
+                                {translate key="submission.archived"}({translate key="submissions.proposal.decline"})
                             {elseif $decision==SUBMISSION_EDITOR_DECISION_EXEMPTED}
-                                Archived({translate key="submissions.proposal.exempted"})
+                                {translate key="submission.archived"}({translate key="submissions.proposal.exempted"})
                             {/if}
                         {elseif $status==PROPOSAL_STATUS_SUBMITTED}{translate key="submissions.proposal.submitted"}
                         {elseif $status==PROPOSAL_STATUS_CHECKED}{translate key="submissions.proposal.checked"}
                         {elseif $status==PROPOSAL_STATUS_EXPEDITED}{translate key="submissions.proposal.expedited"}
                         {elseif $status==PROPOSAL_STATUS_ASSIGNED}{translate key="submissions.proposal.assigned"}
                         {elseif $status==PROPOSAL_STATUS_RETURNED}{translate key="submissions.proposal.returned"}
+                        <br/><a href="{url op="resubmit" path=$submission->getId()}" class="action">Resubmit</a>
                         {elseif $status==PROPOSAL_STATUS_EXEMPTED}{translate key="submissions.proposal.exempted"}
                         {elseif $status==PROPOSAL_STATUS_REVIEWED}
                             {assign var="decision" value=$submission->getMostRecentDecision()}
                             {if $decision==SUBMISSION_EDITOR_DECISION_RESUBMIT}{translate key="submissions.proposal.resubmit"}
+                       		 <br/><a href="{url op="resubmit" path=$submission->getId()}" class="action">Resubmit</a>
                             {elseif $decision==SUBMISSION_EDITOR_DECISION_ACCEPT}{translate key="submissions.proposal.approved"}
                             {elseif $decision==SUBMISSION_EDITOR_DECISION_DECLINE}{translate key="submissions.proposal.decline"}
                             
@@ -54,8 +56,28 @@
                         {/if}
 		</td>
 	</tr>
+	{if $status == PROPOSAL_STATUS_WITHDRAWN}
+		<tr>
+			<td class="label">&nbsp;</td>
+			<td class="value">{translate key="submissions.proposal.withdrawnReason"}: 
+				{if $submission->getWithdrawReason(en_US) == "0"}
+					{translate key="submission.withdrawLack"}
+				{elseif $submission->getWithdrawReason(en_US) == "1"}
+					{translate key="submission.withdrawAdverse"}
+				{else}
+					{$submission->getWithdrawReason(en_US)}
+				{/if}
+			</td>
+		</tr>
+		{if $submission->getWithdrawComments(en_US)}
+			<tr>
+				<td class="label">&nbsp;</td>
+				<td class="value">{translate key="submissions.proposal.withdrawnComment"}: {$submission->getWithdrawComments(en_US)}</td>
+			</tr>
+		{/if}
+	{/if}
 	<tr>
-		<td class="label">Date</td>
+		<td class="label">{translate key="common.date"}</td>
 		<td colspan="2" class="value">{$submission->getDateStatusModified()|date_format:$dateFormatShort}</td>
 	</tr>
         {*

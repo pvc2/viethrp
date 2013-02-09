@@ -194,6 +194,22 @@ class SubmissionFile extends DataObject {
 	}
 
 	/**
+	 * Get review type
+	 * @ return int
+	 */
+	function getReviewType() {
+		return $this->getData('reviewType');
+	}
+
+	/**
+	 * Set review type
+	 * @param $reviewType
+	 */
+	function setReviewType($reviewType) {
+		return $this->setData('reviewType', $reviewType);
+	}
+		 
+	/**
 	 * Get uploaded date of file.
 	 * @return date
 	 */

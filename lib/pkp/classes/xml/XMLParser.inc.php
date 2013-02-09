@@ -215,9 +215,10 @@ class XMLParser {
 	 */
 	function &parseTextStruct(&$text, $tagsToMatch = array()) {
 		$parser =& $this->createParser();
+
 		xml_parse_into_struct($parser, $text, $values, $tags);
 		$this->destroyParser($parser);
-
+		
 		// Clean up data struct, removing undesired tags if necessary
 		foreach ($tags as $key => $indices) {
 			if (!empty($tagsToMatch) && !in_array($key, $tagsToMatch)) {
@@ -230,14 +231,12 @@ class XMLParser {
 				if (!isset($values[$index]['type']) || ($values[$index]['type'] != 'open' && $values[$index]['type'] != 'complete')) {
 					continue;
 				}
-
 				$data[$key][] = array(
 					'attributes' => isset($values[$index]['attributes']) ? $values[$index]['attributes'] : array(),
 					'value' => isset($values[$index]['value']) ? trim($values[$index]['value']) : ''
 				);
 			}
 		}
-
 		return $data;
 	}
 
@@ -256,6 +255,7 @@ class XMLParser {
 			$result = false;
 			return $result;
 		}
+
 		$returner =& $this->parseTextStruct($fileContents, $tagsToMatch);
 		return $returner;
 	}

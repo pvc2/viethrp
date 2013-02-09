@@ -71,7 +71,7 @@ class AuthorSubmitForm extends Form {
 		}
 
 		switch($this->step) {
-			case 3:
+			case 2:
 				$helpTopicId = 'submission.indexingAndMetadata';
 				break;
 			case 4:

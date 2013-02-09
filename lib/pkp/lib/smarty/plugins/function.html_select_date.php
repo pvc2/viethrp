@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Smarty plugin
  * @package Smarty
@@ -83,6 +84,7 @@ function smarty_function_html_select_date($params, &$smarty)
     $month_empty     = null;
     $year_empty      = null;
     $extra_attrs     = '';
+
 
     foreach ($params as $_key=>$_value) {
         switch ($_key) {

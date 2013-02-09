@@ -10,7 +10,6 @@
  * @ingroup form_validation
  * @see FormValidator
  *
- * @brief Form validation check for alphanumeric (plus interior dash/underscore) characters only.
  */
 
 import('lib.pkp.classes.form.validation.FormValidator');
@@ -25,7 +24,7 @@ class FormValidatorNumeric extends FormValidator {
 	 */
 	function FormValidatorNumeric(&$form, $field, $type, $message) {
 		import('lib.pkp.classes.validation.ValidatorRegExp');
-		$validator = new ValidatorRegExp('/^[0-9]+([\-_][0-9]+)*$/i');
+		$validator = new ValidatorRegExp('/^[0-9]+$/');
 		parent::FormValidator($form, $field, $type, $message, $validator);
 	}
 }

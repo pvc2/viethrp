@@ -58,6 +58,9 @@ class NewSearchHandler extends Handler {
 		$toDate = Request::getUserDateVar('dateTo', 32, 12, null, 23, 59, 59);
 		if ($toDate !== null) $toDate = date('Y-m-d H:i:s', $toDate);
 		
+        $countryDAO =& DAORegistry::getDAO('ProvincesOfVietnamDAO');
+        $proposalCountries =& $countryDAO->getProvincesOfVietnam();
+        $templateMgr->assign_by_ref('proposalCountries', $proposalCountries);	
 		
 		$templateMgr->assign('dateFrom', $fromDate);
 		$templateMgr->assign('dateTo', $toDate);
@@ -79,87 +82,186 @@ class NewSearchHandler extends Handler {
 	function advancedResults() {
 		$this->validate();
 		$this->setupTemplate(true);
-
 		$query = Request::getUserVar('query');
 		$fromDate = Request::getUserDateVar('dateFrom', 1, 1);
 		if ($fromDate !== null) $fromDate = date('Y-m-d H:i:s', $fromDate);
 		$toDate = Request::getUserDateVar('dateTo', 32, 12, null, 23, 59, 59);
 		if ($toDate !== null) $toDate = date('Y-m-d H:i:s', $toDate);
 		$articleDao =& DAORegistry::getDAO('ArticleDAO');
-
-		$results =& $articleDao->searchProposalsPublic($query, $fromDate, $toDate);
-
+		
+		$country = Request::getUserVar('proposalCountry');
+		$countryDAO =& DAORegistry::getDAO('ProvincesOfVietnamDAO');
+		$status = Request::getUserVar('status');
+		if($status != '1' && $status != '2') $status = false;
+		$results =& $articleDao->searchProposalsPublic($query, $fromDate, $toDate, $country, $status);
+				
 		$templateMgr =& TemplateManager::getManager();
+		
 		$templateMgr->assign_by_ref('results', $results);
 		$templateMgr->assign('query', Request::getUserVar('query'));
+		
+		$templateMgr->assign('locale', Locale::getLocale());
+		$templateMgr->assign('province', $country);
+		$templateMgr->assign('statusFilter', $status);
+		
+		$templateMgr->assign('country', $countryDAO->getProvinceOfVietnam($country));
 		
 		$templateMgr->assign('dateFrom', $fromDate);
 		$templateMgr->assign('dateTo', $toDate);
 		$templateMgr->assign('count', count($results));
-
 		$templateMgr->display('search/searchResults.tpl');
-	}	
+	}
 	
-	function generateCSV($args) {
+	function generateCustomizedCSV($args) {
+		$eng = 'en_US';
+		$viet = 'vi_VN';
+		
 		parent::validate();
 		$this->setupTemplate();
 		$query = Request::getUserVar('query');
+
+		$province = Request::getUserVar('province');
+		$statusFilter = Request::getUserVar('statusFilter');
+				
+		$fromDate = Request::getUserVar('dateFrom');
+		//if ($fromDate != null) $fromDate = date('Y-m-d H:i:s', $fromDate);		
+		$toDate = Request::getUserVar('dateTo');
+		//if ($toDate != null) $toDate = date('Y-m-d H:i:s', $toDate);
 		
-		$fromDate = Request::getUserDateVar('dateFrom', 1, 1);
-		if ($fromDate != null) $fromDate = date('Y-m-d H:i:s', $fromDate);
-		$toDate = Request::getUserDateVar('dateTo', 32, 12, null, 23, 59, 59);
-		if ($toDate != null) $toDate = date('Y-m-d H:i:s', $toDate);
+		$columns = array();
 		
+		$investigatorName = false;
+		if (Request::getUserVar('investigatorName')) {
+			$columns = $columns + array('investigator' => Locale::translate('search.investigator'));
+			$investigatorName = true;
+		}
+					
+		$investigatorAffiliation = false;
+		if (Request::getUserVar('investigatorAffiliation')) {
+			$columns = $columns + array('investigator_affiliation' => Locale::translate('search.investigatorAffiliation'));
+			$investigatorAffiliation = true;
+		}
+		
+		if (Request::getUserVar('scientificTitle')) {
+			$columns = $columns + array('scientific_title' => Locale::translate('article.scientificTitle'));
+		}
+
+		if (Request::getUserVar('publicTitle')) {
+			$columns = $columns + array('public_title' => Locale::translate('article.publicTitle'));
+		}
+		
+		$researchField = false;
+		if (Request::getUserVar('researchField')) {
+			$columns = $columns + array('research_field' => Locale::translate('search.researchField'));
+			$researchField = true;
+		}
+		
+		$proposalType = false;
+		if (Request::getUserVar('proposalType')) {
+			$columns = $columns + array('proposal_type' => Locale::translate('article.proposalType'));
+			$proposalType = true;
+		}
+		
+		$duration = false;
+		if (Request::getUserVar('duration')) {
+			$columns = $columns + array('duration' => Locale::translate('search.duration'));
+			$duration = true;
+		}
+
+		$area = false;
+		if (Request::getUserVar('area')) {
+			$columns = $columns + array('area' => Locale::translate('proposal.proposalCountry'));
+			$area = true;
+		}
+		
+		$dataCollection = false;
+		if (Request::getUserVar('dataCollection')) {
+			$columns = $columns + array('data_collection' => Locale::translate('search.dataCollection'));
+			$dataCollection = true;
+		}
+		
+		$status = false;
+		if (Request::getUserVar('status')) {
+			$columns = $columns + array('status' => Locale::translate('search.status'));
+			$status = true;
+		}
+		
+		$studentResearch = false;
+		if (Request::getUserVar('studentResearch')) {
+			$columns = $columns + array('student_institution' => Locale::translate('article.studentInstitution'));
+			$columns = $columns + array('academic_degree' => Locale::translate('article.academicDegree'));
+			$studentResearch = true;
+		}
+
+		$primarySponsor = false;
+		if (Request::getUserVar('primarySponsor')) {
+			$columns = $columns + array('primary_sponsor' => Locale::translate('article.primarySponsor'));
+			$primarySponsor = true;
+		}
+
+		$dateSubmitted = false;
+		if (Request::getUserVar('dateSubmitted')) {
+			$columns = $columns + array('date_submitted' => Locale::translate('search.dateSubmitted'));
+			$dateSubmitted = true;
+		}
+				
 		header('content-type: text/comma-separated-values');
 		header('content-disposition: attachment; filename=searchResults-' . date('Ymd') . '.csv');
+				
 		
-		$columns =  array(
-		'whoid' => Locale::translate('search.whoid'),
-		'date_submitted' => Locale::translate('common.dateSubmitted'),
-		'title' => Locale::translate('article.title'),
-		'country' => Locale::translate('common.country'),
-		'primary_editor' => Locale::translate('search.responsibleOfficer'),
-		'primary_author' => Locale::translate('search.primaryInvestigator'),
-		'email' => Locale::translate('search.email'),
-		'duration' => Locale::translate('search.duration'),
-		'decision' => Locale::translate('search.finalDecision')
-		);
 		$fp = fopen('php://output', 'wt');
 		String::fputcsv($fp, array_values($columns));
 		
 		$articleDao =& DAORegistry::getDAO('ArticleDAO');
-		$results = $articleDao->searchProposalsPublic($query, $fromDate, $toDate);
+		
+		$results = $articleDao->searchCustomizedProposalsPublic($query, $province, $statusFilter, $fromDate, $toDate, $investigatorName, $investigatorAffiliation, $researchField, $proposalType, $duration, $area, $dataCollection, $status, $studentResearch, $primarySponsor, $dateSubmitted);
 		
 		foreach ($results as $result) {
 			foreach ($columns as $index => $junk) {
-				if ($index == 'primary_editor') {
-					$columns[$index] = $result->getPrimaryEditor();
-				} elseif ($index == 'primary_author') {
-					$columns[$index] =  $result->getPrimaryAuthor();
-				} elseif ($index == 'email') {
-					$columns[$index] = $result->getAuthorEmail();
+				if ($index == 'investigator') {
+					$columns[$index] = $result->getPrimaryAuthor();
+				} elseif ($index == 'investigator_affiliation') {
+					$columns[$index] = $result->getInvestigatorAffiliation();
+				} elseif ($index == 'scientific_title') {
+					$columns[$index] = $result->getLocalizedTitle();
+				} elseif ($index == 'public_title') {
+					$columns[$index] = $result->getLocalizedPublicTitle();
+				} elseif ($index == 'research_field') {
+					$columns[$index] = $result->getLocalizedResearchFieldText();
+				} elseif ($index == 'proposal_type') {
+					$columns[$index] = $result->getLocalizedProposalTypeText();
 				} elseif ($index == "duration") {
-					$columns[$index] = date("d M Y", strtotime($result->getStartDate()))." to ".date("d M Y", strtotime($result->getEndDate()));
-				} elseif ($index == "decision") {
-					$decision = $result->getEditorDecisionKey();
-					$columns[$index] = Locale::translate($decision)." on ".date("d M Y", strtotime($result->getDateStatusModified()));
-				} elseif ($index == 'date_submitted') {
-					$decision = $result->getEditorDecisionKey();
-					$columns[$index] = date("d M Y", strtotime($result->getDateSubmitted()));
-			} elseif ($index == 'title') {
-					$columns[$index] = $result->getTitle();
-				} elseif ($index == 'country') {
-					$columns[$index] = $result->getProposalCountry();
-				} elseif ($index == 'whoid') {
-					$columns[$index] = $result->getWhoId();
+					$columns[$index] = date("d M Y", strtotime($result->getStartDate())).' '.Locale::translate('search.dateTo').' '.date("d M Y", strtotime($result->getEndDate()));
+				} elseif ($index == 'area') {
+					$columns[$index] = $result->getLocalizedProposalCountryText();
+				} elseif ($index == 'data_collection') {
+					if ($result->getDataCollection($eng) == 'Primary') $columns[$index] = Locale::translate('proposal.primaryDataCollection');
+					elseif ($result->getDataCollection($eng) == 'Secondary') $columns[$index] = Locale::translate('proposal.secondaryDataCollection');
+					else $columns[$index] = Locale::translate('proposal.bothDataCollection');
+				} elseif ($index == 'status') {
+					if ($result->getStatus() == '11') $columns[$index] = Locale::translate('common.complete');
+					else $columns[$index] = Locale::translate('common.ongoing');
+				} elseif ($index == 'student_institution') {
+					if ($result->getStudentInstitution($eng) != "NA") $columns[$index] = $result->getStudentInstitution($eng); 
+					else $columns[$index] = Locale::translate('search.nonStudent');
+				} elseif ($index == 'academic_degree') {
+					if ($result->getAcademicDegree($eng) != "NA") {
+						if ($result->getAcademicDegree($eng) == "Undergraduate") $columns[$index] = Locale::translate('proposal.undergraduate');
+						elseif ($result->getAcademicDegree($eng) == "Master") $columns[$index] = Locale::translate('proposal.master');
+						elseif ($result->getAcademicDegree($eng) == "Post-Doc") $columns[$index] = Locale::translate('proposal.postDoc');
+						elseif ($result->getAcademicDegree($eng) == "Ph.D") $columns[$index] = Locale::translate('proposal.phd');
+						else $columns[$index] = Locale::translate('common.other');
+					} else $columns[$index] = Locale::translate('search.nonStudent');
+				} elseif ($index == 'primary_sponsor') {
+					$columns[$index] = $result->getLocalizedPrimarySponsor();
 				}
 			}
 			String::fputcsv($fp, $columns);
-			unset($row);
 		}
 		fclose($fp);
+		unset($columns);
 	}
-
+	
 	function viewProposal($args) {
 		$articleId = isset($args[0]) ? (int) $args[0] : 0;
 		$this->setupTemplate(true, $articleId);
@@ -169,6 +271,10 @@ class NewSearchHandler extends Handler {
 		$templateMgr->assign_by_ref('results', $results);
 		$templateMgr->assign('query', Request::getUserVar('query'));
 		
+		$sectionEditorSubmissionDao =& DAORegistry::getDAO('SectionEditorSubmissionDAO');
+		$proposal = $sectionEditorSubmissionDao->getSectionEditorSubmission($articleId);
+		$templateMgr->assign_by_ref('suppFiles', $proposal->getSuppFiles());
+				
 		$templateMgr->assign('dateFrom', $fromDate);
 		$templateMgr->assign('dateTo', $toDate);
 		$templateMgr->assign_by_ref('submission', $submission);
@@ -189,7 +295,7 @@ class NewSearchHandler extends Handler {
 		);
 		} else {
 			$templateMgr->assign('pageHierarchy',
-			$subclass ? array(array(Request::url(null, 'search'), 'navigation.search'), array(Request::url('whorrp', 'search','advancedResults'), 'search.searchResults'))
+			$subclass ? array(array(Request::url(null, 'search'), 'navigation.search'), array(Request::url('viethrp', 'search','advancedResults'), 'search.searchResults'))
 				: array()
 			);
 		}
@@ -199,6 +305,20 @@ class NewSearchHandler extends Handler {
 		if (!$journal || !$journal->getSetting('restrictSiteAccess')) {
 			$templateMgr->setCacheability(CACHEABILITY_PUBLIC);
 		}
+	}
+	
+	/**
+	 * Download a file.
+	 * @param $args array ($articleId, $fileId, [$revision])
+	 */
+	function downloadFile($args) {
+		$articleId = isset($args[0]) ? $args[0] : 0;
+		$fileId = isset($args[1]) ? $args[1] : 0;
+		$revision = isset($args[2]) ? $args[2] : null;
+
+		import('classes.file.ArticleFileManager');
+		$articleFileManager = new ArticleFileManager($articleId);
+		return $articleFileManager->downloadFile($fileId, $revision);
 	}
 
 }

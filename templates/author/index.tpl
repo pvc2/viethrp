@@ -35,7 +35,7 @@
 	<select name="searchField" size="1" class="selectMenu" style="display: none;">
 		{html_options_translate options=$fieldOptions selected=$searchField}
 	</select>
-	<strong>Title &nbsp;</strong> 
+	<strong>{translate key="article.title"} &nbsp;</strong> 
 	<select name="searchMatch" size="1" class="selectMenu">
 		<option value="contains"{if $searchMatch == 'contains'} selected="selected"{/if}>{translate key="form.contains"}</option>
 		<option value="is"{if $searchMatch == 'is'} selected="selected"{/if}>{translate key="form.is"}</option>
@@ -47,7 +47,7 @@
 	<select name="dateSearchField" size="1" class="selectMenu" style="display: none;">
 		{html_options_translate options=$dateFieldOptions selected=$dateSearchField}
 	</select>
-	<strong>Submitted between :&nbsp;</strong>
+	<strong>{translate key="submission.submittedBetween"} :&nbsp;</strong>
 	{html_select_date prefix="dateFrom" time=$dateFrom all_extra="class=\"selectMenu\"" year_empty="" month_empty="" day_empty="" start_year="-5" end_year="+1"}
 	{translate key="common.and"}
 	{html_select_date prefix="dateTo" time=$dateTo all_extra="class=\"selectMenu\"" year_empty="" month_empty="" day_empty="" start_year="-5" end_year="+1"}
@@ -58,6 +58,7 @@
 	
 	<!-- Allows filtering by technical unit and country -->
 	<!-- Added by: igm 9/24/2011                        -->
+	<!--
 	<h5>Filter by</h5>
 	<select name="technicalUnitField" id="technicalUnit" class="selectMenu">
 		<option value="">All Technical Units</option>
@@ -66,7 +67,7 @@
 	<select name="countryField" id="country" class="selectMenu">
 		<option value="">All Countries</option>
 		{html_options options=$countries selected=$countryField}
-    </select>
+    </select>-->
     <br/>
 	<input type="submit" value="{translate key="common.search"}" class="button" />
 </form>

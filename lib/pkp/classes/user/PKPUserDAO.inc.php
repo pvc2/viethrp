@@ -229,7 +229,8 @@ class PKPUserDAO extends DAO {
 	}
 
 	function getLocaleFieldNames() {
-		return array('biography', 'signature', 'gossip', 'affiliation', 'ercMemberStatus', 'healthAffiliation', 'wproAffiliation', 'externalReviewer');
+		return array('biography', 'signature', 'gossip', 'affiliation', 
+	'ercMemberStatus', 'healthAffiliation', 'wproAffiliation', 'technicalReviewer');
 	}
 
 	function updateLocaleFields(&$user) {

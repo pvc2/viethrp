@@ -46,36 +46,60 @@ class SubmissionReviewHandler extends ReviewerHandler {
 		$reviewAssignment = $reviewAssignmentDao->getById($reviewId);
 
 		$reviewFormResponseDao =& DAORegistry::getDAO('ReviewFormResponseDAO');
-
 		if ($submission->getDateConfirmed() == null) {
 			$confirmedStatus = 0;
 		} else {
 			$confirmedStatus = 1;
 		}
-
 		$this->setupTemplate(true, 0, $reviewAssignment->getSubmissionId(), $reviewId);
-
+		
+		$articleDao =& DAORegistry::getDAO("ArticleDAO");
+		$previousDecision =& $articleDao->getLastEditorDecision($reviewAssignment->getSubmissionId());
+				
 		$templateMgr =& TemplateManager::getManager();
-
+		
+		$templateMgr->assign_by_ref('lastDecisionArray', $previousDecision);
 		$templateMgr->assign_by_ref('user', $user);
 		$templateMgr->assign_by_ref('submission', $submission);
 		$templateMgr->assign_by_ref('reviewAssignment', $reviewAssignment);
 		$templateMgr->assign('confirmedStatus', $confirmedStatus);
 		$templateMgr->assign('declined', $submission->getDeclined());
 		$templateMgr->assign('reviewFormResponseExists', $reviewFormResponseDao->reviewFormResponseExists($reviewId));
-		$templateMgr->assign_by_ref('reviewFile', $reviewAssignment->getReviewFile());
+		$templateMgr->assign_by_ref('reviewFile', $submission->getSubmissionFile());
 		$templateMgr->assign_by_ref('reviewerFile', $submission->getReviewerFile());
 		$templateMgr->assign_by_ref('suppFiles', $submission->getSuppFiles());
 		$templateMgr->assign_by_ref('journal', $journal);
 		$templateMgr->assign_by_ref('reviewGuidelines', $journal->getLocalizedSetting('reviewGuidelines'));
-
 		import('classes.submission.reviewAssignment.ReviewAssignment');
 		$templateMgr->assign_by_ref('reviewerRecommendationOptions', ReviewAssignment::getReviewerRecommendationOptions());
 
-		$templateMgr->assign('helpTopicId', 'editorial.reviewersRole.review');		
+		$templateMgr->assign('helpTopicId', 'editorial.reviewersRole.review');
 		$templateMgr->display('reviewer/submission.tpl');
 	}
 
+	/**
+	 * Display a submission for full review page.
+	 * @param $args array
+	 */
+	function submissionForFullReview($args) {
+		$journal =& Request::getJournal();
+		$articleId = $args[0];
+		//$this->validate();
+		$ReviewerSubmissionDao = DAORegistry::getDAO('ReviewerSubmissionDAO');
+		
+		$submission =& $ReviewerSubmissionDao->getSubmissionForFullReview($articleId);
+		
+		$this->setupTemplate(true);
+		$templateMgr =& TemplateManager::getManager();
+		
+		$templateMgr->assign_by_ref('submission', $submission);
+
+		$templateMgr->assign_by_ref('reviewFile', $submission->getReviewFile());
+		$templateMgr->assign_by_ref('suppFiles', $submission->getSuppFiles());
+		$templateMgr->assign_by_ref('journal', $journal);
+		$templateMgr->display('reviewer/submissionFullReview.tpl');
+	}
+	
 	/**
 	 * Confirm whether the review has been accepted or not.
 	 * @param $args array optional
@@ -172,7 +196,7 @@ class SubmissionReviewHandler extends ReviewerHandler {
 		$reviewerSubmission =& $this->submission;
 
 		$this->setupTemplate(true, 0, $articleId, $reviewId);
-
+		
 		ReviewerAction::viewMetadata($reviewerSubmission, $journal);
 	}
 
@@ -217,11 +241,27 @@ class SubmissionReviewHandler extends ReviewerHandler {
 		$articleId = isset($args[1]) ? $args[1] : 0;
 		$fileId = isset($args[2]) ? $args[2] : 0;
 		$revision = isset($args[3]) ? $args[3] : null;
-
 		$this->validate($reviewId);
+
 		$reviewerSubmission =& $this->submission;
 
 		if (!ReviewerAction::downloadReviewerFile($reviewId, $reviewerSubmission, $fileId, $revision)) {
+			Request::redirect(null, null, 'submission', $reviewId);
+		}
+	}
+
+	/**
+	 * Download a file.
+	 * @param $args array ($articleId, $fileId, [$revision])
+	 */
+	function downloadFileFullReview($args) {
+		$reviewId = isset($args[0]) ? $args[0] : 0;
+		$articleId = isset($args[1]) ? $args[1] : 0;
+		$fileId = isset($args[2]) ? $args[2] : 0;
+		$revision = isset($args[3]) ? $args[3] : null;
+
+		$reviewerSubmission =& $this->submission;
+		if (!Action::downloadFile($articleId, $fileId, $revision)) {
 			Request::redirect(null, null, 'submission', $reviewId);
 		}
 	}
@@ -279,7 +319,7 @@ class SubmissionReviewHandler extends ReviewerHandler {
 		$newKey = Request::getUserVar('key');
 
 		$reviewerSubmission =& $reviewerSubmissionDao->getReviewerSubmission($reviewId);
-
+		
 		if (!$reviewerSubmission || $reviewerSubmission->getJournalId() != $journal->getId()) {
 			$isValid = false;
 		} elseif ($user && empty($newKey)) {
@@ -290,11 +330,11 @@ class SubmissionReviewHandler extends ReviewerHandler {
 			$user =& SubmissionReviewHandler::validateAccessKey($reviewerSubmission->getReviewerId(), $reviewId, $newKey);
 			if (!$user) $isValid = false;
 		}
-
+		
 		if (!$isValid) {
 			Request::redirect(null, Request::getRequestedPage());
 		}
-
+		
 		$this->submission =& $reviewerSubmission;
 		$this->user =& $user;
 		return true;

@@ -384,7 +384,11 @@ class PKPUser extends DataObject {
 	 */
 	function getInterests() {
 		$interestDao =& DAORegistry::getDAO('InterestDAO');
-		return implode(", ", $interestDao->getInterests($this->getId()));
+		$userDao =& DAORegistry::getDAO('UserDAO');
+		$interests = $interestDao->getInterests($this->getId());
+		$interestsFullNames = array();
+		foreach ($interests as $interest) array_push($interestsFullNames, $userDao->getReviewingInterest($interest));
+		return implode(", ", $interestsFullNames);
 	}
 
 	/**
@@ -584,7 +588,100 @@ class PKPUser extends DataObject {
 			return ($salutation != ''?"$salutation ":'') . "$firstName " . ($middleName != ''?"$middleName ":'') . $lastName;
 		}
 	}
-
+	
+	function getFunctions(){
+		$roleDao =& DAORegistry::getDAO('RoleDAO');
+		$userSettingsDao =& DAORegistry::getDAO('UserSettingsDAO');
+		$roles =& $roleDao->getRolesByUserId($this->getId(), '4');
+		$functions;
+		foreach ($roles as $role){
+			$roleId =& $role->getRoleId();
+			if ($roleId == '512'){
+				if($userSettingsDao->getSetting($this->getId(), 'secretaryStatus', '4') && ($userSettingsDao->getSetting($this->getId(), 'secretaryStatus', '4') != "Retired")){
+					if ($functions != null){
+						$functions = $functions . ' & ' . 'HSPH '.Locale::translate('user.role.editor');
+					}
+					else {
+						$functions = 'HSPH '.Locale::translate('user.role.editor'); 
+					}
+				}
+			}
+			if ($roleId == '4096'){
+				if ($userSettingsDao->getSetting($this->getId(), 'crecMemberStatus', '4') && ($userSettingsDao->getSetting($this->getId(), 'crecMemberStatus', '4') != "Retired")){
+					if ($functions != null){
+						$functions = $functions . ' & ' . $userSettingsDao->getSetting($this->getId(), 'crecMemberStatus', '4'); 
+					}else {
+						$functions = $userSettingsDao->getSetting($this->getId(), 'crecMemberStatus', '4'); 
+					}
+				}
+				if ($userSettingsDao->getSetting($this->getId(), 'hsphMemberStatus', '4') && ($userSettingsDao->getSetting($this->getId(), 'hsphMemberStatus', '4') != "Retired")){
+					if ($functions != null){
+						$functions = $functions . ' & ' . 'HSPH '.Locale::translate('user.role.reviewer');  
+					}else {
+						$functions = 'HSPH '.Locale::translate('user.role.reviewer'); 
+					}
+				}
+				if ($this->isLocalizedTechnicalReviewer() == "Yes"){
+					if ($functions != null){
+						$functions = $functions . ' & '.Locale::translate('user.role.technicalReviewer'); 
+					}else {
+						$functions = Locale::translate('user.role.technicalReviewer'); 
+					}
+				}	
+			}
+			if ($roleId == '65536'){
+				if ($functions != null){
+					$functions = $functions . ' & ' . Locale::translate('user.role.author');
+				}
+				else {
+					$functions = Locale::translate('user.role.author');
+				}
+			}
+			if ($roleId == '256'){
+				if ($functions != null){
+					$functions = $functions . ' & ' . Locale::translate('user.role.coordinator');
+				}
+				else {
+					$functions = Locale::translate('user.role.coordinator');
+				}
+			}
+		}
+		return $functions;
+	}
+	
+	function getSecretaryEthicsCommittee(){
+		$ethicsCommittee;
+		$userSettingsDao =& DAORegistry::getDAO('UserSettingsDAO');
+		if (($userSettingsDao->getSetting($this->getId(), 'secretaryStatus', '4')) == "CREC Secretary"){
+			$ethicsCommittee = 'CREC';
+		}
+		if (($userSettingsDao->getSetting($this->getId(), 'secretaryStatus', '4')) == "HSPH Secretary"){
+			$ethicsCommittee = 'HSPH';
+		}
+		return $ethicsCommittee;
+	}
+	
+	function isHsphMember(){
+		$hsphMember = false;
+		$userSettingsDao =& DAORegistry::getDAO('UserSettingsDAO');
+		$userStatus = $userSettingsDao->getSetting($this->getId(), 'hsphMemberStatus', '4');
+		if ($userStatus == "HSPH Chair" || $userStatus == "HSPH Vice-Chair" || $userStatus == "HSPH Member"){
+			$hsphMember = true;
+		}
+		return $hsphMember;
+	}
+	
+	function isCrecMember(){
+		$crecMember = false;
+		$userSettingsDao =& DAORegistry::getDAO('UserSettingsDAO');
+		$userStatus = $userSettingsDao->getSetting($this->getId(), 'crecMemberStatus', '4');
+		if ($userStatus == "CREC Chair" || $userStatus == "CREC Vice-Chair" || $userStatus == "CREC Member"){
+			$crecMember = true;
+		}
+		return $crecMember;
+	}
+	
+	
 	function getContactSignature() {
 		$signature = $this->getFullName();
 		if ($a = $this->getLocalizedAffiliation()) $signature .= "\n" . $a;
@@ -593,8 +690,6 @@ class PKPUser extends DataObject {
 		$signature .= "\n" . $this->getEmail();
 		return $signature;
 	}
-	
-	
 	/*
 	 * Getters and setters for additional user settings: health and wpro affiliation
 	 * Added by aglet
@@ -652,26 +747,26 @@ class PKPUser extends DataObject {
 	}
 
 	/**
-	 * Set user as external reviewer
-	 * @param $isExternalReviewer string
+	 * Set user as technical reviewer
+	 * @param $isTechnicalReviewer string
 	 * @param @locale string
 	 */
-	function setExternalReviewer($externalReviewer, $locale) {		
-		return $this->setData('externalReviewer', $externalReviewer, $locale);
+	function setTechnicalReviewer($technicalReviewer, $locale) {		
+		return $this->setData('technicalReviewer', $technicalReviewer, $locale);
 	}
 	
 	/**
-	 * Get externalReviewer indicator
+	 * Get technicalReviewer indicator
 	 */
-	function isLocalizedExternalReviewer() {
-		return $this->getLocalizedData('externalReviewer');
+	function isLocalizedTechnicalReviewer() {
+		return $this->getLocalizedData('technicalReviewer');
 	}	
 	
 	/**
-	 * Get externalReviewer indicator
+	 * Get technicalReviewer indicator
 	 */
-	function isExternalReviewer($locale) {
-		return $this->getData('externalReviewer', $locale);
+	function isTechnicalReviewer($locale) {
+		return $this->getData('technicalReviewer', $locale);
 	}
 	
 	

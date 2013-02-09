@@ -18,7 +18,13 @@
 <table class="data" width="100%">
 <tr valign="top">
 	<td width="20%" class="label">{translate key="user.salutation"}:</td>
-	<td width="80%" class="value">{$user->getSalutation()|escape}</td>
+	<td width="80%" class="value">
+		{if $user->getSalutation() == "Prof."}{translate key="user.salutation.prof"}
+		{elseif $user->getSalutation() == "Dr."}{translate key="user.salutation.dr"}
+		{elseif $user->getSalutation() == "Ms."}{translate key="user.salutation.ms"}
+		{elseif $user->getSalutation() == "Mr."}{translate key="user.salutation.mr"}
+		{else}&mdash;{/if}
+	</td>
 </tr>
 <tr valign="top">
 	<td width="20%" class="label">{translate key="user.username"}:</td>

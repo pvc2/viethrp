@@ -486,7 +486,7 @@ class Article extends Submission {
 	 * @param $layoutEditor boolean
 	 * @return array User IDs
 	 */
-	function getAssociatedUserIds($authors = true, $reviewers = true, $editors = true, $proofreader = true, $copyeditor = true, $layoutEditor = true) {
+	function getAssociatedUserIds($authors = true, $reviewers = true, $editors = true, $sectionEditors = true, $proofreader = true, $copyeditor = true, $layoutEditor = true) {
 		$articleId = $this->getId();
 		$signoffDao =& DAORegistry::getDAO('SignoffDAO');
 
@@ -506,7 +506,17 @@ class Article extends Submission {
 				unset($editAssignment);
 			}
 		}
-
+		
+		if($sectionEditors) {
+			$editAssignmentDao =& DAORegistry::getDAO('EditAssignmentDAO');
+			$editAssignments =& $editAssignmentDao->getSectionEditorAssignmentsByArticleId($articleId);
+			while ($editAssignment =& $editAssignments->next()) {
+				$userId = $editAssignment->getEditorId();
+				if ($userId) $userIds[] = array('id' => $userId, 'role' => 'sectionEditor');
+				unset($editAssignment);
+			}
+		}
+		
 		if($copyeditor) {
 			$copyedSignoff = $signoffDao->getBySymbolic('SIGNOFF_COPYEDITING_INITIAL', ASSOC_TYPE_ARTICLE, $articleId);
 			$userId = $copyedSignoff->getUserId();
@@ -626,6 +636,32 @@ class Article extends Submission {
             return $decision['decision'];
 	}
 	
+	/**
+	 * Get the number of resubmission
+	 * @return int
+	 * Edited by el
+	 * Last update: 5/11/2012
+	*/
+	function getResubmitCount(){
+		$articleId = $this->getArticleId();
+		$articleDao = DAORegistry::getDAO('ArticleDAO');
+		$result = $articleDao->getLastEditorDecision($articleId);
+		return $result['resubmitCount'];	
+	}
+
+	/**
+	 * Get if a technical review is required
+	 * @return int
+	 * Edited by el
+	 * Last update: 5/11/2012
+	*/
+	function getTechnicalReview(){
+		$articleId = $this->getArticleId();
+		$articleDao = DAORegistry::getDAO('ArticleDAO');
+		$result = $articleDao->getLastEditorDecision($articleId);
+		return $result['technicalReview'];	
+	}
+
 	/*
 	 * Get a map for editor decision to locale key.
 	 * @return array
@@ -655,7 +691,8 @@ class Article extends Submission {
 	 */
 	function getEditorDecisionKey() {
 		$editorDecisionMap =& $this->getEditorDecisionMap();
-		return $editorDecisionMap[$this->getMostRecentDecision()];
+		if ($this->getMostRecentDecision()) return $editorDecisionMap[$this->getMostRecentDecision()];
+		else return null;
 	}
 	
 	/**
@@ -704,7 +741,6 @@ class Article extends Submission {
     	$approvalDate = strtotime($this->getApprovalDate($this->getLocale()));    	
         $approvalDue = strtotime ('+1 year', $approvalDate) ;
         $due = (($today - $dueDate)>0 && ($today - $approvalDue) > 0) ? 1 : 0;
-        //echo "$today, $dueDate, $approvalDue, $due";
         return $due;
     }    
 }

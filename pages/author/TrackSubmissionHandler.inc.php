@@ -127,6 +127,9 @@ class TrackSubmissionHandler extends AuthorHandler {
 		$templateMgr->assign_by_ref('revisedFile', $submission->getRevisedFile());
 		$templateMgr->assign_by_ref('suppFiles', $submission->getSuppFiles());
 
+		$suppFileDao =& DAORegistry::getDAO('SuppFileDAO');
+		$templateMgr->assign_by_ref('suppFileDao', $suppFileDao);
+		
 		import('classes.submission.sectionEditor.SectionEditorSubmission');
 		$templateMgr->assign_by_ref('editorDecisionOptions', SectionEditorSubmission::getEditorDecisionOptions());
                 
@@ -188,9 +191,12 @@ class TrackSubmissionHandler extends AuthorHandler {
 		$reviewEarliestNotificationByRound = $reviewAssignmentDao->getEarliestNotificationByRound($articleId);
 		$reviewFilesByRound =& $reviewAssignmentDao->getReviewFilesByRound($articleId);
 		$authorViewableFilesByRound =& $reviewAssignmentDao->getAuthorViewableFilesByRound($articleId);
-
+		
 		$editorDecisions = $authorSubmission->getDecisions($authorSubmission->getCurrentRound());
 		$lastDecision = count($editorDecisions) >= 1 ? $editorDecisions[count($editorDecisions) - 1] : null;
+
+		$articleDao =& DAORegistry::getDAO('ArticleDAO');
+		$previsousDecision = $articleDao->getLastEditorDecision($articleId, $round);
 
 		$templateMgr =& TemplateManager::getManager();
 
@@ -206,11 +212,11 @@ class TrackSubmissionHandler extends AuthorHandler {
 			$reviewIndexesByRound[$round] = $reviewAssignmentDao->getReviewIndexesForRound($articleId, $round);
 		}
 		$templateMgr->assign_by_ref('reviewIndexesByRound', $reviewIndexesByRound);
-
 		$templateMgr->assign('reviewEarliestNotificationByRound', $reviewEarliestNotificationByRound);
 		$templateMgr->assign_by_ref('submissionFile', $authorSubmission->getSubmissionFile());
 		$templateMgr->assign_by_ref('revisedFile', $authorSubmission->getRevisedFile());
 		$templateMgr->assign_by_ref('suppFiles', $authorSubmission->getSuppFiles());
+		$templateMgr->assign('lastDecisionArray', $previsousDecision);
 		$templateMgr->assign('lastEditorDecision', $lastDecision);
 		import('classes.submission.sectionEditor.SectionEditorSubmission');
 		$templateMgr->assign('editorDecisionOptions', SectionEditorSubmission::getEditorDecisionOptions());
@@ -354,7 +360,7 @@ class TrackSubmissionHandler extends AuthorHandler {
 			if ($submitForm->validate()) {
 				$submitForm->execute();
 
-                                if($submitForm->getData('type') == 'Completion Report') {
+                                if($submitForm->getData('type') == 'COMPLETION_REPORT') {
                                     Request::redirect(null, null, 'setAsCompleted', $articleId);
                                 }
                                 else {
@@ -829,6 +835,27 @@ class TrackSubmissionHandler extends AuthorHandler {
             $article->setStatus(PROPOSAL_STATUS_WITHDRAWN);
             $articleDao->updateArticle($article);
 
+			// Send a regular notification to section editors
+			$editAssignmentDao =& DAORegistry::getDAO('EditAssignmentDAO');
+			$notificationSectionEditors = array();
+			$sectionEditors = $editAssignmentDao->getEditorAssignmentsByArticleId3($article->getArticleId());
+			
+			$user =& Request::getUser();
+			$journal =& Request::getJournal();
+			
+			import('lib.pkp.classes.notification.NotificationManager');
+			$notificationManager = new NotificationManager();
+			$param = $article->getLocalizedWhoId().':<br/>'.$user->getUsername();
+			$url = Request::url($journal->getPath(), 'sectionEditor', 'submission', array($article->getId()));
+        	
+        	foreach ($sectionEditors as $sectionEditorEntry) {
+        		$sectionEditor =& $sectionEditorEntry['user'];
+            	$notificationManager->createNotification(
+            		$sectionEditor->getId(), 'notification.type.proposalWithdrawn',
+            		$param, $url, 1, NOTIFICATION_TYPE_ARTICLE_SUBMITTED
+        		);
+        	}
+
             Request::redirect(null, null, 'index');
         }
 
@@ -856,7 +883,7 @@ class TrackSubmissionHandler extends AuthorHandler {
                 $submitForm = new SuppFileForm($authorSubmission, $journal);
 
                 //Added by AIM, June 15 2011
-                $submitForm->setData('type','Progress Report');
+                $submitForm->setData('type','PROGRESS_REPORT');
 
                 if ($submitForm->isLocaleResubmit()) {
                     $submitForm->readInputData();
@@ -877,7 +904,7 @@ class TrackSubmissionHandler extends AuthorHandler {
          * Last Updated: June 22, 2011
          */
 
-        function addCompletionReport($args, $request) {
+	function addCompletionReport($args, $request) {
 		$articleId = (int) array_shift($args);
 		$journal =& $request->getJournal();
 		                
@@ -892,7 +919,7 @@ class TrackSubmissionHandler extends AuthorHandler {
         $submitForm = new SuppFileForm($authorSubmission, $journal);
 
         //Added by AIM, June 22 2011
-        $submitForm->setData('type','Completion Report');
+        $submitForm->setData('type','COMPLETION_REPORT');
 
         if ($submitForm->isLocaleResubmit()) {
 			$submitForm->readInputData();
@@ -926,7 +953,7 @@ class TrackSubmissionHandler extends AuthorHandler {
                 $submitForm = new SuppFileForm($authorSubmission, $journal);
 
                 //Added by AIM, June 22 2011
-                $submitForm->setData('type', 'Extension Request');
+                $submitForm->setData('type', 'EXTENSION_REQUEST');
 
                 if ($submitForm->isLocaleResubmit()) {
                     $submitForm->readInputData();
@@ -959,7 +986,7 @@ class TrackSubmissionHandler extends AuthorHandler {
                 $submitForm = new SuppFileForm($authorSubmission, $journal);
 
                 //Added by AIM, June 22 2011
-                $submitForm->setData('type', 'Raw Data File');
+                $submitForm->setData('type', 'RAW_DATA');
 
                 if ($submitForm->isLocaleResubmit()) {
                     $submitForm->readInputData();
@@ -991,7 +1018,7 @@ class TrackSubmissionHandler extends AuthorHandler {
                 $submitForm = new SuppFileForm($authorSubmission, $journal);
 
                 //Added by AIM, June 22 2011
-                $submitForm->setData('type', 'Other Supplementary Research Output');
+                $submitForm->setData('type', 'OTHER_OUTPUTS');
 
                 if ($submitForm->isLocaleResubmit()) {
                     $submitForm->readInputData();

@@ -57,7 +57,6 @@
 			{** Registration link added by EL on April 11 2012 *}
 			<br />{translate key="about.onlineSubmissions.needAccount"}<br /><br />
 			<a href="{url page="user" op="register"}" class="action">{translate key="about.onlineSubmissions.registration"}</a>
-		
 		{/if}
 	{/if}
 </div>
