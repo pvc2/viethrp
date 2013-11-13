@@ -1472,7 +1472,7 @@ Authors who publish with this journal agree to the following terms:
 	<message key="search.whoid">ID đề xuất</message>
     <message key="search.dataCollection">Thu thập dữ liệu</message>
     <message key="search.status">Trạng thái</message>
-    <message key="search.dateSubmitted">Ngày đệ trình VietHRP</message>
+    <message key="search.dateSubmitted">Ngày đệ trình VNHRP</message>
 	<message key="search.responsibleOfficer">Cán bộ chịu trách nhiệm</message>
 	<message key="search.primaryInvestigator">Điều tra viên chính</message>
     <message key="search.primarySponsor">Nhà tài trợ chính</message>

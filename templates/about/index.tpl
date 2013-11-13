@@ -33,8 +33,8 @@
 <ul class="plain">
 
 {* "policie" page changed for SOP pdf by EL on April 10 2012*}
-<li>&#187; {*<a title="Standard Operating Procedures" href="/viethrp/public/HSPH_form.pdf" target="_blank">*}{translate key="about.sop"} <i>({translate key="common.soonAvailable"})</i>{*</a>*}</li>
-<li>&#187; {*<a title="Userguide for investigators" href="/viethrp/public/FHRP_User_Guide.pdf" target="_blank">*}{translate key="about.investigatorUserguide"} <i>({translate key="common.soonAvailable"})</i>{*</a>*}</li>
+<li>&#187; {*<a title="Standard Operating Procedures" href="/vnhrp/public/HSPH_form.pdf" target="_blank">*}{translate key="about.sop"} <i>({translate key="common.soonAvailable"})</i>{*</a>*}</li>
+<li>&#187; {*<a title="Userguide for investigators" href="/vnhrp/public/FHRP_User_Guide.pdf" target="_blank">*}{translate key="about.investigatorUserguide"} <i>({translate key="common.soonAvailable"})</i>{*</a>*}</li>
 </ul>
 </div>
 

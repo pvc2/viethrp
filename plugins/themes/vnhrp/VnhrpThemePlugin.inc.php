@@ -1,12 +1,12 @@
 <?php
 
 /**
- * @file ViethrpThemePlugin.inc.php
+ * @file VnhrpThemePlugin.inc.php
  *
- * @class ViethrpThemePlugin
- * @ingroup plugins_themes_viethrp
+ * @class VnhrpThemePlugin
+ * @ingroup plugins_themes_vnhrp
  *
- * @brief "Viethrp" theme plugin
+ * @brief "Vnhrp" theme plugin
  */
 
 // $Id$
@@ -14,18 +14,18 @@
 
 import('classes.plugins.ThemePlugin');
 
-class ViethrpThemePlugin extends ThemePlugin {
+class VnhrpThemePlugin extends ThemePlugin {
 	/**
 	 * Get the name of this plugin. The name must be unique within
 	 * its category.
 	 * @return String name of plugin
 	 */
 	function getName() {
-		return 'ViethrpThemePlugin';
+		return 'VnhrpThemePlugin';
 	}
 
 	function getDisplayName() {
-		return 'Viethrp Theme';
+		return 'Vnhrp Theme';
 	}
 
 	function getDescription() {
@@ -33,7 +33,7 @@ class ViethrpThemePlugin extends ThemePlugin {
 	}
 
 	function getStylesheetFilename() {
-		return 'viethrp.css';
+		return 'vnhrp.css';
 	}
 	function getLocaleFilename($locale) {
 		return null; // No locale data

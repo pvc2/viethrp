@@ -1091,7 +1091,7 @@ current password.<br /><br />Enter your email address below to reset your passwo
 	<message key="search.whoid">Proposal ID</message>
     <message key="search.dataCollection">Data Collection</message>
     <message key="search.status">Status</message>
-    <message key="search.dateSubmitted">Date submitted to VietHRP</message>
+    <message key="search.dateSubmitted">Date submitted to VNHRP</message>
 	<message key="search.responsibleOfficer">Responsible Officer</message>
 	<message key="search.primaryInvestigator">Primary Investigator</message>
     <message key="search.primarySponsor">Primary Sponsor</message>

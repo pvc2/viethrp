@@ -295,7 +295,7 @@ class NewSearchHandler extends Handler {
 		);
 		} else {
 			$templateMgr->assign('pageHierarchy',
-			$subclass ? array(array(Request::url(null, 'search'), 'navigation.search'), array(Request::url('viethrp', 'search','advancedResults'), 'search.searchResults'))
+			$subclass ? array(array(Request::url(null, 'search'), 'navigation.search'), array(Request::url('vnhrp', 'search','advancedResults'), 'search.searchResults'))
 				: array()
 			);
 		}

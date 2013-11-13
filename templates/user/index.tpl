@@ -211,7 +211,7 @@
 			<li>
 				&#187;
 				{if $allowRegReviewer}
-					{url|assign:"userHomeUrl" page="user" op="viethrp"}
+					{url|assign:"userHomeUrl" page="user" op="vnhrp"}
 					<a href="{url op="become" path="reviewer" source=$userHomeUrl}">{translate key="user.noRoles.regReviewer"}</a>
 				{else}{* $allowRegReviewer *}
 					{translate key="user.noRoles.regReviewerClosed"}
