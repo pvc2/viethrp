@@ -1193,7 +1193,8 @@ class SectionEditorSubmissionDAO extends DAO {
 			case 'subProof': return 'proofread_completed';
 			case 'reviewerName': return 'u.last_name';
 			case 'quality': return 'average_quality';
-			case 'done': return 'completed';
+			case 'status': return 'a.status';
+                        case 'done': return 'completed';
 			case 'latest': return 'latest';
 			case 'active': return 'active';
 			case 'average': return 'average';

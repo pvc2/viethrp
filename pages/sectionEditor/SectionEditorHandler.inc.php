@@ -111,7 +111,6 @@ class SectionEditorHandler extends Handler {
 				$user->updateSetting('filterSection', $filterSection, 'int', $journalId);
 			}	
 		}
-
 		$submissions =& $sectionEditorSubmissionDao->$functionName(
 			$user->getId(),
 			$journal->getId(),
