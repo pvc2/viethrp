@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE locale SYSTEM "../../dtd/locale.dtd">
 
 <!--
@@ -257,9 +257,9 @@
 	<message key="search.matchAll">Phù hợp tất cả chuyên mục</message>
 	<message key="search.noKeywordError">Bạn phải điền ít nhất một từ khóa.</message>
 	<message key="search.noResults">Không có kết quả</message>
-	<message key="search.operator.and">and</message>
-	<message key="search.operator.not">not</message>
-	<message key="search.operator.or">or</message>
+	<message key="search.operator.and">và</message>
+	<message key="search.operator.not">không</message>
+	<message key="search.operator.or">hoặc</message>
 	<message key="search.reviseSearch">Chỉnh lại tìm kiếm</message>
 	<message key="search.searchAllCategories">Tìm tất cả các mục</message>
 	<message key="search.searchCategories">Tìm các mục</message>
@@ -268,4 +268,164 @@
 	<message key="search.titleIndex">Duyệt Chỉ mục Tiêu đề</message>
 	<message key="search.title">Tiêu đề</message>
 	<message key="search.typeMethodApproach">Loại hình (phương pháp/cách tiếp cận)</message>
+
+<!-- New item from e version -->
+
+	<message key="about.hsph">Hội đồng đánh giá tổ chức trường Đại học y tế Công cộng Hà Nội</message>
+	<message key="about.researcherDirectory">Thư mục nhà nghiên cứu</message>
+    <message key="about.sop">Thủ tục làm việc chuẩn</message>
+    <message key="about.investigatorUserguide">Hướng dẫn người dùng điều tra viên VietHRP</message>    
+	<message key="about.contact.subPrincipalContact">Thư ký trợ lý hành chính</message>        
+	<message key="common.actingAsUserGroup.userIsNotInTargetUserGroup">Quý vị không có trong nhóm người dùng này.</message>
+	<message key="common.disableEnable">Vô hiệu/Bật</message>        
+    <message key="common.archivedProposals">LƯU TRỮ ĐỀ XUẤT</message>
+    <message key="common.activeProposals">ĐỀ XUẤT KÍCH HOẠT (Đang chờ Quyết định / Sửa đổi, Gửi lại)</message>
+	<message key="common.reviewerActiveProposals">ĐỀ XUẤT KÍCH HOẠT</message>
+    <message key="common.approvedProposals">ĐỀ XUẤT được phê duyệt (nghiên cứu đang thực hiện)</message>
+    <message key="common.approvalDate">Ngày phê duyệt</message>
+	<message key="common.captchaField.description">Xin vui lòng nhập các ký tự như trong hình trên.</message>
+	<message key="common.ccLicense"><![CDATA[
+		<br /><br />
+		<a target="_new" rel="license" href="http://creativecommons.org/licenses/by/3.0/">
+			<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/80x15.png"/>
+		</a>
+		<br/>
+		Công việc này được cấp phép theo một <a rel="license" target="_new" href="http://creativecommons.org/licenses/by/3.0/">Cấp phép đóng góp sáng tạo chung 3.0</a>.
+	]]></message>
+	<message key="common.ccLicense.rt"><![CDATA[
+	<div class="rtBlock">
+		<br />
+		<a rel="license" href="http://creativecommons.org/licenses/by/3.0/" target="_new"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a>
+		<br />
+		Công việc này được cấp phép theo một <a rel="license" href="http://creativecommons.org/licenses/by/3.0/" target="_new">Cấp phép đóng góp sáng tạo chung 3.0</a>.
+	</div>
+	]]></message>
+    <message key="common.comments">Bình luận</message>
+    <message key="common.area">Diện tích địa lý</message>
+    <message key="common.picountry"> Quốc gia thường hay cư trú</message>   
+    <message key="common.dateSubmittedInstruct">Ngày khi đề xuất này đã được trình lên Ủy ban Đạo đức.</message>
+    <message key="common.withdraw">Rút lại</message>
+    <message key="common.sendtoarchive">Gửi để lưu trữ</message>
+	<message key="common.disable">Vô hiệu hóa</message>
+	<message key="common.enable">Cho phép</message>
+	<message key="common.error.databaseErrorUnknown">Một lỗi kết nối cơ sở dữ liệu không rõ đã xảy ra.</message>
+    <message key="common.ethicalReview">Đánh giá đạo đức</message>
+    <message key="common.fullName">Tên đầy đủ</message>
+	<message key="common.fullscreen">Toàn màn hình</message>
+	<message key="common.fullscreenOff">Tắt toàn màn hình</message>
+	<message key="common.false">Sai</message>
+    <message key="common.fileTooBig1">Tập tin quá lớn (</message>
+    <message key="common.fileTooBig2"> Kb). Nó không được vượt quá </message>
+	<message key="common.homePageHeaderLogo.altText">Logo đầu trang chủ</message>
+    <message key="common.idInstruct">Mã số của đề xuất nghiên cứu.</message>
+	<message key="common.manage">Quản lý</message>
+    <message key="common.mailingAddressInstruct">Vui lòng nhập càng nhiều thông tin bạn có thể.</message>
+	<message key="common.noComments">Chưa có Bình luận</message>
+    <message key="common.ongoing">Đang thực hiện</message>
+	<message key="common.ok">OK</message>
+	<message key="common.pluginEnabled">Bổ trợ "{$pluginName}" đã được kích hoạt.</message>
+	<message key="common.pluginDisabled">Bổ trợ "{$pluginName}" đã bị vô hiệu hóa.</message>
+    <message key="common.reason">Lý do</message>
+	<message key="common.re">Re:</message>
+	<message key="common.refresh">Làm mới</message>
+    <message key="common.mouseOver">[?] Giải thích trên chuột.</message>
+    <message key="common.reviewingInterests">Đánh giá lợi nhuận</message>
+	<message key="common.addReviewingInterest">Thêm một đánh giá lợi nhuận khác</message>
+	<message key="common.reviewingInterestsInstruct">Chỉ dành cho những thành viên ERC và người đánh giá chuyên môn</message>
+    <message key="common.soonAvailable">sớm có mặt...</message>
+    <message key="common.technicalReview">Đánh giá chuyên môn</message>
+	<message key="common.technicalReviewStatusInstruct">Tình trạng đánh giá chuyên môn: Được phê duyệt hay không yêu cầu</message>
+	<message key="common.true">Đúng</message>
+	<message key="common.uploadFailed">Các tập tin không thể được tải lên. Vui lòng thử lại hoặc liên hệ với người quản trị nếu vấn đề vẫn tiếp tục.</message>
+    <message key="common.notSure">Không chắc chắn</message>
+	<message key="common.loading">Đang tải ...</message>
+		<message key="common.submit.suppFile.who.summary">Tóm tắt</message>
+        <message key="common.submit.suppFile.who.proposal">Đề xuất</message>
+        <message key="common.submit.suppFile.who.informedConsent">Chấp thuận thông tin</message>
+        <message key="common.submit.suppFile.who.funding">Tài trợ</message>
+        <message key="common.submit.suppFile.who.cv">CV của điều tra viên chính</message>
+        <message key="common.submit.suppFile.who.questionnaire">Bảng câu hỏi</message>
+        <message key="common.submit.suppFile.who.ethicalClearance">Giấy chứng nhận đạo đức địa phương</message>
+        <message key="common.submit.suppFile.who.proofOfRegistration">Chứng nhận đăng ký</message>
+        <message key="common.submit.suppFile.who.otherErcDecision">Quyết định ERC khác</message>
+		<message key="common.submit.suppFile.who.review">Đánh giá</message>
+        <message key="common.submit.suppFile.who.finalDecision">Quyết định cuối cùng</message>
+        <message key="common.submit.suppFile.who.rawData">Dữ liệu chưa xử lý</message>
+        <message key="common.submit.suppFile.who.extensionRequest">Yêu cầu mở rộng</message>
+        <message key="common.submit.suppFile.who.completionReport">Báo cáo hoàn thành</message>
+        <message key="common.submit.suppFile.who.progressReport">Báo cáo tiến độ</message>
+        <message key="common.submit.suppFile.who.otherOutputs">Kết quả nghiên cứu bổ sung khác</message>
+        <message key="common.submit.suppFile.who.withdrawReport">Rút lại báo cáo</message>
+		<message key="debug.memoryUsage">Bộ nhớ sử dụng</message>
+	<message key="debug.memoryUsage">Bộ nhớ sử dụng</message>
+	<message key="email.compose.tooManyRecipients">Thư bạn đang cố gắng để gửi có quá nhiều người nhận.</message>
+	<message key="form.startsWith">Bắt đầu với</message>
+	<message key="navigation.dashboard">Bảng điều khiển</message>
+	<message key="notification.allow">Cho phép các loại thông báo xuất hiện trong nguồn cấp dữ liệu thông báo của tôi.</message>
+	<message key="notification.confirmError">Có một lỗi xác nhận đăng ký của quý vị.</message>
+	<message key="notification.confirmSuccess">Bạn đã đăng ký thành công.</message>
+	<message key="notification.email">Gửi cho tôi một email về các loại thông báo.</message>
+	<message key="notification.location">Hiển thị</message>
+	<message key="notification.mailList">Danh sách thông báo gửi thư</message>
+	<message key="notification.mailList.emailInvalid">Xin vui lòng nhập địa chỉ email hợp lệ.</message>
+	<message key="notification.mailList.privacyProtection">Chính sách bảo vệ quyền riêng tư</message>
+	<message key="notification.mailList.protectedContent"><![CDATA[<a href="{$subscribeUrl}">Theo dõi</a> để bảo vệ nội dung.]]></message>
+	<message key="notification.mailList.submit"><![CDATA[<a href="{$submitUrl}">Gửi</a> một bài báo]]></message>
+	<message key="notification.mailList.register">Bạn có thể đăng ký với trang web này để...</message>
+	<message key="notification.mailList.review"><![CDATA[Tham gia vào <a href="{$reviewUrl}">đánh giá bình đẳng</a> quá trình]]></message>
+	<message key="notification.noneExist">Quý vị không có thông báo vào thời điểm này.</message>
+	<message key="notification.notification">Thông báo</message>
+	<message key="notification.notifications">Thông báo</message>
+	<message key="notification.notificationsNew">({$numNew} mới)</message>
+	<message key="notification.notificationsDescription">Quý vị {$unreadCount} chưa đọc thông báo và {$readCount} đã đọc thông báo.<![CDATA[  <a href="{$settingsUrl}">Nhấn vào đây</a> để thay đổi các thiết lập thông báo của quý vị.]]></message>
+	<message key="notification.settings">Notification Settings</message>
+	<message key="notification.settingsDescription">Chọn các sự kiện hệ thống mà quý vị muốn được thông báo về. Bỏ chọn một mục sẽ chặn các thông báo về sự kiện này hiển thị trong nguồn cấp dữ liệu thông báo của quý vị.</message>
+	<message key="notification.subscribe">Đăng ký</message>
+        <message key="notification.subscribeError">Địa chỉ email của bạn đã được đăng ký thông báo.</message>
+	<message key="notification.subscribeSuccess">Một Email đã được gửi đến địa chỉ mà quý vị đã cung cấp. Vui lòng nhấp vào liên kết xác nhận trong email để thêm chính mình vào danh sách gửi thư.</message>
+	<message key="notification.reminderError">Có một lỗi gửi mật khẩu của quý vị, hãy đảm bảo rằng quý vị đã nhập chính xác địa chỉ email của quý vị .</message>
+	<message key="notification.reminderSent">Mật khẩu mới của quý vị đã được gửi đến địa chỉ email được cung cấp.</message>
+	<message key="notification.unsubscribe">Hủy đăng ký</message>
+	<message key="notification.unsubscribeDescription">Nhập địa chỉ email và mật khẩu dưới đây để hủy bỏ đăng ký nhận thông báo qua email của quý vị. Nếu quý vị không nhớ mật khẩu của quý vị, hãy để trống ô mật khẩu và một mật khẩu mới sẽ được gửi qua email cho quý vị theo địa chỉ email được cung cấp.</message>
+	<message key="notification.unsubscribeError">Có một lỗi hủy đăng ký. Vui lòng chắc chắn rằng địa chỉ email và mật khẩu của quý vị là chính xác.</message>
+	<message key="notification.unsubscribeSuccess">Quý vị đã hủy đăng ký thành công.</message>
+	<message key="search.investigator">Điều tra viên</message>
+    <message key="search.investigatorAffiliation">Xác định tư cách điều tra viên</message>
+    <message key="search.investigatorEmail">Email điều tra viên</message>
+    <message key="search.background">Giới thiệu</message> 
+    <message key="search.objectives">Mục tiêu</message> 
+    <message key="search.studyMatters">Phương pháp nghiên cứu</message> 
+    <message key="search.expectedOutcomes">Kết quả mong đợi và ứng dụng của kết quả</message> 
+    <message key="search.researchField">Phạm vi nghiên cứu</message>
+    <message key="search.exportSearchResults">Xuất kết quả tìm kiếm</message>
+    <message key="search.hideExportOptions">Ẩn tùy chọn xuất</message>
+    <message key="search.exportIntruct">Vui lòng kiểm tra phạm vi mà quý vị muốn xuất.</message>
+    <message key="search.studentExport">Nếu sinh viên nghiên cứu, Tổ chức &amp; bằng cấp học vấn</message>
+    <message key="search.nonStudent">Nghiên cứu không của sinh viên>/message>
+    <message key="search.researchDates">Ngày nghiên cứu</message>
+    <message key="search.inclusive">Bao gồm</message>
+	<message key="search.fromTitle">Tìm kiếm từ Tiêu đề hoặc từ khoá</message>
+    <message key="search.startDate">Ngày bắt đầu nghiên cứu</message>
+    <message key="search.startDateAbr">Ngày bắt đầu</message>
+    <message key="search.endDateAbr">Ngày kết thúc</message>
+    <message key="search.multiCountry">Nhiều quốc gia</message>
+    <message key="search.results">Kết quả</message>
+    <message key="search.takingPlaceIn">Diễn ra tại</message>
+    <message key="search.completionReport">Tải về Báo cáo tổng kết</message>
+
+	<message key="editor.article.decision.accept">Đã phê duyệt</message>
+    <message key="editor.article.decision.notRequired">Không được yêu cầu</message>
+	<message key="editor.article.decision.decline">Không được phê duyệt</message>
+    <message key="editor.article.decision.declineCap">KHÔNG PHÊ DUYỆT</message>	
+    <message key="editor.article.decision.pendingRevisions">Yêu cầu sửa đổi</message >
+	<message key="editor.article.decision.resubmit">Sửa và gửi lại</message>
+	<message key="editor.article.decision.complete">Hoàn thành</message>
+	<message key="editor.article.decision.incomplete">Chưa hoàn thành</message>
+	<message key="editor.article.decision.exempted">Miễn đánh giá</message>
+	<message key="editor.article.decision.expedited">Cho đánh giá nhanh</message>
+	<message key="editor.article.decision.assigned">Cho đánh giá đầy đủ</message>
+    <message key="editor.article.decisionComments">Xem ý kiến của thư ký</message>
+    <message key="editor.article.decisionLastComment">Bình luận mới nhất</message>
+	<message key="common.update">Cập nhật</message>
+	<message key="common.setFinal">Thiết lập cuối cùng</message>
 </locale>

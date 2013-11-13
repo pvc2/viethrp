@@ -11,21 +11,21 @@
 -->
 
 <technicalunits>
-    <technicalunit code="EHA" name="Emergency and Humanitarian Action"/>
-    <technicalunit code="EHH" name="Environmental Health"/>
-    <technicalunit code="EMT" name="Essential Medicines and Health Technologies"/>
-    <technicalunit code="EPI" name="Expanded Programme on Immunization"/>
-    <technicalunit code="ESR" name="Emerging Disease Surveillance and Response"/>
-    <technicalunit code="FOS" name="Food Safety"/>
-    <technicalunit code="HCF" name="Health Care Financing"/>
-    <technicalunit code="HRH" name="Human Resources for Health"/>
-    <technicalunit code="HSD" name="Health Services Development"/>
-    <technicalunit code="HSI" name="HIV/AIDS and STI"/>
-    <technicalunit code="IER" name="Health Information, Evidence and Research"/>
-    <technicalunit code="MCN" name="Maternal and Child Health and Nutrition"/>
-    <technicalunit code="MHI" name="Mental Health and Injury Prevention"/>
-    <technicalunit code="MVP" name="Malaria, other Vectorborne and Parasitic Diseases"/>
-    <technicalunit code="NHP" name="Noncommunicable Diseases and Health Promotion"/>
-    <technicalunit code="STB" name="Stop TB and Leprosy Elimination"/>
-    <technicalunit code="TFI" name="Tobacco Free Initiative"/>
+    <technicalunit code="EHA" name="Ho?t ð?ng nhân ð?o và kh?n c?p"/>
+    <technicalunit code="EHH" name="Y t? môi trý?ng"/>
+    <technicalunit code="EMT" name="Công ngh? y t? và y dý?c thi?t y?u"/>
+    <technicalunit code="EPI" name="Chýõng tr?nh Tiêm ch?ng m? r?ng"/>
+    <technicalunit code="ESR" name="Ðáp ?ng và giám sát d?ch b?nh m?i n?i"/>
+    <technicalunit code="FOS" name="An toàn th?c ph?m"/>
+    <technicalunit code="HCF" name="Tài tr? Chãm sóc s?c kh?e"/>
+    <technicalunit code="HRH" name="Ngu?n nhân l?c cho y t?"/>
+    <technicalunit code="HSD" name="Phát tri?n d?ch v? y t?"/>
+    <technicalunit code="HSI" name="HIV/AIDS và STI"/>
+    <technicalunit code="IER" name="Thông tin s?c kh?e, B?ng ch?ng và nghiên c?u"/>
+    <technicalunit code="MCN" name="S?c kh?e và dinh dý?ng ? bà m? và tr? em"/>
+    <technicalunit code="MHI" name="S?c kh?e tinh th?n và ph?ng ch?ng tai n?n thýõng tích"/>
+    <technicalunit code="MVP" name="S?t rét, các b?nh k? sinh trùng và Vectorborne khác"/>
+    <technicalunit code="NHP" name="Các b?nh không lây và tãng cý?ng s?c kh?e"/>
+    <technicalunit code="STB" name="Ngãn  ch?n b?nh lao và xóa b? b?nh phong"/>
+    <technicalunit code="TFI" name="Kh?i xý?ng mi?n phí thu?c lá"/>
 </technicalunits>

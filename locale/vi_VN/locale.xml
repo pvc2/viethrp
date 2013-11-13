@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE locale SYSTEM "../../lib/pkp/dtd/locale.dtd">
 
 <!--
@@ -1059,50 +1059,502 @@ Authors who publish with this journal agree to the following terms:
 	<message key="default.journalSettings.membershipFeeDescription">Việc trả khoản phí này sẽ giúp quý vị trở thành hội viên của hiệp hội trong một năm và truy cập miễn phí tạp chí này.</message>
 	<message key="installer.databaseSettingsInstructions">Phần mềm OJS cần truy cập cơ sở dữ liệu SQL để lưu dữ liệu. Xem yêu cầu về hệ thống trên đây để biết danh mục các cơ sở dữ liệu được hỗ trợ. Nhập vào các trường dưới đây dùng để kết nối với cơ sở dữ liệu.</message>
 	<message key="default.journalSettings.donationFeeDescription">Các khoản tài trợ cho tạp chí dù trị giá bao nhiêu cũng đều được hoan nghênh và cung cấp cho các biên tập viên công cụ để tạo ra cho độc giả một tạp chí có chất lượng cao nhất.</message>
-	<message key="default.journalSettings.refLinkInstructions"><![CDATA[<h4>Để thêm liên kết tới tài liệu tham khảo trong quá trình dàn trang</h4>
-	<p>Khi chuyển bài nộp sang định dạng HTML hoặc PDF, đảm bảo là tất cả các siêu liên kết trong bài nộp vẫn hoạt động.</p>
-	<h4>A. Khi tác giả cung cấp liên kết của tài liệu trích dẫn</h4>
-	<ol>
-	<li>Khi bài nộp vẫn còn ở định dạng soạn thảo văn bản (v.d., Word), thêm cụm từ Xem tài liệu ở cuối tài liệu nào có địa chỉ web URL đi kèm.</li>
-	<li>Chuyển cụm từ đó thành một siêu liên kết bằng cách bôi đen cụm từ đó, và dùng công cụ Insert Hyperlink trong word và địa chỉ web có sắn ở bước #2.</li>
-	</ol>
-	<h4>B. Cho phép bạn đọc tìm tài liệu trích dẫn trong bài viết trên Google Scholar</h4>
-	<ol>
-	<li>Khi bài nộp vẫn còn ở định dạng soạn thảo văn bản (v.d., Word), copy tiêu đề của tác phẩm được trích dẫn có trong danh mục tài liệu trích dẫn (nếu nó là một tiêu đề quá phổ biến, v.d., "Hòa Bình" – hãy copy tác giả và tiêu đề).</li>
-	<li>Dán tiêu đề tài liệu trích dẫn đó và giữa ký %22's, thêm dấu + vào giữa mỗi từ: http://scholar.google.com/scholar?q=%22DÁN+TIÊU+ĐỀ+VÀO+ĐÂY%22&hl=en&lr=&btnG=Search</li>
-	<li>Thêm cụm từ Tìm trên Google Scholar ở cuối mỗi tài liệu trích dẫn có trong danh mục Tài liệu trích dẫn.</li>
-	<li>Chuyển cụm từ đó thành một siêu liên kết bằng cách bôi đen cụm từ đó, và dùng công cụ Insert Hyperlink trong word và địa chỉ web có sắn ở bước #2.</li>
-	</ol>
-	<h4>C. Cho phép bạn đọc tìm tài liệu trích dẫn bằng Định danh Đối tượng số (DOI)</h4>
-	<ol>
-	<li>Khi bài nộp vẫn còn ở dạng Word, copy một loạt tài liệu trích dẫn vào CrossRef Text Query http://www.crossref.org/freeTextQuery/</li>
-	<li>Dãn mỗi DOI mà Query cung cấp vào địa chỉ web sau (giữa = và &): http://www.cmaj.ca/cgi/external_ref?access_num=DÁN DOI#VÀO ĐÂY&link_type=DOI</li>
-	<li>Thêm cụm từ CrossRef vào cuối mỗi tài liệu trích dẫn trong danh mục tài liệu trích dẫn của bài nộp.</li>
-	<li>Chuyển cụm từ đó thành một siêu liên kết bằng cách bôi đen cụm từ đó, và dùng công cụ Insert Hyperlink trong word và địa chỉ web có sắn ở bước #2.</li>
-	</ol>]]></message>
-	<message key="default.journalSettings.proofingInstructions"><![CDATA[<p>Bước soát lỗi nhằm phát hiện bất kỳ lỗi nào về chính tả, ngữ pháp và định dạng trong bản bông. Những thay đổi lớn hơn không thể làm ở bước này, trừ khi đã trao đổi với Biên tập viên Chuyên mục. Ở bước Dàn trang, nhấp chuột vào nút Xem bản soát lỗi để xem định dạng HTML, PDF và các định dạng file khác dùng để xuất bản bài viết này.</p>
-<h4>Đối với các lỗi chính tả và ngữ pháp</h4>
 
-<p>Copy từ hoặc cụm từ có vấn đề và dán chúng vào hộp Sửa lỗi với hướng dẫn "ĐỔI-THÀNH" dành cho biên tập viên như sau...</p>
+	 <!-- New item from e version -->
 
-<pre>1. Đổi...
-vào những người khác
-Thành...
-và những người khác</pre>
-<br />
-<pre>2. Đổi...
-Nguyễn Cảnh Toan
-Thành...
-Nguyễn Cảnh Toàn</pre>
-<br />
+	<message key="reviewer.article.reviewFormResponse.form.responseRequired">Vui lòng điền vào các phạm vi yêu cầu</message>	
+    <message key="common.homePageText">Thông qua cổng thông tin này, bạn có thể tìm kiếm nghiên cứu trước đây &amp; và nghiên cứu đang thực hiện tại Trường Đại học Y tế công cộng Hà Nội.<![CDATA[<br />]]> Ngoài ra trang web này phục vụ như một nền tảng đệ trình để xem xét các đề xuất nghiên cứu bởi tổ chức Hội đồng đánh giá của Trường Đại học Y tế công cộng (HSPHIRB).</message>
+    <message key="common.queue.short.fullReview">Đánh giá đầy đủ</message>
+	<message key="common.queue.long.fullReview">Các đề xuất cho đánh giá đầy đủ</message>
+	<message key="article.article">Đề xuất</message>
+	<message key="article.scientificTitle">Tiêu đề khoa học</message>
+	<message key="article.proposalType">Loại đề xuất</message>
+    <message key="article.publicTitle">Tiêu đề chung</message>
+	<message key="article.authorInstruct">Người điều tra chính nếu nghiên cứu</message>
+	<message key="article.files">File</message>
+	<message key="article.reviewFiles">File đánh giá</message>
+	<message key="article.suppFilesAbbrevInstruct">Các tập tin bổ sung được gửi bởi các Điều tra viên. Vui lòng bấm vào một tiêu đề (liên kết màu xanh) để tải về các đề xuất liên quan.</message>
+    <message key="article.suppFilesNotAuthorized">Bạn không được phép truy cập vào quyết định cuối cùng.</message>
+	<message key="article.commentsToEditorInstruct">Đây là một nhận xét của người nộp về đề cương nghiên cứu này.</message>
+	<message key="article.studentInstitution">Tổ chức cơ quan của sinh viên</message>
+	<message key="article.academicDegree">Bằng cấp học vấn</message>
+	<message key="article.primarySponsor">Nhà tài trợ chính</message>    
+	<message key="article.fundsRequired">Kinh phí cần thiết</message>
+	<message key="proposal.phoneIncludeCountry">Vui lòng bao gồm quốc gia và mã vùng.</message>
+    <message key="proposal.title">tiêu đề</message>
+	<message key="proposal.scientificTitle">tiêu đề khoa học</message>
+    <message key="proposal.scientificTitleInstruct">Tên khoa học của nghiên cứu khi nó xuất hiện trong giao thức đệ trình tài trợ và đánh giá đạo đức. Tiêu đề này chứa các thông tin về dân số, can thiệp, so sánh và (các) kết quả.</message>
+	<message key="proposal.engScientificTitle">Tiêu đề khoa học bằng tiếng Anh</message>
+    <message key="proposal.vietScientificTitle">Tiêu đề khoa học bằng tiếng Việt</message>
+	<message key="proposal.publicTitle">Tiêu đề chung</message>
+    <message key="proposal.publicTitleInstruct">Tiêu đề danh cho bài công khai bằng ngôn ngữ dễ hiểu.</message>
+    <message key="proposal.engPublicTitle">Tiêu đề chung bằng tiếng Anh</message>
+	<message key="proposal.abstract">Tóm tắt</message>
+    <message key="proposal.engAbstract">Tóm tắt bằng tiếng Anh</message>
+    <message key="proposal.vietAbstract">Tóm tắt bằng tiếng Việt</message>
+	<message key="proposal.objectives">Các mục tiêu</message>
+    <message key="proposal.objectivesInstruct">Câu hỏi nghiên cứu, giả thuyết, mục tiêu nghiên cứu chính trong các gạch đầu dòng nếu có thể.</message>
+    <message key="proposal.background">Giới thiệu</message>
+    <message key="proposal.backgroundInstruct">Những vấn đề chính được điều tra, tầm quan trọng, những gì được biết đã có và lý do thục hiện nghiên cứu này.</message>
+    <message key="proposal.studyMatters">Những phương pháp nghiên cứu</message>
+    <message key="proposal.studyMattersInstruct">Tính năng có liên quan của thiết kế nghiên cứu (định tính / định lượng, khảo sát mặt cắt ngang / trường hợp kiểm soát ...), cỡ mẫu ước tính, cách thu thập dữ liệu, v.v [ví dụ như nghiên cứu liên quan đến các cuộc phỏng vấn với các nhà hoạch định chính sách ở Campuchia, bao gồm 6-8 người ở cấp quốc gia hoặc cấp tỉnh ...]</message>
+    <message key="proposal.expectedOutcomes">Kết quả mong đợi và ứng dụng của kết quả</message>
+    <message key="proposal.expectedOutcomesInstruct">Kết quả tiềm năng của nghiên cứu như đo tỷ lệ, các chỉ số khác được xác định, làm thế nào để kết quả sẽ được sử dụng để thông báo chính sách cụ thể hoặc chương trình ...</message>
+    <message key="proposal.keywords">Từ khóa</message>
+    <message key="proposal.keywordsInstruct">Từ quan trọng hoặc mô tả.</message>
+    <message key="proposal.engKeywords">Từ khóa tiếng Anh</message>
+    <message key="proposal.vietKeywords">Từ khóa tiếng Việt</message>
+    <message key="proposal.startDate">Ngày bắt đầu</message>
+    <message key="proposal.startDateInstruct">Ngày bắt đầu nghiên cứu.</message>
+    <message key="proposal.endDate">Ngày kết thúc</message>
+    <message key="proposal.endDateInstruct">Ngày kết thúc nghiên cứu.</message>
 
-<h4>Đối với các lỗi định dạng</h4>
 
-<p>Mô tả vị trí và bản chất của vấn đề trong hộp Sửa lỗi sau khi nhập tiêu đề "ĐỊNH DẠNG" như sau...</p>
-<br />
-<pre>3. ĐỊNH DẠNG
-Các số ở Bảng 3 không thẳng hàng trong cột thứ ba.</pre>
-<br />
-<pre>4. ĐỊNH DẠNG
-Đoạn bắt đầu bằng "Chủ đề cuối cùng này..." chưa được lùi vào.</pre>]]></message>
+	<message key="proposal.fundsRequired">Kinh phí dự trù</message>
+    <message key="proposal.fundsRequiredInstruct">Xin vui lòng nhập một số nguyên mà không có dấu phẩy hoặc dấu phân cách khác.</message>
+    <message key="proposal.fundsRequiredUSD">Đô la Mỹ</message>
+    <message key="proposal.fundsRequiredVD">Việt Nam Đồng</message>
+    <message key="proposal.primarySponsor">Nhà tài trợ chính</message>
+    <message key="proposal.primarySponsorInstruct">Các cá nhân, tổ chức, nhóm hoặc một pháp nhân khác chịu trách nhiệm khởi xướng, quản lý và / hoặc tài trợ cho nghiên cứu. Nhà tài trợ chính có trách nhiệm đảm bảo rằng nghiên cứu này đã được đăng ký đúng cách. Nhà tài trợ chính có thể có hoặc có thể không phải là người cấp vốn chính.</message>
+    <message key="proposal.otherPrimarySponsor">Vui lòng chỉ rõ nhà tài trợ chính của quý vị:</message>
+    <message key="proposal.otherPrimarySponsorInstruct">Nếu nhà tài trợ chính của quý vị không có trong danh sách trên, vui lòng chỉ ra ở đây.</message>
+    <message key="proposal.secondarySponsors">Nhà tài trợ thứ cấp</message>
+    <message key="proposal.secondarySponsorsInstruct">Cá nhân, tổ chức bổ sung, pháp nhân khác, nếu có, đã thống nhất với nhà tài trợ chính để đảm nhận trách nhiệm của các nhà tài trợ. Một nhà tài trợ thứ cấp có thể đã đồng ý:
+                   • đảm nhận tất cả trách nhiệm của nhà tài trợ cùng với các nhà tài trợ chính, hoặc
+                   • tạo thành một nhóm với các nhà tài trợ chính, trong đó trách nhiệm của các nhà tài trợ được phân bổ giữa các thành viên trong nhóm, hoặc
+                   • thực hiện như đại diện hợp pháp của nhà tài trợ liên quan đến một số hoặc tất cả các trang web thử nghiệm, hoặc
+                   • chịu trách nhiệm về tính chính xác của thông tin đăng ký thử nghiệm đã gửi.</message>
+    <message key="proposal.addAnotherSecondarySponsor">Thêm một nhà tài trợ thứ cấp khác</message>
+    <message key="proposal.multiCountryResearch">Nghiên cứu đa quốc gia</message>
+    <message key="proposal.multiCountryResearchInstruct">Là nghiên cứu liên quan đến các bệnh nhân đến từ các quốc gia khác nhau?</message>
+    <message key="proposal.addAnotherCountry">Thêm một quốc gia khác</message>
+    <message key="proposal.multiCountry">Chọn một quốc gia:</message>
+    <message key="proposal.selectedCurrency">Tiền tệ :</message>
+
+		<message key="proposal.withHumanSubjects">Liên quan đến đối tượng con người</message>
+        <message key="proposal.studentInitiatedResearch">Nghiên cứu của sinh viên</message>
+        <message key="proposal.studentInitiatedResearchInstruct">Là nghiên cứu được thực hiện như một phần của yêu cầu trình độ học vấn?</message>
+        <message key="proposal.hsph">Trường Đại học y tế Công cộng Hà Nội</message>
+        <message key="proposal.hsphInstruct">Là sinh viên ghi danh vào trường Đại học y tế Công cộng Hà Nội?</message>
+        <message key="proposal.supervisor">Giáo viên hướng dẫn</message>
+        <message key="proposal.supervisorFullName">Tiêu đề và tên đầy đủ</message>
+        <message key="proposal.supervisorFullNameInstruct">Tiêu đề và tên đầy đủ của giáo viên hướng dẫn của sinh viên.</message>
+        <message key="proposal.supervisorEmailInstruct">Email của giáo viên hướng dẫn sinh viên.</message>
+        <message key="proposal.supervisorPhoneInstruct">Số điện thoại, bao gồm cả mã quốc gia và mã vùng của giáo viên hướng dẫn sinh viên.</message>
+        <message key="proposal.supervisorAffiliationInstruct">Liên kết của giáo viên hướng dẫn sinh viên.</message>
+        <message key="proposal.ethicsCommittee">Ủy ban đạo đức</message>
+        <message key="proposal.studentInstitution">Cơ quan</message>
+        <message key="proposal.studentInstitutionInstruct">Tổ chức nơi học sinh đang theo học.</message>
+        <message key="proposal.academicDegree">Trình độ học vấn:</message>
+        <message key="proposal.academicDegreeInstruct">Trình độc học vấn mà sinh viên đang theo học.</message>
+        <message key="proposal.undergraduate">Đại học</message>
+        <message key="proposal.master">Thạc sĩ</message>
+        <message key="proposal.postDoc">Sau thạc sĩ</message>
+        <message key="proposal.phd">Tiến sĩ</message>
+        <message key="proposal.proposalType">Loại đề xuất</message>
+        <message key="proposal.proposalCountry">Trong trang web quốc gia</message>
+        <message key="proposal.proposalCountryInstruct">Các khu vực địa lý của Việt Nam nơi thực hiện nghiên cứu.</message>
+        <message key="proposal.addAnotherArea">Thêm một khu vục khác</message>
+        <message key="proposal.addAnotherFieldOfResearch">Thêm một phạm vi nghiên cứu khác</message>
+        <message key="proposal.addAnotherProposalType">Thêm một loại đề xuất khác</message>
+        <message key="proposal.addAnotherAgency">Thêm một cơ quan khác</message>
+        <message key="proposal.otherInternationalGrantName">Vui lòng chỉ rõ cơ quan:</message>
+        <message key="proposal.otherInternationalGrantName">Vui lòng chỉ rõ:</message>
+        <message key="proposal.otherSecondarySponsor">Vui lòng chỉ rõ nhà tài trợ thứ cấp:</message>
+        <message key="proposal.otherSecondarySponsorInstruct">Nếu một hoặc một số nhà tài trợ thứ cấp của quý vị được/không được bao gồm trong danh sách trên, vui lòng chỉ rõ ở đây.</message>
+        <message key="proposal.researchField">Phạm vi nghiên cứu</message>
+	    <message key="proposal.otherResearchField">Phạm vi nghiên cứu khác</message>
+        <message key="proposal.otherProposalType">Loại đề xuất khác</message>
+        <message key="proposal.technicalUnit">Đơn vị chuyên môn</message>
+        <message key="proposal.conflictOfInterest">Xung đột lợi ích?</message>
+        <message key="proposal.informedConsentIncluded">Thông tin đã gửi đi bao gồm?</message>
+        <message key="proposal.dataCollectionQuestionnairesIncluded">Bảng câu hỏi thu thập dữ liệu bao gồm?</message>
+        <message key="proposal.ethicalClearanceEnclosed">Giấy chứng nhận đạo đức kèm theo?</message>
+        <message key="proposal.reviewedByOtherErc">Đánh giá bởi ERC khác</message>
+        <message key="proposal.rtoOffice">Văn phòng</message>
+        <message key="proposal.otherErcDecision">Nếu Có, quyết định ERC khác </message>
+        <message key="proposal.otherErcDecisionUnderReview">Theo đánh giá</message>
+        <message key="proposal.otherErcDecisionFinalAvailable">Quyết định cuối cùng có sẵn</message>
+        <message key="proposal.nameOfIndustry">Nếu Có, vui lòng chỉ rõ:</message>
+        <message key="proposal.proofOfRegistration">Giấy tờ chứng minh số đăng ký bao gồm? </message>
+        <message key="proposal.dataCollection">Thu thập dữ liệu: </message>
+        <message key="proposal.primaryDataCollection">Chính</message>
+        <message key="proposal.secondaryDataCollection">Thứ cấp</message>
+        <message key="proposal.bothDataCollection">Cả hai</message>
+        <message key="proposal.sourceOfMonetary">(Các) Nguồn hỗ trợ tiền tệ hoặc vật liệu</message>
+        <message key="proposal.riskAssessment">Đánh giá rủi ro</message>
+        <message key="proposal.researchIncludesHumanSubject">Nghiên cứu đề xuất có bao gồm đối tượng nghiên cứu không:</message>    
+        <message key="proposal.identityRevealed">Danh tính của ai có thể tiết lộ trong quá trình nghiên cứu?</message>
+        <message key="proposal.unableToConsent">Không thể đồng ý?</message>
+        <message key="proposal.under18">Dưới 18 tuổi?</message>
+        <message key="proposal.dependentRelationship">Trong mối quan hệ với bất kỳ thành viên nào trong nhóm nghiên cứu không?</message>
+        <message key="proposal.dependentRelationshipInstruct">(ví dụ một nhà nghiên cứu là bác sĩ điều trị của một trong những người tham gia nghiên cứu)</message>
+        <message key="proposal.ethnicMinority">Từ một nhóm dân tộc thiểu số?</message>
+		<message key="proposal.impairment">Suy giảm trí tuệ hoặc tinh thần?</message>
+        <message key="proposal.pregnant">Ai mang thai?</message>
+        <message key="proposal.researchIncludes">Nghiên cứu bao gồm:</message>
+        <message key="proposal.newTreatment">Một phương pháp điều trị, thủ tục y tế hoặc kiểm tra mới?</message>
+        <message key="proposal.bioSamples">Thu thập các mẫu sinh học bao gồm <![CDATA[<br/>]]> khai thác mô?</message>
+        <message key="proposal.radiation">Sử dụng bức xạ ion hóa?</message>
+        <message key="proposal.distress">Đau đớn hoặc căng thẳng tâm lý?</message>
+		<message key="proposal.inducements">Khuyến khích?</message>
+        <message key="proposal.sensitiveInfo">Thu thập các thông tin nhạy cảm?</message>
+        <message key="proposal.deception">Lừa dối?</message>
+        <message key="proposal.reproTechnology">Công nghệ hỗ trợ sinh sản?</message>
+        <message key="proposal.genetics">Nghiên cứu về hệ gen hoặc gen con người?</message>
+        <message key="proposal.stemCell">Nghiên cứu tế bào gốc?</message>
+        <message key="proposal.biosafety">Vấn đề an toàn sinh học?</message>
+        <message key="proposal.potentialRisk">Rủi ro tiềm ẩn</message>
+        <message key="proposal.riskLevel">Mức độ rủi ro liên quan đến nghiên cứu:</message>
+        <message key="proposal.riskLevelNoMore">Không quá rủi ro tối thiểu</message>
+        <message key="proposal.riskLevelMinore">Tăng nhỏ hơn nguy cơ tối thiểu</message>
+        <message key="proposal.riskLevelMore">Tăng nhỏ hơn nhiều nguy cơ tối thiểu</message>
+        <message key="proposal.listRisks">Tóm tắt ngắn gọn danh sách rủi ro:</message>
+        <message key="proposal.howRisksMinimized">Cách giảm thiểu/quản lý rủi ro?</message>
+        <message key="proposal.riskApplyTo">Rủi ro áp dụng đối với:</message>
+        <message key="proposal.researchTeam">Nhóm nghiên cứu</message>
+        <message key="proposal.researchSubjects">Đối tượng nghiên cứu</message>
+        <message key="proposal.widerCommunity">cộng đồng rộng lớn hơn</message> 
+        <message key="proposal.nobody">Không có ai</message>        
+        <message key="proposal.potentialBenefits">Lợi ích tiềm năng</message>
+        <message key="proposal.directBenefits">Lợi ích trực tiếp cho người tham gia</message>
+        <message key="proposal.participantCondition">Kiến thức khái quát về điều kiện hoặc sự rối loạn của người tham gia</message>
+        <message key="proposal.diseaseOrCondition">Kiến thức khái quát về căn bệnh hay điều kiện được nghiên cứu</message>
+        <message key="proposal.benefitsFromTheProject">Lợi ích từ các dự án nghiên cứu:</message>
+		<message key="proposal.noBenefits">Không lợi ích</message>
+        <message key="proposal.multiInstitutions">Dự án đa tổ chức: </message>
+        <message key="proposal.conflictOfInterest">Xung đột lợi ích:</message>
+        <message key="proposal.conflictOfInterestInstruct">Có bất kỳ thành viên nào của nhóm nghiên cứu có bất kỳ cuộc xung đột lợi ích tài chính hoặc chuyên môn trong đề xuất nghiên cứu (tức là cho dù bất kỳ thành viên nào của nhóm nghiên cứu có khả năng bị ảnh hưởng, tích cực hay tiêu cực, bởi các kết quả của nghiên cứu về tài chính hoặc chuyên môn)</message>
+        <message key="proposal.identityRevealedAbb">Tiết lộ danh tính</message>
+        <message key="proposal.unableToConsentAbb">Không thể đồng ý</message>
+        <message key="proposal.under18Abb">Dưới 18 tuổi</message>
+        <message key="proposal.dependentRelationshipAbb">Quan hệ phụ thuộc</message>
+        <message key="proposal.ethnicMinorityAbb">Nhóm dân tộc thiểu số</message>
+        <message key="proposal.impairmentAbb">Suy giảm trí tuệ hoặc tinh thần</message>
+        <message key="proposal.pregnantAbb">Mang thai</message>
+        <message key="proposal.newTreatmentAbb">Phương pháp điều trị mới</message>
+        <message key="proposal.bioSamplesAbb">Các mẫu sinh học</message>
+        <message key="proposal.radiationAbb">Bức xạ</message>
+        <message key="proposal.distressAbb">Đau đớn</message>
+        <message key="proposal.inducementsAbb">Khuyến khích</message>
+        <message key="proposal.sensitiveInfoAbb">Thông tin nhạy cảm</message>
+        <message key="proposal.deceptionAbb">Lừa dối</message>
+        <message key="proposal.reproTechnologyAbb">Công nghệ sinh sản</message>
+        <message key="proposal.geneticsAbb">Hệ gen hoặc gen con người</message>
+        <message key="proposal.stemCellAbb">Tế bào gốc</message>
+		<message key="proposal.biosafetyAbb">An toàn sinh học</message>
+        <message key="proposal.riskLevelAbb">Mức độ rủi ro</message>
+        <message key="proposal.riskApplyToAbb">Rủi ro áp dụng đối với</message>                
+        <message key="proposal.benefitsFromTheProjectAbb">Lợi ích</message>
+        <message key="proposal.multiInstitutionsAbb">Đa tổ chức</message>
+        <message key="proposal.conflictOfInterestAbb">Xung đột lợi ích</message>        
+        <message key="proposal.industryGrant">Tài trợ công nghiệp</message>
+        <message key="proposal.mohGrant">Tài trơ của Bộ y tế Việt nam</message>
+        <message key="proposal.internationalGrant">Trợ cấp cơ quan</message>
+        <message key="proposal.internationalGrantName">Nếu Có, vui lòng chỉ rõ:</message>
+        <message key="proposal.submittedAsPi">Gửi như điều tra viên chính?</message>
+        <message key="proposal.nationalApprovalEnclosed">Phê duyệt quốc gia kèm theo?</message>
+        <message key="proposal.governmentGrant">Trợ cấp từ chính phủ (Không phải Bộ y tế - MoH)</message>
+        <message key="proposal.governmentGrantName">Vui lòng chỉ rõ</message>
+        <message key="proposal.universityGrant">Trợ cấp nghiên cứu của trường đại học</message>
+        <message key="proposal.selfFunding">Kinh phí cá nhân</message>
+        <message key="proposal.otherGrant">Khác</message>
+        <message key="proposal.specifyOtherGrantField">Nếu Có, vui lòng chỉ rõ:</message>
+		<message key="submission.proposalStatus">Tình trạng đề nghị</message>
+		<message key="submission.proposalStatusInstruct">Tình trạng hiện tại của đề nghị.</message>
+		<message key="submission.notifyAuthorInstruct">Vui lòng bấm vào biểu tượng gửi một email đến điều tra viên. Vui lòng bấm vào biểu tượng bài phát biểu nổi để mở phòng trò chuyện giữa bạn và các nhà điều tra viên.</message>
+	<message key="submission.technicalReview">Đánh giá chuyên môn</message>
+    <message key="submission.ethicalReview">Đánh giá đạo đức</message>
+    <message key="submission.expeditedReviewUndergoing">Xem đánh giá đã tiến hành</message>
+    <message key="submission.reviseAndResubmit">Đề xuất cần được sửa đổi và tái đệ trình</message>
+    <message key="submission.fullReviewUndergoing">Xem đánh giá đầy đủ</message>
+    <message key="submission.notRequired">Không yêu cầu</message>
+    <message key="submission.undergoing">Xem qua</message>
+    <message key="submission.archived">Lưu trữ</message>
+    <message key="submission.proposalIncomplete">Đề xuất bị coi như không đầy đủ</message>
+	<message key="submissions.dateApproved">Đã phê duyệt</message>
+	<message key="journal.issn">ISSN</message>
+	<message key="user.manageMySubscriptions">Quản lý theo dõi của tôi</message>
+	<message key="user.role.chair">Chủ tịch</message>
+    <message key="user.role.viceChair">Phó chủ tịch</message>
+    <message key="user.role.coordinator">Điều phối viên</message>
+        <message key="user.ercrole.chair">Chủ tịch</message>
+        <message key="user.ercrole.viceChair">Phó chủ tịch</message>
+        <message key="user.ercrole.secretariat">Thư ký</message>
+        <message key="user.ercrole.ercMembers">Thành viên</message>
+        <message key="user.ercrole.extReviewers">Người đánh giá chuyên môn</message>
+        <message key="user.ercrole.extMembers">Thành viên bên ngoài (thành viên không trực thuộc)</message>
+        <message key="user.ercrole.status">Tình trạng thành viên ERC</message>
+	<message key="user.role.reviewer">Thành viên ERC</message>
+	<message key="user.role.coinvestigator">Đồng Điều tra viên</message>
+    <message key="user.role.technicalReviewer">Người đánh giá chuyên môn</message>
+	<message key="user.role.coordinators">Điều phối viên</message>
+	<message key="subscriptionTypes.currency">Tiền tệ</message>
+	<message key="subscriptionTypes.year">Năm</message>
+	<message key="subscriptionTypes.years">Các năm</message>
+	<message key="subscriptionTypes.month">tháng</message>
+	<message key="subscriptionTypes.months">các tháng</message>
+	<message key="subscriptionTypes.nonExpiring">Không hết hạn</message>
+	<message key="subscriptionTypes.format">Định dạng</message>
+	<message key="subscriptionTypes.format.online">Trực tuyến</message>
+	<message key="subscriptionTypes.format.print">In</message>
+	<message key="subscriptionTypes.format.printOnline">In và trực tuyến</message>
+	<message key="subscriptions.inactive">Không hoạt động</message>
+	<message key="subscriptions.status">Trạng thái</message>
+	<message key="subscriptions.status.active">Hoạt động</message>
+	<message key="subscriptions.status.needsInformation">Cần thông tin</message>
+	<message key="subscriptions.status.needsApproval">Cần đề xuất</message>
+	<message key="subscriptions.status.awaitingManualPayment">Chờ thanh toán bằng tay</message>
+	<message key="subscriptions.status.awaitingOnlinePayment">Chờ thanh toán trực tuyến</message>
+	<message key="subscriptions.status.other">Khác, xem ghi chú</message>
+	<message key="subscriptions.individualDescription">Yêu cầu đăng ký cá nhân đăng nhập để truy cập nội dung đăng ký.</message>
+	<message key="subscriptions.institutionalDescription">Đăng ký tổ chức không yêu cầu đăng nhập. Miền của người dùng và/hoặc địa chỉ IP được sử dụng để cung cấp truy cập vào nội dung đăng ký.</message>
+	<message key="subscriptions.institutionalOnlinePaymentDescription"><![CDATA[<strong>Note:</strong> Đăng ký tổ chức mua trực tuyến yêu cầu  đề xuất của tên miền và các dãy IP chính trước khi thuê bao được kích hoạt.]]></message>
+	<message key="submission.event.general.articleSubmitted">Đề xuất đã gửi</message>
+	<message key="submission.event.general.articlePublished">Đề xuất đã đánh giá</message>
+	<message key="submission.event.editor.submissionArchived">Đệ trình gửi để lưu trữ</message>
+	<message key="submission.event.editor.submissionRestored">Đệ trình khôi phục từ lưu trữ</message>
+	<message key="submission.event.copyedit.copyeditorAssigned">BTV bản thảo được giao nộp</message>
+	<message key="submission.event.copyedit.copyeditorUnassigned">BTV bản thảo không được giao để nộp</message>
+	<message key="submission.event.copyedit.copyeditInitiated">Bản thảo được giao đã bắt đầu</message>
+	<message key="submission.event.copyedit.copyeditRevision">BTV bản thảo sửa đổi tập tin cập nhật</message>
+	<message key="submission.event.copyedit.copyeditInitialCompleted">Bản thảo đầu tiên hoàn thành</message>
+	<message key="submission.event.copyedit.copyeditFinalCompleted">Bản thảo cuối cùng hoàn thành</message>
+	<message key="submission.event.copyedit.copyeditSetFile">File bản thảo sửa đổi đã cập nhật</message>
+	<message key="submission.event.proofread.proofreaderAssigned">BTV soát lỗi giao nộp</message>
+	<message key="submission.event.proofread.proofreaderUnassigned">BTV soát lỗi không được giao từ đệ trình</message>
+	<message key="submission.event.proofread.proofreadInitiated">BTV soát lỗi được giao bắt đầu/message>
+	<message key="submission.event.proofread.proofreadRevision">BTV soát lỗi sửa đổi tập tin cập nhật</message>
+	<message key="submission.event.proofread.proofreadCompleted">BTV soát lỗi hoàn thành</message>
+	<message key="submission.event.layout.layoutEditorAssigned">Biên tập Bản mẫu in được giao nộp</message>
+	<message key="submission.event.layout.layoutEditorUnassigned">Bố trí biên tập viên được giao từ đệ trình</message>
+	<message key="submission.event.layout.layoutGalleyCreated">Bố trí bản in thử cập nhật</message>
+
+	<message key="admin.settings.oaiRegistrationDescription"><![CDATA[To have the contents of all journals hosted on this site indexed within a globally distributed system of research databases, <a href="http://pkp.sfu.ca/harvester/add.php" target="_blank">register</a> your site's URL with the Public Knowledge Project metadata <a href="http://pkp.sfu.ca/harvester/" target="_blank">harvester</a>. This tool collects the metadata from each indexed item in this journal, enabling accurate and collective searching among the research sites that adhere to the <a href="http://www.openarchives.org/OAI/openarchivesprotocol.htm#Introduction" target="_blank">Open Archives Initiative Protocol for Metadata Harvesting</a>.
+	<br /><br />
+	<a href="http://pkp.sfu.ca/harvester/add.php" target="_blank">Click here</a> và nhập <span class="highlight">{$siteUrl}</span> theo <strong>Site URL</span> và <span class="highlight">{$oaiUrl}</span> theo <strong>Base URL for OAI Archive</strong>.
+	<br /><br />
+	Note that the OAI interface can be disabled for this site by editing the OJS system configuration. Future versions of OJS will allow the OAI interface to be enabled or disabled for individual journals within the site.]]></message>
+
+	<message key="subscriptionManager.subscriptionManagement">Quản lý thuê bao</message>
+	<message key="subscriptionManager.individualSubscriptions">Thuê bao cá nhân</message>
+	<message key="subscriptionManager.institutionalSubscriptions">Thuê bao cơ quan</message>
+	<message key="subscriptionManager.subscriptionTypes">Loại thuê bao</message>
+	<message key="plugins.categories.citationFormats.description">Bổ trợ định dạng trích dẫn cung cấp cho người sử dụng các định dạng khác nhau, trong đó để truy cập trích dẫn bài viết.</message>
+	<message key="plugins.categories.implicitAuth.description">Bổ trợ xác thực ngầm thực hiện hỗ trợ để xác thực người dùng dựa trên tiêu đề http .</message>
+	<message key="plugins.categories.oaiMetadataFormats">Bổ trợ định dạng siêu dữ liệu OAI</message>
+	<message key="plugins.categories.oaiMetadataFormats.description">Các bổ trợ định dạng thể hiện siêu dữ liệu trong thông tin giao tiếp OAI.</message>
+
+	<message key="manager.setup.reviewProcessEmailDescription">Bộ trưởng ERC gửi cho các Thành viên ERC yêu cầu đánh giá đề nghị đính kèm với email. Thành viên ERC gửi email cho Thư ký sự đồng ý của họ (hoặc hối tiếc), cũng như việc đánh giá và kiến nghị. Thư ký nhập sự chấp thuận của thành viên ERC (hoặc hối tiếc), cũng như việc xem xét và kiến nghị về trang Đánh giá của đề nghị, để ghi lại quá trình đánh giá.</message>
+
+		<message key="manager.setup.authorCopyrightNotice.sample"><![CDATA[<h3>Đề xuất thông báo bản quyền sáng tạo chung</h3>
+		<h4>1. Đề xuất chính sách cho các tạp chí cung cấp truy cập mở</h4>
+		Tác giả công bố với tạp chí này đồng ý với các điều khoản sau đây:
+		<ol type="a">
+			<li>Tác giả giữ bản quyền và nhượng quyền công bố đầu tiên cho tạp chí với việc đồng thời được cấp phép theo một <a target="_new" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution License</a> cho phép những người khác chia sẻ tác phẩm với sự thừa nhận của tác giả của tác phẩm và được xuất bản đầu tiên trong tạp chí này.</li>
+			<li>Tác giả có thể nhập vào riêng biệt, thỏa thuận hợp đồng bổ sung cho các phân phối không độc quyền của phiên bản tác phẩm được công bố của tạp chí (ví dụ, gửi nó vào một kho lưu trữ cơ quan hoặc xuất bản nó trong một cuốn sách), với một sự thừa nhận công bố lần đầu của tác phẩm trong tạp chí này.</li>
+			<li>Tác giả được phép và được khuyến khích gửi tác phẩm của họ trực tuyến (ví dụ, trong các kho lưu trữ cơ quan hoặc trên trang web của họ) trước và trong quá trình nộp hồ sơ, vì nó có thể đem đến trao đổi sản xuất, cũng như việc tác phẩm được xuất bản sớm hơn và nhiều hơn (See <a target="_new" href="http://opcit.eprints.org/oacitation-biblio.html">Ảnh hưởng của truy cập mở</a>).</li>
+		</ol>
+
+		<h4>Đề xuất chính sách cho các tạp chỉ bị trì hoãn truy cập mở</h4>
+		Tác giả xuất bản tác phẩm của mình trên tạp chí này đồng ý những điều khoản sau đây:
+		<ol type="a">
+			<li>Tác giả giữ bản quyền và nhượng quyền xuất bản lần đầu cho tạp chí, với tác phẩm [CHỈ RÕ KHOẢNG THỜI GIAN] sau khi công bố đồng thời được cấp phép theo <a target="_new" href="http://creativecommons.org/licenses/by/3.0/">	Quyền sáng tạo chung</a> cho phép những người khác chia sẻ tác phẩm với sự thừa nhận của tác giả của tác phẩm và xuất bản lần đầu trong tạp chí này.</li>
+			<li>Tác giả có thể nhập vào riêng biệt, thỏa thuận hợp đồng bổ sung cho các phân phối không độc quyền của phiên bản tác phẩm được công bố của tạp chí (ví dụ, gửi nó vào một kho lưu trữ cơ quan hoặc xuất bản nó trong một cuốn sách), với một sự thừa nhận công bố lần đầu của tác phẩm trong tạp chí này.</li>
+			<li>Tác giả được phép và được khuyến khích gửi tác phẩm của họ trực tuyến (ví dụ, trong các kho lưu trữ cơ quan hoặc trên trang web của họ) trước và trong quá trình nộp hồ sơ, vì nó có thể đem đến trao đổi sản xuất, cũng như việc tác phẩm được xuất bản sớm hơn và nhiều hơn (See <a target="_new" href="http://opcit.eprints.org/oacitation-biblio.html"> Ảnh hưởng của truy cập mở</a>).</li>
+		</ol>]]></message>
+		<message key="manager.setup.subjectClassificationDescription"><![CDATA[[Journal will use a subject classification system available on the web.<br />Title of classification system]]></message>
+
+		<message key="manager.setup.registerJournalForIndexingDescription"><![CDATA[To have the contents of this journal indexed within a globally distributed system of research databases, please read <a href="http://www.oaister.org/dataproviders.html" target="_blank">các bước để trở thành một người đóng góp dữ liệu</a> và đăng ký tạp chí của Quý vị chính thức <a href="http://www.openarchives.org/data/registerasprovider.html" target="_blank">Open Archives registry</a>.  Để đăng ký, quý vị sẽ cần URL cơ sở cho kho lưu trữ của quý vị: <span class="highlight">{$oaiUrl}</span>.  Sau đó, quý vị có thể đăng ký tạp chí của quý vị tại <a href="http://gita.grainger.uiuc.edu/registry/" target="_blank">Đăng ký UIUC OAI</a> and <a href="http://www.oaister.org/" target="_blank">OAIster</a>.
+		<br /><br />
+		Note that if your site administrator has already registered this site with these services, your journal will be indexed automatically and you do not need to register your journal.]]></message>
+
+	<message key="manager.setup.citations">Kích hoạt tính năng trợ giúp đánh dấu trích dẫn</message>
+
+	<message key="manager.setup.basicEditorialStepsDescription"><![CDATA[Steps: Submission Queue &gt; Submission Review &gt; Submission Editing &gt; Table of Contents.<br /><br />
+	Select a model for handling these aspects of the editorial process. (To designate a Managing Editor and Section Editors, go to Editors in Journal Management.)]]></message>
+		<message key="manager.setup.referenceLinkingDescription"><![CDATA[<p>Cho phép người đọc xác định vị trí các phiên bản trực tuyến của các tác phẩm được trích dẫn bởi một tác giả, lựa chọn sau có sẵn.</p>
+
+		<ol>
+			<li><strong>Thêm một công cụ đọc</strong><p>Tổng biên tập có thể thêm "Tìm tài liệu tham khảo" với các công cụ đọc đi kèm với các danh mục được công bố, cho phép độc giả dán tiêu đề của một tài liệu tham khảo và sau đó tìm kiếm cơ sở dữ liệu học thuật trước khi lựa chọn cho tác phẩm trích dẫn.</p></li>
+			<li><strong>Embed Links in the References</strong><p>BTV trình bày có thể thêm một liên kết đến tài liệu tham khảo có thể được tìm thấy trực tuyến bằng cách sử dụng các hướng dẫn sau đây (có thể được chỉnh sửa).</p></li>
+		</ol>]]></message>
+
+		<message key="editor.submissionReview.notes"><![CDATA[<ol>
+			<li>Mục đánh dấu cho thấy hành động là yêu cầu của biên tập viên.</li>
+			<li>"Do" được điền vào trong khi người đánh giá chấp nhận đề nghị để đánh giá, nó sẽ hiển thị số tuần đánh giá đến ngày hết hạn hoặc (-) tuần quá hạn.</li>
+		</ol>]]></message>
+
+	<message key="sectionEditor.completedEditorialAssignments">Nhiệm vụ biên tập hoàn thành</message>
+	<message key="sectionEditor.proofreader.confirmRenotify">Thông báo cho BTV soát lỗi này một lần nữa sẽ khởi động lại nhiệm vụ của mình. Quý vị có chắc là quý vị muốn làm điều này?</message>
+	<message key="sectionEditor.review.createTechnicalReviewer">Tạo người đánh giá chuyên môn</message>
+	<message key="layoutEditor.completedEditorialAssignments">Hoàn thành nhiệm vụ biên tập</message>
+	<message key="reviewer.home">Đánh giá tại nhà</message>
+	<message key="reviewer.submissions">Đệ trình</message>
+	<message key="reviewer.meeting">Cuộc họp</message>
+	<message key="reviewer.meetings">Các cuộc họp</message>
+	<message key="reviewer.meetings.submissions">Đệ trình để được thảo luận</message>
+	<message key="reviewer.meetings.noSubmissions">Không có đệ trình</message>
+	<message key="reviewer.meetings.replyStatus">Trạng thái trả lời</message>
+	<message key="reviewer.meetings.editor">Biên tập viên / Điều phối viên</message>
+	<message key="reviewer.meetings.scheduleStatus">Trạng thái lịch</message>
+	<message key="reviewer.meetings.details">Chi tiết</message>
+	<message key="reviewer.meetings.reply">Trả lời</message>
+	<message key="reviewer.meetings.replyStatus.attending">Tham dự</message>
+	<message key="reviewer.meetings.replyStatus.notAttending">Không tham dự</message>
+	<message key="reviewer.meetings.replyStatus.awaitingReply">Đợi trả lời</message>
+	<message key="reviewer.meetings.scheduleStatus.final">Cuối cùng</message>
+	<message key="reviewer.meetings.scheduleStatus.new">Mới</message>
+	<message key="reviewer.meetings.scheduleStatus.rescheduled">Đặt lại lịch</message>
+	<message key="reviewer.meetings.scheduleStatus.cancelled">Hoãn</message>
+	<message key="reviewer.article.reviewerCommentsDescription">Nhập hoặc dán các ý kiến đánh giá ​​ở đây</message>
+	<message key="reviewer.article.reviewersAnnotatedVersion">Phiên bản tải lên bởi người đánh giá</message>
+	<message key="reviewer.article.reviewersAnnotatedVersionDescription">(Nếu quý vị muốn chú thích các tập tin, trình soạn thảo, lưu trên ổ cứng của bạn và sử dụng Trình duyệt/Tải lên).</message>
+	<message key="reviewer.article.schedule.decision">Quyết định của quý vị</message>
+	<message key="reviewer.article.schedule.dateOfMeeting">Đề xuất ngày họp</message>
+	<message key="reviewer.article.schedule.isAttending">Bạn có tham dự cuộc họp không?</message>
+	<message key="reviewer.article.schedule.remarks">Lưu ý</message>
+	<message key="reviewer.article.decision.resubmit">Sửa và gửi lại</message>
+	<message key="reviewer.article.decision.pendingRevisions">Yêu cầu sửa đổi</message>
+    <message key="reviewer.article.decision.resubmitElsewhere">Gửi lại những nơi khác</message>
+	<message key="reviewer.article.reviewGuidelinesDescription"><![CDATA[The Review Guidelines will provide reviewers with criteria for judging a submission's suitability for publication in the journal, and can include any special instructions for preparing an effective and helpful review. In conducting the review, reviewers are presented with with two open text boxes, the first "for author and editor," and the second "for editor." Alternatively, the Journal Manager can create a peer review form under Review Forms. In all cases, editors will have the option of including the reviews in corresponding with the author.]]></message>
+	<message key="submission.review.mustUploadFileForReview">Email yêu cầu không thể gửi cho đến khi một bản đánh giá được đưa ra.</message>
+	<message key="submission.copyedit.mustUploadFileForInitialCopyedit">Email yêu cầu không thể gửi cho đến khi tập tin được chọn cho biên tập của quyết định của BTV,trang đánh giá.</message>
+	<message key="submission.copyedit.mustUploadFileForCopyedit">Email yêu cầu không thể gửi cho đến khi tập tin được tải lên để biên tập.</message>
+	<message key="submission.layout.galleyPublicIdentificationExists">Xác nhận bản in thử chung đã tồn tại.</message>
+	<message key="submission.comments.editorAuthorCorrespondence">Thư từ của Điều tra viên/Thư ký</message>
+	<message key="submission.comments.cannotShareWithAuthor">Không thể chia sẻ với điều tra viên</message>
+	<message key="user.register.alreadyRegisteredOtherJournal"><![CDATA[<a href="{$registerUrl}">Nhấn vào đây</a> Nếu quý vị đã đăng ký ở tạp chí này hay tạp chí khác trên trang web.]]></message>
+	<message key="user.register.notAlreadyRegisteredOtherJournal"><![CDATA[<a href="{$registerUrl}">Nhấn vào đây</a> Nếu quý vị <strong>not</strong> đã đăng ký ở tạp chí này hay tạp chí khác trên trang web.]]></message>
+	<message key="user.register.form.passwordLengthTooShort">Mật khẩu quý vị nhập không đủ dài.</message>
+	<message key="user.register.openAccessNotificationDescription">Thông báo bằng email khi tạp chí có một vấn đề do thực hiện truy cập mở.</message>
+	<message key="user.register.reviewerDescriptionNoInterests">Sẵn sàng để tiến hành đánh giá ngang bài nộp cho tạp chí.</message>
+	<message key="user.register.reviewerInterests">Xác định lợi ích đánh giá (khu vực nội dung và phương pháp nghiên cứu):</message>
+	<message key="user.subscriptions.mySubscriptions">Thuê bao đăng ký của tôi</message>
+	<message key="user.subscriptions.subscriptionStatus">Trạng thái thuê bao</message>
+	<message key="user.subscriptions.statusInformation">Thuê bao đăng ký  đang hoạt động và quá hạn sử dụng được hiển thị dưới đây cùng với ngày hết hạn của chúng. Ngoài ra, tình trạng thông tin sau đây có thể bao gồm trong mỗi thuê bao.</message>
+	<message key="user.subscriptions.status">Trạng thái</message>
+	<message key="user.subscriptions.statusDescription">Mô tả</message>
+	<message key="user.subscriptions.status.needsInformationDescription">Thông tin bổ sung cần thiết trước khi các thuê bao đăng ký có thể được kích hoạt</message>
+	<message key="user.subscriptions.status.needsApprovalDescription">Thuê bao đăng ký phải được đánh giá trước khi được kích hoạt</message>
+	<message key="user.subscriptions.status.awaitingManualPaymentDescription">Thanh toán trực tiếp đã được thực hiện nhưng chưa nhận được</message>
+	<message key="user.subscriptions.status.awaitingOnlinePaymentDescription">Thanh toán trực tuyến đã được bắt đầu nhưng bị hủy bỏ hoặc không hoàn thành</message>
+	<message key="user.subscriptions.individualSubscriptions">Đăng ký thuê bao cá nhân</message>
+	<message key="user.subscriptions.institutionalSubscriptions">Đăng ký thuê bao cơ quan</message>
+	<message key="user.subscriptions.renew">Làm mới lại</message>
+	<message key="user.subscriptions.purchase">Mua</message>
+	<message key="user.subscriptions.purchaseNewSubscription">Mua thuê bao đăng ký mới</message>
+	<message key="user.subscriptions.purchaseIndividualSubscription">Mua thuê bao đăng ký cá nhân</message>
+	<message key="user.subscriptions.purchaseInstitutionalSubscription">Mua thuê bao đăng ký cơ quan tổ chức</message>
+	<message key="user.subscriptions.expires">Ngày hết hạn</message>
+	<message key="user.subscriptions.expired">Đã hết hạn</message>
+	<message key="user.subscriptions.viewSubscriptionTypes">Hiển thị loại thuê bao đăng ký có sẵn</message>
+	<message key="user.subscriptions.form.typeId">Loại thuê bao</message>
+	<message key="user.subscriptions.form.membership">Thành viên</message>
+	<message key="user.subscriptions.form.membershipRequired">Các loại hình thuê bao lựa chọn đòi hỏi thông tin thành viên.</message>
+	<message key="user.subscriptions.form.typeIdValid">Vui lòng chọn một loại hình thuê bao hợp lệ.</message>
+	<message key="user.subscriptions.form.subscriptionExists">Tài khoản người dùng này đã có một thuê bao cá nhân.</message>
+	<message key="user.subscriptions.form.membershipInstructions">Thông tin thành viên nếu cần thiết cho các loại hình thuê bao lựa chọn.</message>
+	<message key="user.subscriptions.form.institutionName">Tên cơ quan</message>
+	<message key="user.subscriptions.form.institutionNameRequired">Tên một cơ quan được yêu cầu.</message>
+	<message key="user.subscriptions.form.institutionMailingAddress">Địa chỉ thư điện tử</message>
+	<message key="user.subscriptions.form.domain">Miền</message>
+	<message key="user.subscriptions.form.domainInstructions"><![CDATA[If a domain is entered here, IP ranges are optional.<br />Giá trị hợp lệ là các tên miền (ví dụ lib.sfu.ca).]]></message>
+	<message key="user.subscriptions.form.domainIPRangeRequired">Các loại hình thuê bao lựa chọn đòi hỏi một tên miền và/hoặc một dãy địa chỉ IP để xác thực thuê bao.</message>
+	<message key="user.subscriptions.form.domainValid">Vui lòng nhập tên miền hợp lệ.</message>
+	<message key="user.subscriptions.form.ipRange">Dãy IP</message>
+	<message key="user.subscriptions.form.ipRangeItem"><![CDATA[&#8226;]]></message>
+	<message key="user.subscriptions.form.ipRangeInstructions"><![CDATA[If IP ranges are entered here, the domain is optional.<br />Giá trị hợp lệ bao gồm một địa chỉ IP (ví dụ như 142.58.103.1), dãy địa chỉ IP (ví dụ như 142.58.103.1 - 142.58.103.4), dãy IP với ký tự đại diện '*' (ví dụ: 142,58 * *..), và một dãy IP với CIDR (ví dụ: 142.58.100.0/24).]]></message>
+	<message key="user.subscriptions.form.ipRangeValid">Vui lòng nhập dãy IP hợp lệ.</message>
+	<message key="user.subscriptions.form.deleteIpRange">Xóa</message>
+	<message key="user.subscriptions.form.addIpRange">Thêm/message>
+	<message key="search.summary">Tóm tắt đề xuất</message>
+	<message key="search.whoid">ID đề xuất</message>
+    <message key="search.dataCollection">Thu thập dữ liệu</message>
+    <message key="search.status">Trạng thái</message>
+    <message key="search.dateSubmitted">Ngày đệ trình VietHRP</message>
+	<message key="search.responsibleOfficer">Cán bộ chịu trách nhiệm</message>
+	<message key="search.primaryInvestigator">Điều tra viên chính</message>
+    <message key="search.primarySponsor">Nhà tài trợ chính</message>
+    <message key="search.proposalType">Loại đề xuất </message>    
+    <message key="search.province">Diện tích địa lý</message>
+    <message key="search.researchField">Phạm vi nghiên cứu</message>
+    <message key="search.startDate">Ngày bắt đầu</message>
+    <message key="search.endDate">Ngày kết thúc</message>
+	<message key="search.email">Email</message>
+	<message key="search.duration">Thời hạn</message>
+	<message key="search.finalDecision">Ngày và quyết định cuối cùng</message>
+	<message key="article.pdf.download">Tải về tập tin pdf này</message>
+	<message key="article.pdf.pluginMissing"><![CDATA[<p>Tập tin PDF mà bạn chọn sẽ được tải về ở đây nếu trình duyệt web của bạn có một trình đọc bổ trợ PDF được cài đặt (ví dụ, một phiên bản mới của <a href="http://www.adobe.com/products/acrobat/readstep2.html">Adobe Acrobat Reader</a>).</p> <p>Ngoài ra, bạn cũng có thể tải về các tập tin PDF trực tiếp vào máy tính của bạn, từ đó nó có thể được mở bằng một trình đọc PDF. Để tải về file PDF, nhấp vào liên kết Download dưới đây.</p> <p>Nếu bạn muốn biết thêm thông tin về cách in, lưu, và làm việc với các file PDF, Highwire Press cung cấp một hữu ích <a href="http://highwire.stanford.edu/help/pdf-faq.dtl">Câu hỏi thường gặp về file PDF</a>.</p>]]></message>
+	<message key="about.history">Lịch sử cổng nghiên cứu sức khỏe Việt Nam</message>
+	<message key="about.onlineSubmissions.registrationRequired">Đăng ký và đăng nhập được yêu cầu để gửi bài viết trực tuyến và kiểm tra trạng thái của đệ trình hiện tại.</message>
+	<message key="about.submissionPreparationChecklist.description">Như là một phần của quá trình nộp, tác giả được yêu cầu phải tuân thủ kiểm tra đệ trình của họ với tất cả các mục sau đây, và đệ trình có thể được trả lại cho tác giả không tuân thủ các nguyên tắc này.</message>
+	<message key="about.subscriptions.individual">Thuê bao đăng ký cá nhân</message>
+	<message key="about.subscriptions.institutional">Thuê bao đăng ký cơ quan</message>
+	<message key="about.subscriptionTypes.name">Tên</message>
+	<message key="about.subscriptionTypes.format">Định dạng</message>
+	<message key="about.subscriptionTypes.duration">Thời hạn</message>
+	<message key="about.subscriptionTypes.cost">Chi phí</message>
+    <message key="payment.instruction"><![CDATA[<center>Tín dụng trực tiếp tài khoản ngân hàng HSPH:<br/><br/><b>Đại học y tế Công Cộng Hà Nội</b><br/>NGÂN HÀNG TMCP CÔNG THƯƠNG VIỆT NAM-CHI NHÁNH ĐỐNG ĐA;<br/>SWIFT CODE:ICBVVNVX 126; A/C NO:10201.00000.75181<br/>183 NGUYỄN LƯƠNG BẰNG, ĐỐNG ĐA, HÀ NỘI, VIỆT NAM.</center>]]></message>
+	<message key="payment.authorFees">chi phí đánh giá đề xuất</message>
+    <message key="payment.authorFeesAmount">Chi phí đánh giá đề xuất: 1500000.00 (VND)</message>
+    <message key="payment.authorFeesDescription">Các điều tra viên được yêu cầu phải thanh toán chi phí một đề xuất như là một phần của quá trình trình đóng góp vào chi phí đánh giá và đào tạo. Sinh viên sẽ được miễn lệ phí xét này.</message>
+	<message key="payment.subscription.purchase">Đăng ký mua</message>
+	<message key="installer.installApplication">Cài đặt Hệ thống tạp chí mở</message>
+	<message key="installer.upgradeApplication">Nâng cấp hệ thống tạp chí mở</message>
+	<message key="installer.overwriteConfigFileInstructions"><![CDATA[<h4>Quan trọng!</h4>
+	<p>Trình cài đặt có thể không tự động ghi đè lên các tập tin cấu hình. Trước khi cố gắng sử dụng hệ thống, vui lòng mở <tt>config.inc.php</tt> trong một trình soạn thảo văn bản phù hợp và thay thế nội dung của nó với nội dung của lĩnh vực văn bản dưới đây.</p>]]></message>
+	<message key="log.review.reviewRecommendationSetByProxy">Đề nghị cho vòng {$ vòng} xem xét nộp {$ ID tiêu đề} đã được thiết lập bởi các biên tập viên, {$ Tên biên tập viên}, thay mặt cho người đánh giá, {$ Tên người đánh giá}.</message>
+	<message key="rt.admin.settings.addComment.authenticated">Người sử dụng phải được đăng ký và đăng nhập để gửi, người ẩn danh không được phép.</message>
+	<message key="rt.admin.settings.addComment.unauthenticated">Người dùng không cần phải đăng ký để thông báo, cho phép người ẩn danh.</message>
+	<message key="notification.mailListDescription">Nhập địa chỉ email của quý vị để nhận được thông báo ngay lập tức về nội dung mới quan trọng được bổ sung vào Cổng thông tin nghiên cứu sức khỏe.</message>
+	<message key="notification.notificationsPublicDescription">Trang này cho biết bản cập nhật quan trọng liên quan đến Cổng nghiên cứu sức khỏe như các vấn đề mới hoặc thông báo. Quý vị có thể đăng ký những thông báo thông qua RSS feeds (bằng cách nhấp vào hình ảnh bên phải), hoặc <![CDATA[  <a href="{$emailUrl}">qua email.</a>]]></message>
+	<message key="notification.type.articleSubmitted">Một đề xuất mới, "{$param}", đã được gửi.</message>
+	<message key="notification.type.articleReSubmitted">Đề xuất, "{$param}", đã được gửi lại.</message>
+	<message key="notification.type.copyeditComment">Một BTV đã để lại một bình luận trên "{$param}".</message>
+	<message key="notification.type.editing">Chỉnh sửa sự kiện</message>
+	<message key="notification.type.editorDecisionComment">Đề xuất {$param} để lại một bình luận.</message>
+	<message key="notification.type.galleyModified">Một bản in thử được sửa đổi cho "{$param}".</message>
+	<message key="notification.type.issuePublished">Một ấn phẩm được xuất bản.</message>
+	<message key="notification.type.layoutComment">Một nhận xét về "{$param}'s" bố cục.</message>
+	<message key="notification.type.metadataModified">"{$param}'s" siêu dữ liệu đã được sửa đổi.</message>
+	<message key="notification.type.newAnnouncement">Một thông báo mới đã được tạo.</message>	
+	<message key="notification.type.proofreadComment">Một BTV soát lỗi đã để lại một bình luận trên "{$param}".</message>
+	<message key="notification.type.reviewerComment">Đề xuất {$param}.</message>
+	<message key="notification.type.reviewerFormComment">Một đánh giá hình thức đánh giá đã được gửi lên "{$param}".</message>
+	<message key="notification.type.reviewing">Đánh giá sự kiện</message>
+	<message key="notification.type.site">Xác định địa điểm sự kiện</message>
+	<message key="notification.type.submissionComment">Một biên tập viên đã nhận xét trên "{$param}".</message>
+	<message key="notification.type.submissions">Gửi sự kiện</message>
+	<message key="notification.type.suppFileModified">"{$param}'s" tập tin bổ sung đã được sửa đổi.</message>
+	<message key="notification.type.userComment">Một độc giả đã nhận xét trên "{$param}"</message>
+    <message key="notification.type.submissionComplete">Đề xuất của quý vị, "{$param}", đã được coi là "Hoàn thành".</message>
+    <message key="notification.type.submissionIncomplete">Đề xuất của quý vị, "{$param}", đã được coi là "Chưa hoàn thành". Quý vị có thể gửi lại.</message>
+    <message key="notification.type.reviseAndResubmit">Đề xuất của quý vị, "{$param}", không phù hợp với tất cả các yêu cầu của ủy ban. Quý vị nên xem xét lại và gửi lại.</message>
+	<message key="notification.type.submissionExpedited">Đề xuất của quý vị, "{$param}", sẽ được "Tiến hành Đánh giá nhanh".</message>
+    <message key="notification.type.submissionAssigned">Đề xuất của quý vị, "{$param}", sẽ được "Đánh giá đầy đủ".</message>
+    <message key="notification.type.submissionExempted">Đề xuất của quý vị, "{$param}", được coi là "Miễn đánh giá".</message>
+    <message key="notification.type.submissionDecline">Đề xuất của quý vị, "{$param}", đã bị từ chối.</message>
+    <message key="notification.type.submissionAccept">Đề xuất của quý vị, "{$param}", đã được chấp nhận.</message>
+    <message key="notification.type.submissionDone">Đề xuất của quý vị, "{$param}", đã hoàn thành.</message>    
+	<message key="notification.type.rawDataSubmitted">Một số dữ liệu chưa xử lý đã được đệ trình cho đề xuất "{$param}"</message>
+    <message key="notification.type.otherSuppResearchOutput">Một số kết quả nghiên cứu bổ sung khác đã được đệ trình cho đề xuất "{$param}"</message>
+    <message key="notification.type.progressReport">Báo cáo tiến độ đã được đệ trình cho đề xuất "{$param}"</message>
+    <message key="notification.type.completionReport">Một báo cáo hoàn thành đã được trình lên cho đề xuất "{$param}"</message>
+    <message key="notification.type.suppFile">Một tập tin bổ sung mới đã được thêm vào đề xuất "{$param}"</message>
+    <message key="notification.type.extensionRequest">Một yêu cầu mở rộng đã được đệ trình cho đề xuất "{$param}"</message>
+    <message key="notification.type.reviewAssignment">Bạn đã được chỉ định để đánh giá đề xuất: "{$param}". Vui lòng ghi rõ nếu bạn có thể làm đánh giá.</message>
+    <message key="notification.type.reviewerFile">Đề xuất {$param}tải lên một tập tin liên quan đến / đánh giá của ông/bà.</message>
+    <message key="notification.type.reviewerFileDeleted">Đề xuất {$ param} xóa một tập tin liên quan đến / đánh giá của ông/bà.</message>
+	<message key="notification.type.makeReviewerFileAvailable">Đề xuất {$param}tải lên một tập tin liên quan đến / đánh giá của ông/bà.</message>
+    <message key="notification.type.makeReviewerFileNotAvailable">Đề xuất {$ param} xóa một tập tin liên quan đến / đánh giá của ông/bà.</message>    
+	<message key="notification.type.reviewAssignmentCanceled">Nhiệm vụ đánh giá của bạn cho đề xuất này: "{$ param}", đã bị hủy.</message>
+    <message key="notification.type.reviewAssignmentConfirmed">Đề xuất {$ param} / nhiệm vụ đánh giá của ông/bà.</message>
+    <message key="notification.type.reviewConfirmedBySecretary">Đề xuất {$ param} để đánh giá đề xuất.</message>
+    <message key="notification.type.proposalWithdrawn">Đề xuất {$ param} rút lại đề xuất của ông/bà.</message> 
+	<message key="user.authorization.copyeditorAssignmentMissing">Truy cập bị từ chối! Bạn đã không được chỉ định là một BTV bản thảo cho bài viết này.</message>
+	<message key="user.authorization.noJournal">Không có tạp chí nào trong trường hợp này!</message>
+	<message key="user.authorization.sectionAssignment">Bạn đang cố gắng truy cập vào một bài viết mà không phải là phần của bạn.</message>
+	<message key="user.authorization.invalidCopyditorSubmission">Yêu cầu của BTV không hợp lệ hoặc không có BTV nào yêu cầu nộp!</message>
+	<message key="user.authorization.invalidSectionEditorSubmission">Đệ trình của biên tập viên không hợp lệ hoặc không có phần yêu cầu biên tập nộp!</message>
 </locale>

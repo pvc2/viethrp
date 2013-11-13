@@ -9,67 +9,67 @@
 -->
 
 <countries>
-    <country code="CHDL" name="Dak Lak province"/>
-    <country code="CHDN" name="Dak Nong province"/>
-    <country code="CHGL" name="Gia Lai province"/>
-    <country code="CHKT" name="Kon Tum province"/>
-    <country code="CHLD" name="Lam Dong province"/>
-    <country code="MDAG" name="An Giang province"/>
-    <country code="MDBL" name="Bac Lieu province"/>
-    <country code="MDBT" name="Ben Tre province"/>
-    <country code="MDCM" name="Ca Mau province"/>
-    <country code="MDCT" name="Can Tho city"/>
-    <country code="MDDT" name="Dong Thap province"/>
-    <country code="MDHG" name="Hau Giang province"/>
-    <country code="MDKG" name="Kien Giang province"/>
-    <country code="MDLA" name="Long An province"/>
-    <country code="MDST" name="Soc Trang province"/>
-    <country code="MDTG" name="Tien Giang province"/>
-    <country code="MDTV" name="Tra Vinh province"/>
-    <country code="MDVL" name="Vinh Long province"/>
-    <country code="NCCHT" name="Ha Tinh province"/>
-    <country code="NCCNA" name="Nghe An province"/>
-    <country code="NCCQB" name="Quang Binh province"/>
-    <country code="NCCQT" name="Quang Tri province"/>
-    <country code="NCCTH" name="Thanh Hoa province"/>
-    <country code="NCCTT" name="Thua Thien-Hue province"/>
-    <country code="NEBG" name="Bac Giang province"/>
-    <country code="NEBK" name="Bac Kan province"/>
-    <country code="NECB" name="Cao Bang province"/>
-    <country code="NEDB" name="Dien Bien province"/>
-    <country code="NEHB" name="Hoa Binh province"/>
-    <country code="NEHG" name="Ha Giang province"/>
-    <country code="NELC" name="Lao Cai province"/>
-    <country code="NELCh" name="Lai Chau province"/>
-    <country code="NELS" name="Lang Son province"/>
-    <country code="NEPT" name="Phu Tho province"/>
-    <country code="NEQN" name="Quang Ninh province"/>
-    <country code="NESL" name="Son La province"/>
-    <country code="NETN" name="Thai Nguyen province"/>
-    <country code="NETG" name="Tuyen Guang province"/>
-    <country code="NEYB" name="Yen Bai province"/>
-    <country code="RRDBN" name="Bac Ninh province"/>
-    <country code="RRDHD" name="Hai Duong province"/>
-    <country code="RRDHN" name="Ha Nam province"/>
-    <country code="RRDHNc" name="Hanoi city"/>
-    <country code="RRDHP" name="Hai Phong city"/>
-    <country code="RRDHY" name="Hung Yen province"/>
-    <country code="RRDND" name="Nam Dinh province"/>
-    <country code="RRDNB" name="Ninh Binh province"/>
-    <country code="RRDTB" name="Thai Binh province"/>
-    <country code="RRDVP" name="Vinh Phuc province"/>
-    <country code="SCCBD" name="Binh Dinh province"/>
-    <country code="SCCBT" name="Binh Thuan  province"/>
-    <country code="SCCDN" name="Da Nang city"/>
-    <country code="SCCKH" name="Khanh Hoa province"/>
-    <country code="SCCNT" name="Ninh Thuan province"/>
-    <country code="SCCPY" name="Phu Yen province"/>
-    <country code="SCCQN" name="Quang Nam province"/>
-    <country code="SCCQNg" name="Quang Ngai province"/>
-    <country code="SEBR" name="Ba Ria-Vung Tau province"/>
-    <country code="SEBD" name="Binh Duong province"/>
-    <country code="SEBP" name="Binh Phuoc province"/>
-    <country code="SEDN" name="Dong Nai province"/>
-    <country code="SETN" name="Tay Ninh province"/>
-    <country code="SETP" name="Than pho Ho Chi Minh city"/>
+    <country code="CHDL" name="Tỉnh tỉnh Đắk Lắk"/>
+    <country code="CHDN" name="Tỉnh Đắc Nông"/>
+    <country code="CHGL" name="Tỉnh Gia Lai"/>
+    <country code="CHKT" name="Tỉnh Kon Tum"/>
+    <country code="CHLD" name="Tỉnh Lâm Đồng"/>
+    <country code="MDAG" name="Tỉnh An Giang"/>
+    <country code="MDBL" name="Tỉnh Bạc Liêu"/>
+    <country code="MDBT" name="Tỉnh Bến Tre"/>
+    <country code="MDCM" name="Tỉnh Cà Mau"/>
+    <country code="MDCT" name="Thành phố Cần Thơ"/>
+    <country code="MDDT" name="Tỉnh Đồng Tháp"/>
+    <country code="MDHG" name="Tỉnh Hậu Giang"/>
+    <country code="MDKG" name="Tỉnh Kiên Giang"/>
+    <country code="MDLA" name="Tỉnh Long An"/>
+    <country code="MDST" name="Tỉnh Sóc Trăng"/>
+    <country code="MDTG" name="Tỉnh Tiền Giang"/>
+    <country code="MDTV" name="Tỉnh Trà Vinh"/>
+    <country code="MDVL" name="Tỉnh Vinh Long"/>
+    <country code="NCCHT" name="Tỉnh Hà Long"/>
+    <country code="NCCNA" name="Tỉnh Nghệ An"/>
+    <country code="NCCQB" name="Tỉnh Quảng Bình"/>
+    <country code="NCCQT" name="Tỉnh Quảng Trị"/>
+    <country code="NCCTH" name="Tỉnh Thanh Hóa"/>
+    <country code="NCCTT" name="Tỉnh Thừa Thiên Huế"/>
+    <country code="NEBG" name="Tỉnh Bắc Giang"/>
+    <country code="NEBK" name="Tỉnh Bắc Kạn"/>
+    <country code="NECB" name="Tỉnh Cao Bằng"/>
+    <country code="NEDB" name="Tỉnh Điện Biên"/>
+    <country code="NEHB" name="Tỉnh Hòa Bình"/>
+    <country code="NEHG" name="Tình Hà Giang"/>
+    <country code="NELC" name="Tỉnh Lào Cai"/>
+    <country code="NELCh" name="Tỉnh Lai Châu"/>
+    <country code="NELS" name="Tỉnh Lạng Sơn"/>
+    <country code="NEPT" name="Tỉnh Phú Thọ"/>
+    <country code="NEQN" name="Tỉnh Quang Ninh"/>
+    <country code="NESL" name="Tỉnh Sơn La"/>
+    <country code="NETN" name="Tỉnh Thái Nguyên"/>
+    <country code="NETG" name="Tỉnh Tuyên Quang"/>
+    <country code="NEYB" name="Tỉnh Yên Bái"/>
+    <country code="RRDBN" name="Tỉnh Bắc Ninh"/>
+    <country code="RRDHD" name="Tỉnh Hải Dương"/>
+    <country code="RRDHN" name="Tỉnh Hà Nam"/>
+    <country code="RRDHNc" name="Thành phố Hà Nội"/>
+    <country code="RRDHP" name="Thành phố Hải Phòng"/>
+    <country code="RRDHY" name="Tỉnh Hưng Yên"/>
+    <country code="RRDND" name="Tỉnh Nam Định"/>
+    <country code="RRDNB" name="Tỉnh Ninh Bình"/>
+    <country code="RRDTB" name="Tỉnh Thái Bình"/>
+    <country code="RRDVP" name="Tỉnh Vĩnh Phúc"/>
+    <country code="SCCBD" name="Tỉnh Bình Định"/>
+    <country code="SCCBT" name="Tỉnh Bình Thuận"/>
+    <country code="SCCDN" name="Thành phố Đà Nẵng"/>
+    <country code="SCCKH" name="Tỉnh Khánh Hòa"/>
+    <country code="SCCNT" name="Tỉnh Ninh Thuận"/>
+    <country code="SCCPY" name="Tỉnh Phú Yên"/>
+    <country code="SCCQN" name="Tỉnh Quảng Nam"/>
+    <country code="SCCQNg" name="Tỉnh Quảng Ngãi"/>
+    <country code="SEBR" name="Tình Bà Rịa - Vũng Tàu"/>
+    <country code="SEBD" name="Tỉnh Bình Dương"/>
+    <country code="SEBP" name="Tỉnh Bình Phước"/>
+    <country code="SEDN" name="Tỉnh Đồng Nai"/>
+    <country code="SETN" name="Tỉnh Tây Ninh"/>
+    <country code="SETP" name="Thành phố Hồ Chí Minh"/>
 </countries>

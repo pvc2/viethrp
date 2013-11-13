@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 
 <!--
     Document   : proposaltypes.xml
@@ -13,13 +13,13 @@
 
 <proposaltypes>
     <proposaltype name="Clinical Trial with Human Subjects" code="CWHS" />
-    <proposaltype name="Health System and Policy Research" code="HSPR" />
-    <proposaltype name="Population-Based Survey" code="PBS" />
+    <proposaltype name="Nghiên cứu chính sách và hệ thống y tế" code="HSPR" />
+    <proposaltype name="Điều tra dân số cơ bản" code="PBS" />
 <!--    <proposaltype name="Proposal with Human Subjects" code="PWHS" /> --> 
     <proposaltype name="Proposal without Human Subjects" code="PNHS" />
-    <proposaltype name="Qualitative Study" code="QS" />
-    <proposaltype name="Intervention Evaluation Research" code="IER" />
+    <proposaltype name="Nghiên cứu định tính" code="QS" />
+    <proposaltype name="Nghiên cứu đánh giá can thiệp" code="IER" />
     <proposaltype name="Operational Research" code="OR" />
-    <proposaltype name="Other" code="OTHER" />
+    <proposaltype name="Nghiên cứu khác" code="OTHER" />
     <!-- Do not change code of OTHER -->
 </proposaltypes>

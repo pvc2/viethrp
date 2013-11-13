@@ -70,7 +70,7 @@
 	</tr>
 	<tr valign="top" id="otherReasonField" style="display: none;">
 		<td class="label">&nbsp;</td>
-		<td class="value">{translate key="author.submit.reasonsForWithdrawal"}:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<td class="value">{translate key="author.submit.otherReasonForWithdrawal"}:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<input type="text" class="textField" name="otherReason[{$formLocale|escape}]" id="otherReason" value="NA" size="20" maxlength="40" />
 		</td>
 	</tr>

@@ -263,7 +263,7 @@ function checkSize(){
 			<td class="label"></td>
 				{assign var="resubmitCount" value=$lastDecisionArray.resubmitCount}
 			<td width="80%" class="value">
-				{translate key="submissions.proposal.resubmittedMsg1"}{$resubmitMsg}{translate key="submissions.proposal.resubmittedMsg2"}{$articleLastModified|date_format:$dateFormatShort}
+				{translate key="submissions.proposal.resubmittedMsg1"}{$resubmitCount}{translate key="submissions.proposal.resubmittedMsg2"}{$articleLastModified|date_format:$dateFormatShort}
 			</td>
 		{/if}
 	</tr>

@@ -165,4 +165,256 @@
 	<message key="submission.uploadFileTo">Tải file lên</message>
 	<message key="submission.viewMetadata">Xem dữ liệu mô tả</message>
 	<message key="submission.views">Lượt xem</message>
+
+<!-- New item from e version -->
+
+
+	<message key="author.submit.submissionCitations">Cung cấp một danh sách các định dạng tài liệu tham khảo cho các tác phẩm được trích dẫn trong đệ trình này. Xin tách tài liệu tham khảo cá nhân với một dòng trống.</message>
+	<message key="metadata.filters.crossref.settings.email.displayName">Đăng ký Email CrossRef</message>
+	<message key="metadata.filters.crossref.settings.email.validationMessage">Vui lòng nhập email đăng ký CrossRef hợp lệ. Quý vị có thể đăng ký email của quý vị miễn phí trên trang web CrossRef.</message>
+	<message key="metadata.filters.isbndb.settings.apiKey.displayName">ISBNdb API Key</message>
+	<message key="metadata.filters.isbndb.settings.apiKey.validationMessage">Xin vui lòng nhập mã khóa ISBNdb API của quý vị. Nếu quý vị không có một mã khóa nhưng quý vị có thể yêu cầu một mã khóa miễn phí từ các dự án ISBNdb.</message>
+	<message key="metadata.filters.pubmed.settings.email.displayName">Đăng ký Email PubMed</message>
+	<message key="metadata.filters.pubmed.settings.email.validationMessage">Vui lòng nhập email đăng ký PubMed hợp lệ nếu bạn có.</message>
+	<message key="metadata.filters.worldcat.settings.apiKey.displayName">Mã khóa WorldCat API</message>
+	<message key="metadata.filters.worldcat.settings.apiKey.validationMessage">Vui lòng nhập mã khóa API WorldCat hợp lệ nếu bạn có..</message>
+	<message key="metadata.filters.paracite.settings.citationModule.displayName">Mô-đun trích dẫn</message>
+	<message key="metadata.filters.paracite.settings.citationModule.validationMessage">Vui lòng chọn một trong các mô-đun được trích dẫn.</message>
+	<message key="metadata.filters.settings.isOptional.displayName">Không sử dụng mặc định (vẫn sẽ có sẵn cho các biên tập viên)</message>
+	<message key="metadata.filters.settings.isOptional.validationMessage">Lỗi nội bộ. Một giá trị không hợp lệ đã được đăng cho thiết lập của tùy chọn bộ lọc. Xin vui lòng báo cáo này như là một lỗi.</message>
+	<message key="metadata.property.displayName.author">Tác giả</message>
+	<message key="metadata.property.validationMessage.author">Để có kết quả tốt nhất, các tác giả nên được nhập theo định dạng sau: Coleman Jr, D. (Ralf) Tiến sĩ</message>
+	<message key="metadata.property.displayName.editor">Biên tập viên</message>
+	<message key="metadata.property.validationMessage.editor">Để có kết quả tốt nhất, các tác giả nên được nhập theo định dạng sau: Coleman Jr, D. (Ralf) Tiến sĩ</message>
+	<message key="metadata.property.displayName.article-title">Tiêu đề bài viết/bài báo</message>
+	<message key="metadata.property.validationMessage.article-title">Vui lòng nhập tiêu đề bài viết/bài báo hợp lệ.</message>
+	<message key="metadata.property.displayName.source">Tiêu đề sách/tạp chí</message>
+	<message key="metadata.property.validationMessage.source">Vui lòng nhập tiêu đề sách/tạp chí hợp lệ.</message>
+	<message key="metadata.property.displayName.date">Ngày xuất bản</message>
+	<message key="metadata.property.validationMessage.date">Vui lòng nhập ngày xuất bản hợp lệ (Định dạng: YYYY-MM-DD).</message>
+	<message key="metadata.property.displayName.access-date">Ngày truy cập</message>
+	<message key="metadata.property.validationMessage.access-date">Vui lòng nhập ngày truy cập hợp lệ (Định dạng: YYYY-MM-DD).</message>
+	<message key="metadata.property.displayName.issue">Phát hành</message>
+	<message key="metadata.property.validationMessage.issue">Vui lòng nhập một phát hành hợp lệ.</message>
+	<message key="metadata.property.displayName.volume">Bộ sách</message>
+	<message key="metadata.property.validationMessage.volume">Vui lòng nhập một bộ sách hợp lệ.</message>
+	<message key="metadata.property.displayName.season">Tập</message>
+	<message key="metadata.property.validationMessage.season">Vui lọng nhập một ký hiệu nhận dạng tập hợp lệ.</message>
+	<message key="metadata.property.displayName.chapter-title">Tiêu đề chương</message>
+	<message key="metadata.property.validationMessage.chapter-title">Vui lòng nhập một tiêu đề chương hợp lệ.</message>
+	<message key="metadata.property.displayName.edition">Số xuất bản</message>
+	<message key="metadata.property.validationMessage.edition">Vui lòng nhập một số xuất bản hợp lệ.</message>
+	<message key="metadata.property.displayName.series">Đợt phát hành</message>
+	<message key="metadata.property.validationMessage.series">Vui lòng nhập một đợt phát hành hợp lệ.</message>
+	<message key="metadata.property.displayName.supplement">Phần phụ lục</message>
+	<message key="metadata.property.validationMessage.supplement">Vui lòng nhập một phần phụ lục hợp lệ.</message>
+	<message key="metadata.property.displayName.conf-date">Ngày hội nghị</message>
+	<message key="metadata.property.validationMessage.conf-date">Vui lòng nhập một ngày hội nghị hơp lệ (Định dạng: YYYY-MM-DD).</message>
+	<message key="metadata.property.displayName.conf-loc">Vị trí tổ chức hội nghị</message>
+	<message key="metadata.property.validationMessage.conf-loc">Vui lòng nhập một địa điểm hội nghị hơp lệ.</message>
+	<message key="metadata.property.displayName.conf-name">Tên hội nghị</message>
+	<message key="metadata.property.validationMessage.conf-name">Vui lòng nhập một tên hội nghị hơp lệ.</message>
+	<message key="metadata.property.displayName.conf-sponsor">Nhà tại trợ cho hội nghị</message>
+	<message key="metadata.property.validationMessage.conf-sponsor">Vui lòng nhập một nhà tại trợ cho hội nghịị hơp lệ.</message>
+	<message key="metadata.property.displayName.institution">Cơ quan tổ chức</message>
+	<message key="metadata.property.validationMessage.institution">Vui lòng nhập một cơ quan tổ chức hợp lệ.</message>
+	<message key="metadata.property.displayName.fpage">Trang đầu</message>
+	<message key="metadata.property.validationMessage.fpage">Xin vui lòng nhập một trang đầu hợp lệ (phải là một giá trị số).</message>
+	<message key="metadata.property.displayName.lpage">Trang cuối</message>
+	<message key="metadata.property.validationMessage.lpage">Xin vui lòng nhập một trang cuối hợp lệ (phải là một giá trị số).</message>
+	<message key="metadata.property.displayName.size">Số trang</message>
+	<message key="metadata.property.validationMessage.size">Xin vui lòng nhập tổng số trang hợp lệ (phải là một giá trị số).</message>
+	<message key="metadata.property.displayName.publisher-loc">Địa điểm nhà xuất bản</message>
+	<message key="metadata.property.validationMessage.publisher-loc">Xin vui lòng nhập một địa điểm nhà xuất bản hợp lệ .</message>
+	<message key="metadata.property.displayName.publisher-name">Tên nhà xuất bản</message>
+	<message key="metadata.property.validationMessage.publisher-name">Xin vui lòng nhập một tên nhà xuất bản hợp lệ.</message>
+	<message key="metadata.property.displayName.isbn">ISBN</message>
+	<message key="metadata.property.validationMessage.isbn">Vui lòng nhập ISBN hợp lệ (9 hoặc 13 số).</message>
+	<message key="metadata.property.displayName.issn">In ISSN</message>
+	<message key="metadata.property.validationMessage.issn">Vui lòng nhập một bản in ISSN hợp lệ .</message>
+	<message key="metadata.property.displayName.eissn">eISSN</message>
+	<message key="metadata.property.validationMessage.eissn">Vui lòng nhập eISSN hợp lệ.</message>
+	<message key="metadata.property.displayName.doi">DOI</message>
+	<message key="metadata.property.validationMessage.doi">Vui lòng nhập DOI hợp lệ.</message>
+	<message key="metadata.property.displayName.publisher-id">ID xuất bản tùy chỉnh</message>
+	<message key="metadata.property.validationMessage.publisher-id">Vui lòng nhập một ID xuất bản tùy chỉnh.</message>
+	<message key="metadata.property.displayName.coden">CODEN</message>
+	<message key="metadata.property.validationMessage.coden">Vui lòng nhập CODEN hợp lệ.</message>
+	<message key="metadata.property.displayName.sici">SICI</message>
+	<message key="metadata.property.validationMessage.sici">Vui lòng nhập SICI hợp lệ.</message>
+	<message key="metadata.property.displayName.pmid">PMID</message>
+	<message key="metadata.property.validationMessage.pmid">Vui lòng nhập PMID hợp lệ.</message>
+	<message key="metadata.property.displayName.uri">Liên kết đến xuất bản</message>
+	<message key="metadata.property.validationMessage.uri">Xin vui lòng nhập một liên kết thay thế hợp lệ đến xuất bản.</message>
+	<message key="metadata.property.displayName.comment">Bình luận</message>
+	<message key="metadata.property.validationMessage.comment">Vui lòng nhập một bình luận hợp lệ.</message>
+	<message key="metadata.property.displayName.annotation">Chú thích</message>
+	<message key="metadata.property.validationMessage.annotation">Vui lòng nhập một chú thích hợp lệ.</message>
+	<message key="metadata.property.displayName.publication-type">Loại ấn phẩm xuất bản</message>
+	<message key="metadata.property.validationMessage.publication-type">Vui lòng chắc chắn rằng quý vị luôn thiết lập một loại ấn phẩm. Giá trị hiện đang được hỗ trợ là cuốn sách (sách hoặc chương sách) và tạp chí (đối với các bài báo). Nếu không định dạng của trích dẫn đầu ra sẽ không hoạt động chính xác. </message>
+    <message key="metadata.property.displayName.title-type">Loại tiêu đề</message>
+	<message key="metadata.property.validationMessage.title-type">Vui lòng chắc chắn rằng quý vị thiết lập một loại tiêu đề hợp lệ. Giá trị hỗ trợ là 'viết tắt', 'dịch', 'thay thế' và 'đồng phục'. </message>
+	<message key="metadata.property.displayName.nonSort">Một phần của tiêu đề bị bỏ qua khi sắp xếp</message>
+	<message key="metadata.property.validationMessage.nonSort">Xin vui lòng chỉ nhập các ký tự đầu tiên của tiêu đề được bỏ qua khi phân loại tiêu đề.</message>
+    <message key="submission.proposalDetails">Chi tiết đề xuất</message>
+	<message key="metadata.property.displayName.title">Tiêu đề</message>
+	<message key="metadata.property.validationMessage.title">Vui lòng nhập một tiêu đề hợp lệ.</message>
+	<message key="metadata.property.displayName.subTitle">Phụ đề</message>
+	<message key="metadata.property.validationMessage.subTitle">Vui lòng nhập một phụ đề hợp lệ.</message>
+	<message key="metadata.property.displayName.partNumber">Số phần</message>
+	<message key="metadata.property.validationMessage.partNumber">Vui lòng nhập số phần hợp lệ.</message>
+	<message key="metadata.property.displayName.partName">Tên phần</message>
+	<message key="metadata.property.validationMessage.partName">Vui lòng nhập tên phần hợp lệ.</message>
+	<message key="metadata.property.displayName.name-type">Loại tên</message>
+	<message key="metadata.property.validationMessage.name-type">Hãy chắc chắn rằng quý vị thiết lập một loại tên hợp lệ. Giá trị hỗ trợ là 'cá nhân', 'công ty' và 'hội nghị'.</message>
+	<message key="submission.citations">Tài liệu tham khảo</message>
+	<message key="submission.citations.editor.citationlist.deleteCitationConfirmation">Quý vị có chắc chắn muốn xóa trích dẫn này?</message>
+	<message key="submission.citations.editor.citationlist.errorDeletingCitation">Đã xảy ra lỗi trong khi cố gắng xóa các trích dẫn. Xin vui lòng báo cáo điều này như một lỗi.</message>
+	<message key="submission.citations.editor.citationlist.newCitation">Trích dẫn mới</message>
+	<message key="submission.citations.editor.citationlist.title">Sửa trích dẫn</message>
+	<message key="submission.citations.editor.clickToEdit">Nhấn để sửa.</message>
+    
+	<message key="submission.citations.editor.details.authorQuery">Đề nghị tác giả</message>
+	<message key="submission.citations.editor.details.authorQueryBody">Tin nhắn của quý vị cho tác giả:</message>
+	<message key="submission.citations.editor.details.authorQueryExplanation">Quý vị có thể yêu cầu tác giả để biết thêm thông tin về các trích dẫn hiện hành. Hãy nhấn vào nút "Gửi" dưới đây để gửi tin nhắn của quý vị như một email cho tác giả. </message>
+	<message key="submission.citations.editor.details.authorQuerySubject">Chủ đề:</message>
+	<message key="submission.citations.editor.details.cannotSelectDefaultForLabel">Quý vị không thể bỏ đặt một nhãn trường. Xin vui lòng xóa phạm vi này nếu quý vị không cần nó</message>
+	<message key="submission.citations.editor.details.checkInGoogleScholar">Kiểm tra trong Google Scholar</message>
+	<message key="submission.citations.editor.details.changeFieldInfo">Gõ vài ký tự đầu tiên để chọn...</message>
+	<message key="submission.citations.editor.details.citationExportPreview">Xem trước trích dẫn xuất</message>
+	<message key="submission.citations.editor.details.citationImprovementResultsActive">Kết quả dịch vụ trích dẫn nội bộ chuyên gia (bấm vào để đóng)</message>
+	<message key="submission.citations.editor.details.citationImprovementResultsInactive">Kết quả dịch vụ trích dẫn nội bộ chuyên gia (nhấp vào để mở)</message>
+	<message key="submission.citations.editor.details.citationServices">Dịch vụ trích dẫn</message>
+	<message key="submission.citations.editor.details.clickToDismissMessage">Quý vị có thể nhấp vào văn bản của tin nhắn để bỏ nó.</message>
+	<message key="submission.citations.editor.details.databaseQueryExplanation">Bên dưới quý vị thấy một danh sách các dịch vụ trích dẫn được định cấu hình cho tạp chí của quý vị. Các dịch vụ mà người quản lý tạp chí của quý vị coi là thích hợp nhất cho tạp chí của quý vị đã được chọn sẵn. Quý vị có thể bao gồm các dịch vụ bổ sung trong truy vấn của quý vị hoặc loại trừ các dịch vụ như quý vị muốn. </message>
+	<message key="submission.citations.editor.details.dataSaved">Thay đổi của quý vị đã được lưu.</message>
+	<message key="submission.citations.editor.details.editRawCitationDatabaseServices">Chọn dịch vụ cơ sở dữ liệu trích dẫn:</message>
+	<message key="submission.citations.editor.details.editRawCitationExpertSettingsActive">Thiết lập chỉnh sửa trích dẫn chuyên gia (Nhấn vào đây để đóng)</message>
+	<message key="submission.citations.editor.details.editRawCitationExpertSettingsInactive">Thiết lập chỉnh sửa trích dẫn chuyên gia (Nhấn vào đây để mở)</message>
+	<message key="submission.citations.editor.details.editRawCitationExtractionServices">Chọn dịch vụ khai thác trích dẫn:</message>
+	<message key="submission.citations.editor.details.editRawCitationFilterValidationError">Lỗi nội bộ: Lựa chọn bộ lọc không hợp lệ. Xin vui lòng gửi một báo cáo lỗi.</message>
+	<message key="submission.citations.editor.details.explainImprovementOptions">Nếu quý vị không nhận được kết quả thỏa đáng theo mặc định thì quý vị có các tùy chọn khác nhau để cải thiện các trích dẫn. Nó thường giúp để tự chỉnh sửa các lĩnh vực quan trọng (ví dụ như tiêu đề và tác giả) và sau đó hãy thử các dịch vụ trích dẫn một lần nữa. Nếu điều đó không giúp được gì thì quý vị vẫn có thể truy vấn Google Scholar hoặc hỏi tác giả để biết chi tiết. </message>
+	<message key="submission.citations.editor.details.googleScholar">Google Scholar</message>
+	<message key="submission.citations.editor.details.googleScholarExplanation">Nếu trích dẫn phù hợp không được tìm thấy trong bất kỳ dịch vụ trích dẫn nào được kết nối, thì quý vị vẫn có thể tìm kiếm một kết quả phù hợp trong Google Scholar. Thật không may, Google Scholar không cung cấp một giao diện dựa vào lĩnh vực cho dữ liệu của nó mà chúng ta có thể sử dụng, có nghĩa là không có cách nào để tự động trả lại dữ liệu vào trợ giúp này. Quý vị sẽ phải sao chép và dán thông tin bằng tay từ các trang kết quả của Google đến các lĩnh vực của quý vị. </message>
+	<message key="submission.citations.editor.details.manualEditing">Chỉnh sửa bằng tay</message>
+	<message key="submission.citations.editor.details.messages">Xin lưu ý (nhấp vào tin nhắn để bỏ chúng)</message>
+	<message key="submission.citations.editor.details.newFieldInfo">...nhấp vào đây để thêm một trường mới...</message>
+	<message key="submission.citations.editor.details.queryCitation">Dịch vụ trích dẫn tái truy vấn</message>
+	<message key="submission.citations.editor.details.queryGoogleScholar">Tìm kiếm trong Google Scholar</message>
+	<message key="submission.citations.editor.details.pleaseClickOnCitationToStartEditing"><![CDATA[<p>Chào mừng quý vị đến với quá trình chỉnh sửa trích dẫn. Nhấp chuột vào một trích dẫn trong danh sách bên trái sẽ hiện ra các trích dẫn trong cửa sổ này, nơi quý vị có thể kiểm tra tính chính xác của quá trình trích dẫn. Quý vị cũng sẽ có thể kiểm tra các trích dẫn đối với các dịch vụ cơ sở dữ liệu trích dẫn được định cấu hình bởi người quản lý tạp chí, và tự mình biên tập lại các trích dẫn.</p>
+		<h4>Điều hướng giao diện</h4>
+		<p>Nhấp vào một trong các trích dẫn được liệt kê ở bên trái để bắt đầu chỉnh sửa.</p>
+		<p>Tách ánh sáng màu xanh giữa các cửa sổ này và cột bên trái di chuyển. Cho dù bạn cần thêm chỗ để xem danh sách trích dẫn, hoặc khoảng cách thay thế nhiều hơn để chỉnh sửa một trích dẫn, nó có thể di chuyển theo cả hai hướng. </p>
+		<p>Để mở rộng giao diện trích dẫn, nhấp vào <strong> toàn màn hình </ strong> nút. Để trở về giao diện bình thường từ giao diện mở rộng trích dẫn, hãy nhấp vào <strong> Tắt toàn màn hình </ strong>nút. </p>
+		<h4>Thêm và xóa các trích dẫn</h4>
+		<p>Trích dẫn có thể được thêm bằng cách nhấn vào <strong> Trích dẫn mới </strong> biểu tượng ở góc trên bên phải của cột danh sách trích dẫn. Trích dẫn có thể được xóa bằng cách nhấn vào biểu tượng đỏ <strong> Xóa </ strong>bên trái của trích dẫn </ p>.
+		<h4>Chỉnh sửa trích dẫn</h4>
+		<p>Để chỉnh sửa một trích dẫn trong danh sách bên trái, nhấp chuột vào nó và nó sẽ mở ra trong cửa sổ này. Quý vị sẽ được nhìn thấy các trích dẫn gốc được viết bởi tác giả, tiếp theo là nỗ lực của trợ giúp khai thác tự động. Quý vị sẽ có thể tự chỉnh sửa trích dẫn gốc, chỉnh sửa một phần hoặc tất cả các trích dẫn mới, kiểm tra lại các trích dẫn đối với các dịch vụ cơ sở dữ liệu trích dẫn được định cấu hình, truy vấn Google Scholar; và truy vấn tác giả để biết thêm thông tin trích dẫn.</ p>
+		<p>Khi quý vị hoàn thành chỉnh sửa một trích dẫn đạt được sự hài lòng, thì hãy nhấn vào nút<strong> Lưu và Phê duyệt </ strong> quý vị sẽ được chuyển tự động tới trích dẫn không được chấp thuận tiếp theo trong danh sách. Bằng cách này quý vị có thể làm việc nhanh chóng thông qua một danh sách lớn các trích dẫn. Một khi tất cả các trích dẫn đã được chấp thuận, bạn sẽ được chuyển đến <strong> Xuất trích dẫn </strong>trang. </ p>]]> </message>
+	<message key="submission.citations.editor.details.processRawCitation">Quá trình</message>
+	<message key="submission.citations.editor.details.processRawCitationGoAhead">Lên đầu</message>
+	<message key="submission.citations.editor.details.processRawCitationTitle">Thay đổi trích dẫn gốc</message>
+	<message key="submission.citations.editor.details.processRawCitationWarning">Quý vị muốn thay đổi các văn bản trích dẫn ban đầu. Nếu quý vị làm điều đó thì tất cả các lĩnh vực sẽ được thay thế bằng các giá trị mới được tạo ra. Điều này sẽ xoá các thay đổi bằng tay đã đã thực hiện.</message>
+	<message key="submission.citations.editor.details.saveAndApprove">Lưu và phê duyệt</message>
+	<message key="submission.citations.editor.details.saveAndRevokeApproval">Rút lại phê duyệt</message>
+	<message key="submission.citations.editor.details.sendAuthorQuery">Gửi tin nhắn</message>
+	<message key="submission.citations.editor.details.sendAuthorQuerySuccess">Tin nhắn đã gửi!</message>
+	<message key="submission.citations.editor.details.sourceResultsUse">Sử dụng</message>
+	<message key="submission.citations.editor.details.sourceResultsUseAll">Sử dụng tất cả</message>
+	<message key="submission.citations.editor.details.sourceResultsUseAllExplanation">Nhấn vào đây để chuyển tất cả các lĩnh vực kết quả từ nguồn này trực tiếp vào danh sách lĩnh vực của quý vị</message>
+	<message key="submission.citations.editor.details.sourceResultsUseExplanation">Nhấn vào đây để chuyển lĩnh vực kết quả này trực tiếp vào danh sách lĩnh vực của quý vị</message>
+	<message key="submission.citations.editor.details.rawCitation">Văn bản trích dẫn gốc</message>
+	<message key="submission.citations.editor.details.rawCitationRequired">Yêu cầu một văn bản trích dẫn.</message>
+	<message key="submission.citations.editor.details.unsavedChanges">Trích dẫn chứa dữ liệu chưa được lưu. Xin vui lòng nhấn vào nút "Lưu" để giữ những thay đổi hoặc nút "Hủy" để không thực hiện những thay đổi. </message>
+	<message key="submission.citations.editor.details.dontShowMessageAgain">Không hiển thị thông báo này một lần nữa.</message>
+	<message key="submission.citations.editor.edit">Chỉnh sửa trích dẫn</message>
+	<message key="submission.citations.editor.export">Xuất trích dẫn</message>
+	<message key="submission.citations.editor.export.exportDescription"><![CDATA[<a id="markForExport" href="">Nhấn vào đây</a> để chọn tất cả các đầu ra được tạo. Sau đó Quý vị có thể sao chép và dán nó vào tài liệu của quý vị.]]></message>
+	<message key="submission.citations.editor.export.filterSelectionDescription">Vui lòng chọn một trong các tùy chọn xuất sau đây.</message>
+	<message key="submission.citations.editor.export.filterSelectionError">Quý vị không chọn một trong các tùy chọn đầu ra.</message>
+	<message key="submission.citations.editor.export.foundUnapprovedCitationsMessage"><![CDATA[<p>Quý vị vẫn chưa được chấp thuận tất cả các trích dẫn. Xin vui lòng đến <strong>Chỉnh sửa trích dẫn</strong> tab và chắc chắn rằng quý vị đã chấp thuận tất cả các trích dẫn trước khi quý vị cố gắng để xuất. Trích dẫn đã được phê duyệt được đánh dấu bằng sọc màu xanh đậm bên trái.</p>]]></message>
+	<message key="submission.citations.editor.export.noExportOutput">Bộ lọc đầu ra của {$ filterName} đã tạo ra một lỗi. Vui lòng thông báo lỗi.</message>
+	<message key="submission.citations.editor.export.pleaseSelectXmlFilter">Tùy chọn đầu ra XML:</message>
+	<message key="submission.citations.editor.export.pleaseSelectPlaintextFilter">Đầu ra kiểu trích dẫn (chỉ thử nghiệm!):</message>
+	<message key="submission.citations.editor.introduction">Giới thiệu</message>
+	<message key="submission.citations.editor.introduction.introductionMessage"><![CDATA[<h4>Chào mừng quý vị đến với công cụ trợ giúp đánh dấu trích dẫn!</h4>
+	<p>Với công cụ trợ này, quý vị có thể đánh dấu tác giả-trích dẫn được cung cấp để xuất sang bản in NLM 2,3 hoặc XML 3,0; hoặc đầu ra dựa trên văn bản khác. Đầu tiên công cụ này nỗ lực để tự động trích xuất và nhận ra trích dẫn như chúng đã được cung cấp, nhưng quý vị có thể vào và chỉnh sửa các kết quả bất cứ lúc nào.</p >
+	<ul>
+		<li><p><strong>Cấu hình trợ giúp</strong></p>
+		<p>Trợ giúp đánh dấu trích dẫn được đặt cấu hình bởi người quản lý tạp chí <a href="{$citationSetupUrl}">Cài đặt tạp chí bước 3.7: Trợ giúp đánh dấu trích dẫn</a>. Khai thác trích dẫn khác nhau và các công cụ kiểm tra có thể được thêm vào, đặt cấu hình, và xóa. Để biết thêm thông tin, liên hệ với người quản lý tạp chí.</p></li>
+		<li><p><strong>Điều hướng giao diện trợ giúp</strong></p>
+		<p>Để chuyển đổi giữa <strong>Giới thiệu</strong>, <strong>Sửa trích dẫn</strong> và <strong>Xuất trích dẫn</strong> tab, nhấp vào tiêu đề tab. Để mở rộng giao diện trích dẫn, nhấp <strong> toàn màn hình </strong> nút. Để trở về giao diện bình thường từ giao diện trích dẫn mở rộng, nhấp vào <strong>Tắt toàn màn hình</strong> nút. Để xóa bỏ hoàn toàn các tab giới thiệu này, nhấp vào nút bên dưới.</p></li>
+		<li><p><strong>Yêu cầu trích dẫn</strong></p>
+		<p>Nếu trợ giúp đánh dấu trích dẫn đã được kích hoạt bởi người quản lý tạp chí, các tác giả sẽ được nhắc nhở cho một danh sách các tài liệu tham khảo trong quá trình gửi bài viết. Những tài liệu tham khảo sẽ được yêu cầu riêng cùng với tài liệu đệ trình. Sau khi nộp, tác giả cũng có thể thay đổi danh sách các tài liệu tham khảo bất kỳ lúc nào bằng cách chỉnh sửa siêu dữ liệu đệ trình; lưu ý rằng hành động này sẽ ghi đè lên bất kỳ sửa đổi nào mà bạn đã thực hiện với những trích dẫn đã sử dụng công cụ này.</p></li>
+		<li><p><strong>Chỉnh sửa trích dẫn</strong></p>
+		<p>Trợ giúp đánh dấu trích dẫn sẽ cố gắng xác định và giải nén trích dẫn cá nhân trong danh sách tài liệu tham khảo của tác giả. Quý vị có thể kiểm tra một cách hệ thống mỗi trích dẫn khai thác để nỗ lực cho chính xác đối với một số cơ sở dữ liệu bên ngoài, chỉnh sửa thông tin trích dẫn không chính xác và thêm thông tin mới, phê duyệt hoặc xóa các trích dẫn và thêm trích dẫn mới.</p>
+
+		<p>Tất cả các trích dẫn cuối cùng cho một đệ trình phải được phê duyệt trước khi chúng có thể được xuất.</p></li>
+		<li><p><strong>Xuất đệ trình</strong></p>
+ 		<p>Trích dẫn có thể được xuất như file XML hay văn bản. Tùy chọn xuất XML hiện tại bao gồm <a href="http://dtd.nlm.nih.gov/publishing/">Xuất bản tạp chí NLM</a> 2.3 và 3.0 <a href="http://www.ncbi.nlm.nih.gov/pmc/pmcdoc/tagging-guidelines/article/tags.html#el-reflist">ref-list XML</a>. Lựa chọn một trong các tùy chọn kết quả đầu ra một danh sách ref đoạn mã hóa XML có thể được sao chép và dán vào một bản in thử NLM XML .</p>
+		<p>Tùy chọn xuất văn bản thử nghiệm bao gồm ABNT, APA, MLA và kiểu đầu ra trích dẫn Vancouver. Các tùy chọn này cung cấp một văn bản đầu ra có thể được sao chép và dán vào một bài viết dựa trên văn bản in thử (ví dụ vào Microsoft Word hoặc OpenOffice, Adobe InDesign, vv). Mỗi trích dẫn bao gồm một liên kết nhúng để tự động tìm kiếm các trích dẫn đó trong Google Scholar.</p></li>
+	</ul>]]></message>
+	<message key="submission.citations.editor.loadMessage">Xin vui lòng chờ các trợ giúp đánh dấu trích dẫn để tải.</message>
+	<message key="submission.citations.editor.php5Required">Chỉnh sửa trích dẫn yêu cầu hỗ trợ XML và XSL chỉ có sẵn trong PHP phiên bản 5.0.0 và sau nữa. Có vẻ như cài đặt của quý vị đang chạy trên một phiên bản PHP trước đó. Quý vị sẽ không thể sử dụng các trợ giúp đánh dấu trích dẫn, trừ khi quý vị nâng cấp lên một phiên bản cao hơn. </message>
+	<message key="submission.citations.editor.pleaseAddParserFilter"><![CDATA[Xin vui lòng yêu cầu quản lý tạp chí của quý vị để <a href="{$citationSetupUrl}"> thêm ít nhất một dịch vụ khai thác trích dẫn</a> trước khi quý vị có thể sử dụng các trợ giúp đánh dấu trích dẫn.]]></message>
+	<message key="submission.citations.editor.pleaseConfigureOutputStyle"><![CDATA[Xin vui lòng yêu cầu quản lý tạp chí của quý vị để <a href="{$citationSetupUrl}"> định cấu hình một phong cách xuất trích dẫn</a> trước khi quý vị có thể sử dụng các trợ giúp đánh dấu trích dẫn.]]></message>
+	<message key="submission.citations.editor.pleaseImportCitationsFirst"><![CDATA[<p>Không có trích dẫn cho bài viết này.</p><p>Vui lòng đến bài của <a href="{$articleMetadataUrl}">trang siêu dữ liệu</a> và nhập vào một danh sách tài liệu tham khảo hoặc thêm tài liệu tham khảo bằng tay bằng cách sử dụng nút thêm mục của trình biên tập.</p>]]></message>
+	<message key="submission.citations.editor.pleaseSelect">Vui lòng chọn...</message>
+	<message key="submission.citations.editor.pleaseSetup"><![CDATA[Xin vui lòng yêu cầu quản lý tạp chí của quý vị để <a href="{$citationSetupUrl}"> cho phép chỉnh sửa trích dẫn </ a> trước khi quý vị có thể truy cập các trợ giúp đánh dấu trích dẫn.]]> </message>
+	<message key="submission.citations.editor.unprocessedCitations">Các trích dẫn của bài viết này vẫn đang được xử lý trên máy chủ. Danh sách trích dẫn hiện tại chỉ có trích dẫn đã được xử lý. Hãy nhấn nút Làm mới để xem trích dẫn đã được xử lý trong khi chờ đợi. </message>
+	<message key="submission.citations.editor.unprocessedCitationsButton">Làm mới danh sách trích dẫn</message>
+	<message key="submission.citations.editor.unprocessedCitationsButtonTitle">Nhấn vào đây để cập nhật danh sách trích dẫn.</message>
+	<message key="submission.citations.filter.invalidMetadata">Đã xảy ra lỗi trong {$ filterName}: Một trong những yếu tố dữ liệu đã bị trả về từ các nguồn dữ liệu (ví dụ như một dịch vụ web) không phù hợp với định dạng siêu dữ liệu nội bộ. Do đó kết quả các nguồn dữ liệu đã bị từ chối. Hãy gửi điều này như là một lỗi </message>.
+	<message key="submission.citations.filter.noResultFromFilterError">Một số dịch vụ trích dẫn không trả lại bất kỳ kết quả nào. Quý vị có thể thử để tự chỉnh sửa các phạm vi trích dẫn và sau đó truy vấn các dịch vụ trích dẫn một lần nữa để cải thiện kết quả. Nếu điều này không giúp được thì trích dẫn không tồn tại trong bất kỳ cơ sở dữ liệu kết nối </message>.
+	<message key="submission.citations.filter.unsupportedPublicationType">Không được hỗ trợ hoặc mất loại ấn phẩm. Xin vui lòng tự sửa trích dẫn và nhập loại ấn phẩm (loại được phép là 'cuốn sách', 'tạp chí "," luận án "và" conf-proc') </message>.
+	<message key="submission.citations.filter.webserviceError">Các {$ filterName} của  lệnh dịch vụ web đã trả lại một lỗi khi lệnh với URL như sau: {$ webserviceUrl}. Nó có thể là các dịch vụ web tạm thời không có. Quý vị vẫn sẽ có thể làm việc với các dịch vụ còn lại và lưu kết quả của mình. Quý vị cũng có thể thử lại sau. Nếu lỗi vẫn còn thì vui lòng yêu cầu người quản lý tạp chí tắt dịch vụ này và mở một báo cáo lỗi.</message>
+	<message key="submission.citations.filter.webserviceResultTransformationError">Đã xảy ra lỗi trong {$ filterName}:  Việc chuyển đổi của kết quả XML (ví dụ như từ một dịch vụ web) vào lĩnh vực dựa trên siêu dữ liệu thất bại. Lý do có thể là các dịch vụ web đã trả về dữ liệu không hợp lệ hoặc không đầy đủ. Hãy gửi điều này như là một lỗi </message>.
+	<message key="submission.citations.metadata.changeWarning">Quý vị có chắc chắn là quý vị muốn cập nhật danh sách tham khảo? Nếu quý vị nhấn OK, bất kỳ thay đổi được thực hiện bởi các biên tập viên sẽ được ghi đè. Nếu quý vị không chắc chắn liệu quý vị có nên thay đổi các danh sách tài liệu tham khảo hay không, xin vui lòng liên hệ với các biên tập viên phụ trách đệ trình của quý vị </message>.
+    <message key="submission.originalFileInstruct">Tập tin chính của đề xuất nghiên cứu. Vui lòng nhấp vào tiêu đề của nó (liên kết màu xanh) để tải về.</message>
+    <message key="submission.page.fullReview">{$id} Đánh giá đầy đủ </message>
+	<message key="submission.page.citations">{$id} Trích dẫn</message>
+	<message key="submissions.proposal.submitted">Đã gửi</message>
+	<message key="submissions.proposal.returned">Chưa hoàn thành</message>
+	<message key="submissions.proposal.checked">Hoàn thành</message>
+	<message key="submissions.proposal.exempted">Miễn đánh giá</message>
+	<message key="submissions.proposal.assigned">Cho đánh giá đầy đủ</message>
+	<message key="submissions.proposal.expedited">Cho đánh giá nhanh</message>
+	<message key="submissions.proposal.reviewed">Đã đánh giá</message>
+	<message key="submissions.proposal.expired">Hết hạn</message>
+	<message key="submissions.proposal.resubmitted">Đã gửi lại (Chưa hoàn thành)</message>
+    <message key="submissions.proposal.resubmittedMsg1">Đã gửi lại </message>
+    <message key="submissions.proposal.resubmittedMsg2"> thời gian như của </message>
+	
+    <message key="submissions.proposal.decline">Không phê duyệt</message>
+    <message key="submissions.proposal.resubmit">Sửa và gửi lại</message>
+    <message key="submissions.proposal.withdrawn">Rút lại</message>
+    <message key="submissions.proposal.withdrawnReason">Reason</message>
+    <message key="submissions.proposal.withdrawnComment">Bình luận</message>
+    <message key="submissions.proposal.draft">Nháp</message>
+    <message key="submissions.proposal.approved">Đã phê duyệt</message>
+    <message key="submissions.proposal.forContinuingReview">(Tiếp tục đánh giá)</message>
+    <message key="submissions.proposal.completed">Đã hoàn thành</message>
+    <message key="submissions.proposal.extensionrequested">yêu cầu mở rộng</message>
+    <message key="submissions.proposal.forContinuingReview">Tiếp tục đánh giá</message>
+    <message key="submission.submissions">Đệ trình</message>
+    <message key="submission.submitterInstruct">Người dùng đã gửi đề xuất thông qua cổng thông tin nghiên cứu sức khỏe này. Nó có thể không cùng một người như các điều tra viên của nghiên cứu.</message>
+    <message key="submission.submittedBetween">Gửi giữa</message>
+    <message key="submission.progressReports">Báo cáo tiến độ tạm thời</message>
+    <message key="submission.completionReports">Báo cáo hoàn thành</message>
+    <message key="submission.extensionRequest">Yêu cầu mở rộng</message>
+    <message key="submission.withdrawReports">Lý do rút lại</message>
+    <message key="submission.withdrawLack">Thiếu kinh phí</message>
+    <message key="submission.withdrawAdverse">Sự kiện bất lợi</message>
+        <message key="submission.rawDataFile">Tập tin dữ liệu gốc</message>
+        <message key="submission.otherSuppResearchOutput">Kết quả nghiên cứu bổ sung khác</message>
+	<message key="submission.currentAgencies">Cơ quan hiện tại</message>
+	<message key="submission.indexingInformation">Thông tin lập chỉ mục</message>
+	<message key="submission.uploadSuccessful">Tập tin của quý vị đã được tải lên.</message>
+	<message key="submission.uploadSuccessfulContinue">Tập tin của quý vị đã được tải lên. Nhấn tiếp tục để chỉnh sửa siêu dữ liệu của tập tin.</message>
+        <message key="submission.loadMessage">Xin vui lòng chờ trong khi tập tin của quý vị được tải lên máy chủ.</message>
+	<message key="submission.artworkFileDetails">Chi tiết tập tin tác phẩm nghệ thuật</message>
+	<message key="submission.fileDetails">Tập tin chi tiết</message>
+	<message key="submission.nameRequired">Yêu cầu nhập tên cho mục này.</message>
+	<message key="submission.date.mmdd">MM-DD</message>
+	<message key="submission.date.yyyymmdd">Ngày nộp</message>
 </locale>

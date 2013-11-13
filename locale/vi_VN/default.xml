@@ -147,4 +147,16 @@ Các số ở Bảng 3 không thẳng hàng trong cột thứ ba.</pre>
 <br />
 <pre>4. ĐỊNH DẠNG
 Đoạn bắt đầu bằng "Chủ đề cuối cùng này..." chưa được lùi vào.</pre>]]></message>
+
+	 <!-- New item from e version -->
+
+	<message key="section.default.title">Các đề xuất</message>
+	<message key="section.default.abbrev">PROP</message>
+	<message key="section.default.policy"></message>
+	<message key="default.journalSettings.submissionFee">Nộp bài báo</message>
+	<message key="default.journalSettings.fastTrackFee">Đánh giá nhanh</message>
+	<message key="default.journalSettings.publicationFee">Ấn phẩm báo chí</message>
+	<message key="default.journalSettings.purchaseArticleFee">Mua báo</message>
+	<message key="default.journalSettings.membershipFee">Thành viên hiệp hội</message>
+	<message key="default.journalSettings.donationFee">Những đóng góp cho tạp chí</message>
 </locale>

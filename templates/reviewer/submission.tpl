@@ -85,13 +85,7 @@ $(document).ready(function() {
 		</td>
 	</tr>
 {/if}
- <!--
-	<tr valign="top">
-	       <td class="label">{translate key="submission.metadata"}</td>
-	       <td class="value">
-		       <a href="{url op="viewMetadata" path=$reviewId|to_array:$articleId}" class="action" target="_new">{translate key="submission.viewMetadata"}</a>
-	       </td>
-	</tr>-->
+
 </table>
 </div>
 <div class="separator"></div>

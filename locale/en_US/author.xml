@@ -200,7 +200,7 @@
             <message key="author.submit.addOtherSuppResearchOutput">Add Other Supplementary Research Output</message>
             
         <message key="author.submit.reasonsForWithdrawal">Reason for Withdrawal</message>
-        <message key="author.submit.reasonsForWithdrawal">Please specify the other reason</message>
+        <message key="author.submit.otherReasonForWithdrawal">Please specify the other reason</message>
         <message key ="author.proposal.type.CWHS">Clinical Trial</message>
         <message key ="author.proposal.type.HSPR">Health System and Policy Research</message>
         <message key ="author.proposal.type.PBS">Population-Based Survey</message>

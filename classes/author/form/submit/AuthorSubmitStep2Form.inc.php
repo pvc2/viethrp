@@ -77,6 +77,7 @@ class AuthorSubmitStep2Form extends AuthorSubmitForm {
         $this->addCheck(new FormValidatorLocale($this, 'selfFunding', 'required', 'author.submit.form.selfFunding', 'en_US'));
         $this->addCheck(new FormValidatorLocale($this, 'otherGrant', 'required', 'author.submit.form.otherGrant', 'en_US'));
         $this->addCheck(new FormValidatorLocale($this, 'specifyOtherGrant', 'required', 'author.submit.form.specifyOtherGrantField', 'en_US'));
+        
         $this->addCheck(new FormValidatorLocale($this, 'identityRevealed', 'required', 'author.submit.form.identityRevealedRequired', 'en_US'));
         $this->addCheck(new FormValidatorLocale($this, 'unableToConsent', 'required', 'author.submit.form.unableToConsentRequired', 'en_US'));
         $this->addCheck(new FormValidatorLocale($this, 'under18', 'required', 'author.submit.form.under18Required', 'en_US'));

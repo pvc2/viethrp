@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE locale SYSTEM "../../dtd/locale.dtd">
 
 <!--
@@ -168,4 +168,57 @@
 	<message key="plugins.categories.reports">Công cụ phụ trợ Báo cáo</message>
 	<message key="plugins.categories.themes.description">Phụ trợ Giao diện có thể dùng để thay đổi hình thức của website.</message>
 	<message key="plugins.categories.themes">Phụ trợ Giao diện</message>
+
+
+<!-- New item from e version -->
+
+
+	<message key="manager.emails.form.emailKeyRequired">Một email chính duy nhất được yêu cầu cho email.</message>
+	<message key="manager.reviewerSearch.advancedSearch">Tìm kiếm người đánh giá nâng cao</message>
+	<message key="manager.reviewerSearch.searchByName">Tìm kiếm người đánh giá theo tên</message>
+	<message key="manager.reviewerSearch.doneAmount">Số đánh giá đã hoàn thành</message>
+	<message key="manager.reviewerSearch.avgAmount">Số ngày trung bình cho mỗi đánh giá</message>
+	<message key="manager.reviewerSearch.lastAmount">Ngày kể từ đánh giá cuối cùng</message>
+	<message key="manager.reviewerSearch.activeAmount">Số đánh giá ​​hiện đang hoạt động</message>
+	<message key="manager.reviewerSearch.interests">Đánh giá lợi nhuận</message>
+	<message key="manager.setup.citationAssistant">Trợ giúp đánh dấu trích dẫn</message>
+	<message key="manager.setup.citationFilterParser">Khai thác trích dẫn</message>
+	<message key="manager.setup.citationFilterParserDescription"><![CDATA[<p>Để tìm kiếm và kiểm tra các trích dẫn trong cơ sở dữ liệu trích dẫn đầu tiên chúng phải được chia thành các siêu dữ liệu có thể đọc được: tiêu đề, nhà xuất bản, ngày xuất bản, v.v. tất cả phải được lấy ra từ các văn bản trích dẫn ban đầu được cung cấp bởi tác giả. Kết nối với các dịch vụ web bên ngoài có thể hỗ trợ trong quá trình này. Một hoặc một số kết nối có thể được thêm bằng cách nhấp vào "Thêm mục" dưới đây. Một số các kết nối có thể cần phải được định cấu hình, quý vị sẽ được nhắc nhở nếu đây là trường hợp đã nêu </ p>.
+	<p>Quý vị có thể chỉnh sửa hoặc xóa một kết nối hiện có bằng cách nhấn vào biểu tượng bánh răng bên cạnh nó.</p>]]></message>
+	<message key="manager.setup.citationFilterLookup">Kiểm tra trích dẫn</message>
+	<message key="manager.setup.citationFilterLookupDescription"><![CDATA[<p>Quý vị cũng cần phải kích hoạt và định cấu hình kết nối cơ sở dữ liệu trích dẫn từ bên ngoài. Điều này giúp quý vị tìm thấy lỗi trong trích dẫn của tác giả hoặc bổ sung thông tin (ví dụ DOI hoặc PubMed ID) cần thiết cho xuất bản điện tử hoặc khoản đặt cọc. </p>
+	<p>Chúng tôi cung cấp kết nối cho một số cơ sở dữ liệu bên ngoài mà quý vị có thể tìm kiếm các trích dẫn. Một số các cơ sở dữ liệu yêu cầu đăng ký hoặc thông tin cấu hình được nhập vào. Vui lòng tham khảo trang web chung của cơ sở dữ liệu để biết thêm thông tin về cách đăng ký. Bạn có thể thêm một hoặc một số cơ sở dữ liệu bằng cách nhấp vào "Thêm mục" dưới đây. </ P>
+        <p> Bạn có thể chỉnh sửa hoặc xóa một kết nối cơ sở dữ liệu bên ngoài hiện có bằng cách nhấn vào biểu tượng bánh răng bên cạnh nó. </ p><p> Lưu ý: </ strong> Để cho quá trình kiểm tra để hoàn thành một cách kịp thời trích dẫn, các citation_checking_max_processes <tt> </ tt> chỉ thị trong tập tin cấu hình của bạn phải được thiết lập một giá trị hợp lý. Xem phần Cài đặt chung trong <tt> config.inc.php </ tt> để biết thêm thông tin </ p>]]> </ message>.
+	<message key="manager.setup.citationOutput">Kết quả trích dẫn</message>
+	<message key="manager.setup.citationOutputStyleDescription">Chọn kiểu trích dẫn về bài báo của quý vị đang được sử dụng trong bản đệ trình của tác giả. Các trợ giúp đánh dấu lời trích dẫn cho phép quý vị so sánh các phiên bản trích dẫn của tác giả với một phiên bản được tạo ra từ XML mà quý vị đang tạo ra để quý vị có thể dễ dàng phát hiện các lỗi: </ message>
+	<message key="manager.setup.errorDeletingItem">Có một lỗi khi xóa mục này.</message>
+	<message key="manager.setup.filter.grid.errorDeletingFilter">Đã xảy ra lỗi trong khi cố gắng để loại bỏ bộ lọc này. Xin vui lòng báo cáo điều này như là một lỗi.</message>
+	<message key="manager.setup.filter.grid.filterDisplayName">Kết nối</message>
+	<message key="manager.setup.filter.grid.filterSettings">Thông tin đăng ký và thiết lập kết nối</message>
+	<message key="manager.setup.filter.grid.filterTemplateRequired">Vui lòng chọn một trong những biến đổi từ trình đơn thả xuống.</message>
+	<message key="manager.setup.filter.grid.confirmDelete">Quý vị có thực sự muốn xóa {$ filterName}bộ lọc?</message>	
+	<message key="manager.setup.filter.lookup.grid.descriptionConfirm">Quý vị đã chọn để thêm {$ filterDisplayName}cơ sở dữ liệu. Vui lòng nhấn vào 'OK' để xác nhận.</message>
+	<message key="manager.setup.filter.lookup.grid.descriptionTemplate">Vui lòng chọn một cơ sở dữ liệu tra cứu.</message>
+	<message key="manager.setup.filter.lookup.grid.description.iSBNdb"><![CDATA[<p>Bộ lọc này kết nối với <a href="http://isbndb.com/" target="_blank">ISBNdb.com</a> sách và cơ sở dữ liệu ISBN.</p>
+	<p>Một ISBNdb API chính là bắt buộc. Để biết thông tin trên tạo ra một chìa khóa, xem <a href="http://isbndb.com/docs/api/30-keys.html" target="_blank">tài liệu trực tuyến</a>.</p>]]></message>
+	<message key="manager.setup.filter.lookup.grid.description.crossRef"><![CDATA[<p>Bộ lọc này kết nối với cơ sở dữ liệu trích dẫn CrossRef sử dụng CrossRef của <a href="http://www.crossref.org/02publishers/openurl_info.html" target="_blank">OpenURL Query Interface</a>.</p> 
+	<p>Để sử dụng bộ lọc này, quý vị có thể sử dụng tài khoản hệ thống CrossRef của quý vị, hoặc đăng ký một địa chỉ email hợp lệ với CrossRef <a href="http://www.crossref.org/requestaccount/" target="_blank">here</a>.</p>]]></message>
+	<message key="manager.setup.filter.lookup.grid.description.pubMed"><![CDATA[<p>Bộ lọc này kết nối với PubMed <a href="http://www.ncbi.nlm.nih.gov/gquery/gquery.fcgi" target="_blank">Entrez</a> công cụ tìm kiếm qua cơ sở dữ liệu.</p>
+	<p>Một email đăng ký không bắt buộc phải đúng, nhưng có thể cần thiết nếu quý vị gặp phải vấn đề kết nối. Xem phần này tại <a href="http://www.be-md.ncbi.nlm.nih.gov/bookshelf/br.fcgi?book=helpeutils&part=chapter2#chapter2.Usage_Guidelines_and_Requiremen" target="_blank">Hướng dẫn sử dụng và yêu cầu</a> trong tài liệu Entrez để biết thêm thông tin.</p>]]></message>
+	<message key="manager.setup.filter.lookup.grid.description.worldCat"><![CDATA[<p>Bộ lọc này kết nối với các dịch vụ OCLC <a href="http://www.worldcat.org/affiliate/webservices/xisbn/app.jsp" target="_blank">xISBN</a> and <a href="http://www.worldcat.org/" target="_blank">Worldcat</a> (tùy chọn).</p>
+	<p>Nếu quý vị có một thư viện Worldcat <a href="http://www.worldcat.org/devnet/wiki/SearchAPIWhoCanUse" target="_blank">API key</a> Quý vị có thể kết nối với thư viện Worldcat
+ 	<message key="manager.setup.filter.lookup.grid.loadMessage">Vui lòng chờ cho đến khi lưới cấu hình cơ sở dữ liệu trích dẫn được tải ...</message>
+	<message key="manager.setup.filter.lookup.grid.title">Kết nối cơ sở dữ liệu trích dẫn</message>
+	<message key="manager.setup.filter.noMoreTemplates">Tất cả các biến đổi có sẵn đã được thêm vào. Vui lòng nhấp vào 'Hủy' để trở lại trang thiết lập.</message>
+	<message key="manager.setup.filter.parser.grid.descriptionConfirm">Quý vị đã chọn để thêm {$ filterDisplayName} phân tích cú pháp.  Vui lòng nhấn vào 'OK' để xác nhận.</message>
+	<message key="manager.setup.filter.parser.grid.descriptionTemplate">Vui lòng chọn một phân tích cú pháp trích dẫn.</message>
+	<message key="manager.setup.filter.parser.grid.description.freeCite"><![CDATA[<p>Bộ lọc khai thác này kết nối với <a href="http://freecite.library.brown.edu/" target="_blank">FreeCite</a> dịch vụ web.</p>]]></message>
+	<message key="manager.setup.filter.parser.grid.description.paraCite"><![CDATA[<p>Bộ lọc khai thác này sử dụng <a href="http://paracite.eprints.org/developers/" target="_blank">ParaTools</a> Perl mô-đun cung cấp <a href="http://paracite.eprints.org" target="_blank">ParaCite</a> chức năng phân tích cú pháp trích dẫn. Để cho tiện làm việc đúng cách, quý vị phải cài đặt Perl, cùng với các <a href="http://search.cpan.org/~mjewell/Biblio-Citation-Parser-1.10/" target="_blank">Biblio::Citation::Parser</a> và <a href="http://search.cpan.org/~sburke/Text-Unidecode-0.04/" target="_blank">Text::Unidecode</a> Module CPAN. Quý vị cũng phải định cấu hình <tt>perl</tt> chỉ định trong tập tin cấu hình của bạn. Chỉ thị này có thể được tìm thấy trong các phần lệnh của <tt>config.inc.php</tt>.</p>
+	<p>Quý vị cũng có thể chọn sử dụng mô-đun phân tích cú pháp ParaTools. Quý vị có thể chọn giữa các tiêu chuẩn, <a href="http://search.cpan.org/~mjewell/Biblio-Citation-Parser-1.10/lib/Biblio/Citation/Parser/Jiao.pm" target="_blank">Jiao</a>, và <a href="http://search.cpan.org/~mjewell/Biblio-Citation-Parser-1.10/lib/Biblio/Citation/Parser/Citebase.pm" target="_blank">Citebase</a> module phân tích cú pháp.</p>]]></message>
+	<message key="manager.setup.filter.parser.grid.description.parsCit"><![CDATA[<p>Bộ lọc khai thác này kết nối với <a href="http://aye.comp.nus.edu.sg/parsCit/" target="_blank">ParsCit</a> dịch vụ web.</p>]]></message>
+	<message key="manager.setup.filter.parser.grid.description.regEx">Bộ lọc khai thác RegEx sử dụng một loạt các biểu thức thông thường để phân tích trích dẫn.</message>
+	<message key="manager.setup.filter.parser.grid.loadMessage">Vui lòng chờ cho đến khi lưới cấu hình cơ sở dữ liệu trích dẫn được tải ...</message>
+	<message key="manager.setup.filter.parser.grid.title">Dịch vụ khai thác trích dẫn</message>
+	<message key="manager.setup.filter.pleaseSelect">Vui lòng chọn...</message>
+	<message key="manager.setup.metaCitationsDescription">Kích hoạt hộp kiểm tra sau đây để cho phép chỉnh sửa trích dẫn và tài liệu tham khảo. Điều này sẽ cho phép tác giả đưa các trích dẫn gốc cùng với bản đệ trình. Biên tập viên cũng sẽ được tiếp cận với một công cụ trợ lý đánh dấu trích dẫn có thể kiểm tra tài liệu trích dẫn gốc đối với cơ sở dữ liệu bên ngoài, chẳng hạn như WorldCat, ISBNdb, PubMed và những loại khác,  nhằm mang lại độ chính xác cao. Trích dẫn đã được phê duyệt có thể được xuất vào các tập tin in thử. </message>
 </locale>

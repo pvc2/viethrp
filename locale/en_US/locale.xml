@@ -278,10 +278,10 @@
         <message key="proposal.secondaryDataCollection">Secondary</message>
         <message key="proposal.bothDataCollection">Both</message>
         <message key="proposal.sourceOfMonetary">Source(s) of Monetary or Material Support</message>
-        <message key="proposal.riskAssessment">Risk Assessment</message>
-        <message key="proposal.researchIncludesHumanSubject">Does the proposed research include research subjects:</message>
         
         <!-- Risk Assesment -->
+        <message key="proposal.researchIncludesHumanSubject">Does the proposed research include research subjects:</message>
+        <message key="proposal.riskAssessment">Risk Assessment</message>
         <message key="proposal.identityRevealed">Whose identity may be revealed during the research process?</message>
         <message key="proposal.unableToConsent">Unable to consent?</message>
         <message key="proposal.under18">Under 18 years old?</message>

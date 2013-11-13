@@ -12,20 +12,20 @@
 -->
 
 <researchFields>
-    <researchField name="Accidents and Injuries (viet)" code="AI" />
-    <researchField name="Child health (viet)" code="CH" />
-    <researchField name="Drug quality (viet)" code="DQ" />
-    <researchField name="Family planning (viet)" code="FP" />
-    <researchField name="Gender and Sexuality (viet)" code="GS" />
-    <researchField name="Health care seeking/utilization (viet)" code="HCS" />
-    <researchField name="Health financing (viet)" code="HF" />
-    <researchField name="HIV/AIDS (viet)" code="HIV" />
-    <researchField name="Immunization/vaccine preventable disease (viet)" code="IPD" />
-    <researchField name="Infectious disease (viet)" code="ID" />
-    <researchField name="Malaria (viet)" code="MAL" />
-    <researchField name="Non-communicable disease (viet)" code="NCD" />
-    <researchField name="Nutrition (viet)" code="NU" />
-    <researchField name="Reproductive health (viet)" code="RH" />
-    <researchField name="Tuberculosis (viet)" code="TU" />
-    <researchField name="Other (viet)" code="OTHER" />
+    <researchField name="Tai nạn thương tích" code="AI" />
+    <researchField name="Sức khỏe trê em" code="CH" />
+    <researchField name="Chất lượng thuốc" code="DQ" />
+    <researchField name="Kế hoạch hóa gia đình" code="FP" />
+    <researchField name="Tình dục và giới tính" code="GS" />
+    <researchField name="Sử dụng dịch vụ y tế" code="HCS" />
+    <researchField name="Tài chính y tế" code="HF" />
+    <researchField name="HIV/AIDS" code="HIV" />
+    <researchField name="Tiêm chủng/vaccine phòng ngừa bệnh tật" code="IPD" />
+    <researchField name="Bệnh truyền nhiễm" code="ID" />
+    <researchField name="Sốt rét" code="MAL" />
+    <researchField name="Bệnh không truyền nhiễm" code="NCD" />
+    <researchField name="Dinh dưỡng" code="NU" />
+    <researchField name="Sức khỏe sinh sản" code="RH" />
+    <researchField name="Bệnh lao" code="TU" />
+    <researchField name="Các bệnh khác" code="OTHER" />
 </researchFields>
