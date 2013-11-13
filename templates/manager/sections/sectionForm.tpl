@@ -78,10 +78,12 @@ function checkEditorAssignments() {
 	<td class="label">{fieldLabel name="abbrev" required="true" key="section.abbreviation"}</td>
 	<td class="value"><input type="text" name="abbrev[{$formLocale|escape}]" id="abbrev" value="{$abbrev[$formLocale]|escape}" size="20" maxlength="20" class="textField" />&nbsp;&nbsp;{translate key="section.abbreviation.example"}</td>
 </tr>
+<!--
 <tr valign="top">
 	<td class="label">{fieldLabel name="policy" key="manager.sections.policy"}</td>
 	<td class="value"><textarea name="policy[{$formLocale|escape}]" rows="4" cols="40" id="policy" class="textArea">{$policy[$formLocale]|escape}</textarea></td>
 </tr>
+-->
 <tr valign="top">
 	<td class="label">{fieldLabel name="reviewFormId" key="submission.reviewForm"}</td>
 	<td class="value">
@@ -91,6 +93,7 @@ function checkEditorAssignments() {
 		</select>
 	</td>
 </tr>
+<!--
 <tr valign="top">
 	<td rowspan="4" class="label">{fieldLabel suppressId="true" key="submission.indexing"}</td>
 	<td class="value">
@@ -161,8 +164,10 @@ function checkEditorAssignments() {
 	</td>
 </tr>
 {/if}
+-->
 </table>
 </div>
+<!--
 <div class="separator"></div>
 <div id="sectionEditors">
 <h3>{translate key="user.role.sectionEditors"}</h3>
@@ -239,6 +244,7 @@ function checkEditorAssignments() {
 	</tr>
 </table>
 </div>
+-->
 <p><input type="submit" value="{translate key="common.save"}" class="button defaultButton" /> <input type="button" value="{translate key="common.cancel"}" class="button" onclick="document.location.href='{url op="sections" escape=false}'" /></p>
 
 </form>
