@@ -1163,6 +1163,8 @@ class ArticleDAO extends DAO {
 		else if ($status == 2) $searchSql .= " AND a.status <> 11";
 
 		$result =& $this->retrieve($searchSql);
+                
+                $articles = array();
 		while (!$result->EOF) {
 			$articles[] =& $this->_returnSearchArticleFromRow($result->GetRowAssoc(false));
 			$result->MoveNext();
