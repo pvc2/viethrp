@@ -1313,7 +1313,7 @@ class ArticleDAO extends DAO {
 		if (isset($row['engpublictitle'])) $article->setPublicTitle($row['engpublictitle'], 'en_US');
 		if (isset($row['vietpublictitle'])) $article->setPublicTitle($row['vietpublictitle'], 'vi_VN');
 		
-		if (isset($row['country'])) $article->setProposalCountry($row['country'], $article->getLocale());
+		if (isset($row['country'])) $article->setProposalCountry($row['country'], 'en_US');
 		if (isset($row['efname']) or isset($row['elname'])) $article->setPrimaryEditor($row['efname']." ".$row['elname']);
 		if (isset($row['afname']) or isset($row['alname'])) $article->setPrimaryAuthor($row['afname']." ".$row['alname']);
 		if (isset($row['start_date'])) $article->setStartDate($this->datetimeFromDB($row['start_date']), 'en_US');
@@ -1322,11 +1322,11 @@ class ArticleDAO extends DAO {
 		if (isset($row['date_decided'])) $article->setDateStatusModified($this->datetimeFromDB($row['date_decided']));
 		if (isset($row['email'])) $article->setAuthorEmail($row['email']);
 		if (isset($row['multicountryresearch'])) $article->setMultiCountryResearch($row['multicountryresearch'], 'en_US');
-		if (isset($row['primarysponsor'])) $article->setPrimarySponsor($row['primarysponsor'], $article->getLocale());
-		if (isset($row['otherprimarysponsor'])) $article->setOtherPrimarySponsor($row['otherprimarysponsor'], $article->getLocale());
-		if (isset($row['researchfield'])) $article->setResearchField($row['researchfield'], $article->getLocale());
+		if (isset($row['primarysponsor'])) $article->setPrimarySponsor($row['primarysponsor'], 'en_US');
+		if (isset($row['otherprimarysponsor'])) $article->setOtherPrimarySponsor($row['otherprimarysponsor'], 'en_US');
+		if (isset($row['researchfield'])) $article->setResearchField($row['researchfield'], 'en_US');
 		if (isset($row['investigatoraffiliation'])) $article->setInvestigatorAffiliation($row['investigatoraffiliation']);
-		if (isset($row['proposaltype'])) $article->setProposalType($row['proposaltype'], $article->getLocale());
+		if (isset($row['proposaltype'])) $article->setProposalType($row['proposaltype'], 'en_US');
 		if (isset($row['datacollection'])) $article->setDataCollection($row['datacollection'], 'en_US');
 		if (isset($row['studentinstitution'])) $article->setStudentInstitution($row['studentinstitution'], 'en_US');
 		if (isset($row['academicdegree'])) $article->setAcademicDegree($row['academicdegree'], 'en_US');
