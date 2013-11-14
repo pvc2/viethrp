@@ -1288,6 +1288,7 @@ class ArticleDAO extends DAO {
 		
 		$result =& $this->retrieve($searchSql);
 		
+                $articles = array();
 		while (!$result->EOF) {
 			$articles[] =& $this->_returnSearchArticleFromRow($result->GetRowAssoc(false));
 			$result->MoveNext();
