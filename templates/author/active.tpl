@@ -249,4 +249,12 @@
 	</tr>
 {/if}
 </table>
+{if !$submissions3->wasEmpty() || !$submissions2->wasEmpty() || !$submissions1->wasEmpty()}
+<table width="100%">
+	<tr>
+		<td width="20%" align="left"><br/>{page_info iterator=$submissions1}</td>
+		<td width="80%" align="right"><br/>{page_links anchor="submissions" name="submissions" iterator=$submissions1 searchField=$searchField searchMatch=$searchMatch search=$search dateFromDay=$dateFromDay dateFromYear=$dateFromYear dateFromMonth=$dateFromMonth dateToDay=$dateToDay dateToYear=$dateToYear dateToMonth=$dateToMonth dateSearchField=$dateSearchField section=$section sort=$sort sortDirection=$sortDirection}</td>
+	</tr>
+</table>
+{/if}
 </div>
