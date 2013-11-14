@@ -275,8 +275,6 @@ class NewSearchHandler extends Handler {
 		$proposal = $sectionEditorSubmissionDao->getSectionEditorSubmission($articleId);
 		$templateMgr->assign_by_ref('suppFiles', $proposal->getSuppFiles());
 				
-		$templateMgr->assign('dateFrom', $fromDate);
-		$templateMgr->assign('dateTo', $toDate);
 		$templateMgr->assign_by_ref('submission', $submission);
 		
 		$templateMgr->display('search/viewProposal.tpl');
