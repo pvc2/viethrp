@@ -38,7 +38,7 @@ class PKPReviewAssignmentDAO extends DAO {
 	 * @return ReviewAssignment
 	 */
 	function &getReviewAssignment($submissionId, $reviewerId, $round, $reviewType = 0) {
-
+		
 		$result =& $this->retrieve(
 			'SELECT r.*, r2.review_revision, u.first_name, u.last_name
 			FROM    review_assignments r
@@ -51,12 +51,10 @@ class PKPReviewAssignmentDAO extends DAO {
 				r.round = ?',
 			array((int) $submissionId, (int) $reviewerId, (int) $reviewType, (int) $round)
 		);
-
 		$returner = null;
 		if ($result->RecordCount() != 0) {
 			$returner =& $this->_fromRow($result->GetRowAssoc(false));
 		}
-
 		$result->Close();
 		unset($result);
 
@@ -461,6 +459,7 @@ class PKPReviewAssignmentDAO extends DAO {
 	 * @return ReviewAssignment
 	 */
 	function &_fromRow(&$row) {
+		
 		$reviewAssignment = $this->newDataObject();
 
 		$reviewAssignment->setReviewId($row['review_id']);
@@ -471,7 +470,7 @@ class PKPReviewAssignmentDAO extends DAO {
 		$reviewAssignment->setRegretMessage($row['regret_message']);
 		$reviewAssignment->setRecommendation($row['recommendation']);
 		$reviewAssignment->setDateAssigned($this->datetimeFromDB($row['date_assigned']));
-		$reviewAssignment->setDateNotified($this->datetimeFromDB($row['date_notified']));
+		$reviewAssignment->setDateNotified($this->datetimeFromDB($row['date_notified']));	
 		$reviewAssignment->setDateConfirmed($this->datetimeFromDB($row['date_confirmed']));
 		$reviewAssignment->setDateCompleted($this->datetimeFromDB($row['date_completed']));
 		$reviewAssignment->setDateAcknowledged($this->datetimeFromDB($row['date_acknowledged']));
@@ -490,7 +489,6 @@ class PKPReviewAssignmentDAO extends DAO {
 		$reviewAssignment->setReviewRevision($row['review_revision']);
 		$reviewAssignment->setReviewFormId($row['review_form_id']);
 		$reviewAssignment->setReviewType($row['review_type']);
-
 		return $reviewAssignment;
 	}
 

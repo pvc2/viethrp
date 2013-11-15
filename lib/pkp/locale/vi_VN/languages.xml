@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE languages SYSTEM "../../dtd/languages.dtd">
+<!--
+  * locale/en_US/languages.xml
+  *
+  * Copyright (c) 2000-2011 John Willinsky
+  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  *
+  * Localized list of common languages. Based on ISO 639-1.
+  *
+  -->
+<languages>
+	<language code="ab" name="Tiếng Abkhazian"/>
+	<language code="aa" name="Tiếng Afar"/>
+	<language code="af" name="Tiếng Nam Phi"/>
+	<language code="ak" name="Tiếng Akan"/>
+	<language code="sq" name="Tiếng An ba ni"/>
+	<language code="am" name="Tiếng Amharic"/>
+	<language code="ar" name="Tiếng Ả Rập"/>
+	<language code="an" name="Tiếng Tây Ban Nha"/>
+	<language code="hy" name="Tiếng Ạt mê ni"/>
+	<language code="as" name="Tiếng Assam"/>
+	<language code="av" name="Tiếng Avaric"/>
+	<language code="ae" name="Tiếng Avestan"/>
+	<language code="ay" name="Tiếng Aymara"/>
+	<language code="az" name="Tiếng Azerbaijan"/>
+	<language code="bm" name="Tiếng Bambara"/>
+	<language code="ba" name="Tiếng Bashkir"/>
+	<language code="eu" name="Tiếng Basque"/>
+	<language code="be" name="Tiếng Belarus"/>
+	<language code="bn" name="Tiếng Bengan"/>
+	<language code="bh" name="Ngôn ngữ Bihari"/>
+	<language code="bi" name="Tiếng Bislama"/>
+	<language code="bs" name="Tiếng Bosnia"/>
+	<language code="br" name="Tiếng Breton"/>
+	<language code="bg" name="Tiếng Bun-ga-ri"/>
+	<language code="my" name="Tiếng Myanmar"/>
+	<language code="ca" name="Tiếng Catalan"/>
+	<language code="km" name="Tiếng trung tâm Khơ-me"/>
+	<language code="ch" name="Tiếng Chamorro (Ngôn ngữ Mã Lai)"/>
+	<language code="ce" name="Tiếng Chechnya"/>
+	<language code="ny" name="Tiếng Chichewa"/>
+	<language code="zh" name="Tiếng Trung Quốc"/>
+	<language code="cu" name="Tiếng Church Slavic"/>
+	<language code="cv" name="Tiếng Chuvash"/>
+	<language code="kw" name="Tiếng Cornish"/>
+	<language code="co" name="Tiếng Corsica"/>
+	<language code="cr" name="Tiếng Cree"/>
+	<language code="hr" name="Tiếng Croatia"/>
+	<language code="cs" name="Tiếng Séc"/>
+	<language code="da" name="Tiếng Đan Mạch"/>
+	<language code="dv" name="Tiếng Divehi"/>
+	<language code="nl" name="Tiếng Hà Lan; Flemish"/>
+	<language code="dz" name="Tiếng Dzongkha"/>
+	<language code="en" name="Tiếng Anh"/>
+	<language code="eo" name="Quốc tế ngữ Esperanto"/>
+	<language code="et" name="Tiếng Eston"/>
+	<language code="ee" ưame="Tiếng Ewe"/>
+	<language code="fo" name="Tiếng Faroe"/>
+	<language code="fj" name="Tiếng Fiji"/>
+	<language code="fi" name="Tiếng Phần Lan"/>
+	<language code="fr" name="Tiếng Pháp"/>
+	<language code="ff" name="Tiếng Fulah"/>
+	<language code="gl" name="Tiếng Galician"/>
+	<language code="lg" name="Tiếng Ganda"/>
+	<language code="ka" name="Tiếng Gruzia (Tiếng Ba Tư)"/>
+	<language code="de" name="Tiếng Đức"/>
+	<language code="el" name="Tiếng Hy Lạp"/>
+	<language code="gn" name="Tiếng Guarani"/>
+	<language code="gu" name="Tiếng Gujarati"/> 
+	<language code="ht" name="Tiếng Haiti"/>
+	<language code="ha" name="Tiếng Hausa"/>
+	<language code="he" name="Tiếng Do Thái"/>
+	<language code="hz" name="Tiếng Herero"/>
+	<language code="hi" name="Tiếng Hindi"/>
+	<language code="ho" name="Tiếng Hiri Motu"/>
+	<language code="hu" name="Tiếng Hungary"/>
+	<language code="is" name="Tiếng Iceland"/>
+	<language code="io" name="Tiếng Ido"/>
+	<language code="ig" name="Tiếng Igbo"/>
+	<language code="id" name="Tiếng Indonesia"/>
+	<language code="ia" name="Tiếng bổ trợ quốc tế"/>
+	<language code="ie" name="Tiếng Interlingue"/>
+	<language code="iu" name="Tiếng Inuktitut"/>
+	<language code="ik" name="Tiếng Inupiaq"/>
+	<language code="ga" name="Tiếng Ailen"/>
+	<language code="it" name="Tiếng ý"/>
+	<language code="ja" name="Tiếng Nhật"/>
+	<language code="jv" name="Tiếng Java"/>
+	<language code="kl" name="Tiếng Kalaallisut"/>
+	<language code="kn" name="Tiếng Kannada"/>
+	<language code="kr" name="Tiếng Kanuri"/>
+	<language code="ks" name="Tiếng Kashmiri"/>
+	<language code="kk" name="Tiếng Kazakhstan"/>
+	<language code="ki" name="Tiếng Kikuyu; Gikuyu"/>
+	<language code="rw" name="Tiếng Kinyarwanda"/>
+	<language code="ky" name="Tiếng Kirghiz"/>
+	<language code="kv" name="Tiếng Komi"/>
+	<language code="kg" name="Tiếng Kongo"/>
+	<language code="ko" name="Tiếng Hàn"/>
+	<language code="kj" name="Tiếng Kuanyama; Kwanyama"/>
+	<language code="ku" name="Tiếng Kurd"/>
+	<language code="lo" name="Tiếng Lào"/>
+	<language code="la" name="Tiếng Latin"/>
+	<language code="lv" name="Tiếng Latvian"/>
+	<language code="li" name="Tiếng Limburgish"/>
+	<language code="ln" name="Tiếng Lingala"/>
+	<language code="lt" name="Tiếng Lithuania"/>
+	<language code="lu" name="Tiếng Luba-Katanga"/>
+	<language code="lb" name="Tiếng Luxembour"/>
+	<language code="mk" name="Tiếng Macedonian"/>
+	<language code="mg" name="Tiếng Malagasy"/>
+	<language code="ms" name="Tiếng Malay"/>
+	<language code="ml" name="Tiếng Malayalam"/>
+	<language code="mt" name="Tiếng Maltese"/>
+	<language code="gv" name="Tiếng Manx"/>
+	<language code="mi" name="Tiếng Maori"/>
+	<language code="mr" name="Tiếng Marathi"/>
+	<language code="mh" name="Tiếng Marshallese"/>
+	<language code="mo" name="Tiếng Moldavian; Moldovan"/>
+	<language code="mn" name="Tiếng Mongolian"/>
+	<language code="na" name="Tiếng Nauru"/>
+	<language code="nv" name="Tiếng Navajo; Navaho"/>
+	<language code="ng" name="Tiếng Ndonga"/>
+	<language code="ne" name="Tiếng Nepali"/>
+	<language code="nd" name="Tiếng North Ndebele"/>
+	<language code="se" name="Tiếng Northern Sami"/>
+	<language code="no" name="Tiếng Norwegian"/>
+	<language code="nb" name="Tiếng Norwegian Bokmål"/>
+	<language code="nn" name="Tiếng Norwegian Nynorsk"/>
+	<language code="oc" name="Tiếng Occitan"/>
+	<language code="oj" name="Tiếng Ojibwa"/>
+	<language code="or" name="Tiếng Oriya"/>
+	<language code="om" name="Tiếng Oromo"/>
+	<language code="os" name="Tiếng Ossetian; Ossetic"/>
+	<language code="pi" name="Tiếng Pali"/>
+	<language code="pa" name="Tiếng Panjabi; Punjabi"/>
+	<language code="fa" name="Tiếng Persian"/>
+	<language code="pl" name="Tiếng Ba Lan"/>
+	<language code="pt" name="Tiếng Bồ Đào Nha"/>
+	<language code="ps" name="Tiếng Pushto; Pashto"/>
+	<language code="qu" name="Tiếng Quechua"/>
+	<language code="ro" name="Tiếng Romani"/>
+	<language code="rm" name="Tiếng Romansh"/>
+	<language code="rn" name="Tiếng Rundi"/>
+	<language code="ru" name="Tiếng Nga"/>
+	<language code="ry" name="Tiếng Rusyn"/>
+	<language code="sm" name="Tiếng Samoan"/>
+	<language code="sg" name="Tiếng Sango"/>
+	<language code="sa" name="Tiếng Sanskrit"/>
+	<language code="sc" name="Tiếng Sardinian"/>
+	<language code="gd" name="Tiếng Scottish Gaelic"/>
+	<language code="sr" name="Tiếng Serbian"/>
+	<language code="sh" name="Tiếng Serbo-Croatian"/>
+	<language code="sn" name="Tiếng Shona"/>
+	<language code="ii" name="Tiếng Sichuan Yi"/>
+	<language code="sd" name="Tiếng Sindhi"/>
+	<language code="si" name="Tiếng Sinhalese"/>
+	<language code="sk" name="Tiếng Slovak"/>
+	<language code="sl" name="Tiếng Slovenian"/>
+	<language code="so" name="Tiếng Somali"/>
+	<language code="st" name="Tiếng Sotho, Southern"/>
+	<language code="nr" name="Tiếng South Ndebele"/>
+	<language code="es" name="Tiếng Spanish; Castilian"/>
+	<language code="su" name="Tiếng Sundanese"/>
+	<language code="sw" name="Tiếng Swahili"/>
+	<language code="ss" name="Tiếng Swati"/>
+	<language code="sv" name="Tiếng Swedish"/>
+	<language code="tl" name="Tiếng Tagalog"/>
+	<language code="ty" name="Tiếng Tahitian"/>
+	<language code="tg" name="Tiếng Tajik"/>
+	<language code="ta" name="Tiếng Tamil"/>
+	<language code="tt" name="Tiếng Tatar"/>
+	<language code="te" name="Tiếng Telugu"/>
+	<language code="th" name="Tiếng Thai"/>
+	<language code="bo" name="Tiếng Tibetan"/>
+	<language code="ti" name="Tiếng Tigrinya"/>
+	<language code="to" name="Tiếng Tonga"/>
+	<language code="ts" name="Tiếng Tsonga"/>
+	<language code="tn" name="Tiếng Tswana"/>
+	<language code="tr" name="Tiếng Thổ Nhĩ Kỳ"/>
+	<language code="tk" name="Tiếng Turkmen"/>
+	<language code="tw" name="Tiếng Twi"/>
+	<language code="ug" name="Uighur"/>
+	<language code="uk" name="Tiếng Ukraina"/>
+	<language code="ur" name="Tiếng Urdu"/>
+	<language code="uz" name="Tiếng Uzbek"/>
+	<language code="ve" name="Tiếng Venda"/>
+	<language code="vi" name="Tiếng Việt"/>
+	<language code="vo" name="Tiếng Volapük"/>
+	<language code="wa" name="Tiếng Walloon"/>
+	<language code="cy" name="Tiếng Welsh"/>
+	<language code="fy" name="Tiếng Western Frisian"/>
+	<language code="wo" name="Tiếng Wolof"/>
+	<language code="xh" name="Tiếng Xhosa"/>
+	<language code="yi" name="Tiếng Yiddish"/>
+	<language code="yo" name="Tiếng Yoruba"/>
+	<language code="za" name="Tiếng Zhuang; Chuang"/>
+	<language code="zu" name="Tiếng Zulu"/>
+</languages>

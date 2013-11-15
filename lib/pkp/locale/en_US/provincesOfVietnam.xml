@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : provincesOfVietnam.xml
+    Created on : May 2012
+    Author     : Edouard Lavaud
+    Description:
+        For use in country where proposal is submitted.
+-->
+
+<countries>
+    <country code="CHDL" name="Dak Lak province"/>
+    <country code="CHDN" name="Dak Nong province"/>
+    <country code="CHGL" name="Gia Lai province"/>
+    <country code="CHKT" name="Kon Tum province"/>
+    <country code="CHLD" name="Lam Dong province"/>
+    <country code="MDAG" name="An Giang province"/>
+    <country code="MDBL" name="Bac Lieu province"/>
+    <country code="MDBT" name="Ben Tre province"/>
+    <country code="MDCM" name="Ca Mau province"/>
+    <country code="MDCT" name="Can Tho city"/>
+    <country code="MDDT" name="Dong Thap province"/>
+    <country code="MDHG" name="Hau Giang province"/>
+    <country code="MDKG" name="Kien Giang province"/>
+    <country code="MDLA" name="Long An province"/>
+    <country code="MDST" name="Soc Trang province"/>
+    <country code="MDTG" name="Tien Giang province"/>
+    <country code="MDTV" name="Tra Vinh province"/>
+    <country code="MDVL" name="Vinh Long province"/>
+    <country code="NCCHT" name="Ha Tinh province"/>
+    <country code="NCCNA" name="Nghe An province"/>
+    <country code="NCCQB" name="Quang Binh province"/>
+    <country code="NCCQT" name="Quang Tri province"/>
+    <country code="NCCTH" name="Thanh Hoa province"/>
+    <country code="NCCTT" name="Thua Thien-Hue province"/>
+    <country code="NEBG" name="Bac Giang province"/>
+    <country code="NEBK" name="Bac Kan province"/>
+    <country code="NECB" name="Cao Bang province"/>
+    <country code="NEDB" name="Dien Bien province"/>
+    <country code="NEHB" name="Hoa Binh province"/>
+    <country code="NEHG" name="Ha Giang province"/>
+    <country code="NELC" name="Lao Cai province"/>
+    <country code="NELCh" name="Lai Chau province"/>
+    <country code="NELS" name="Lang Son province"/>
+    <country code="NEPT" name="Phu Tho province"/>
+    <country code="NEQN" name="Quang Ninh province"/>
+    <country code="NESL" name="Son La province"/>
+    <country code="NETN" name="Thai Nguyen province"/>
+    <country code="NETG" name="Tuyen Guang province"/>
+    <country code="NEYB" name="Yen Bai province"/>
+    <country code="RRDBN" name="Bac Ninh province"/>
+    <country code="RRDHD" name="Hai Duong province"/>
+    <country code="RRDHN" name="Ha Nam province"/>
+    <country code="RRDHNc" name="Hanoi city"/>
+    <country code="RRDHP" name="Hai Phong city"/>
+    <country code="RRDHY" name="Hung Yen province"/>
+    <country code="RRDND" name="Nam Dinh province"/>
+    <country code="RRDNB" name="Ninh Binh province"/>
+    <country code="RRDTB" name="Thai Binh province"/>
+    <country code="RRDVP" name="Vinh Phuc province"/>
+    <country code="SCCBD" name="Binh Dinh province"/>
+    <country code="SCCBT" name="Binh Thuan  province"/>
+    <country code="SCCDN" name="Da Nang city"/>
+    <country code="SCCKH" name="Khanh Hoa province"/>
+    <country code="SCCNT" name="Ninh Thuan province"/>
+    <country code="SCCPY" name="Phu Yen province"/>
+    <country code="SCCQN" name="Quang Nam province"/>
+    <country code="SCCQNg" name="Quang Ngai province"/>
+    <country code="SEBR" name="Ba Ria-Vung Tau province"/>
+    <country code="SEBD" name="Binh Duong province"/>
+    <country code="SEBP" name="Binh Phuoc province"/>
+    <country code="SEDN" name="Dong Nai province"/>
+    <country code="SETN" name="Tay Ninh province"/>
+    <country code="SETP" name="Than pho Ho Chi Minh city"/>
+</countries>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE locale SYSTEM "../../lib/pkp/dtd/locale.dtd">
 
 <!--
@@ -18,7 +18,7 @@
 	<message key="author.competingInterests"><![CDATA[Lợi&nbsp;ích&nbsp;xung&nbsp;đột <a target="_new" class="action" href="{$competingInterestGuidelinesUrl}">Chính&nbsp;sách&nbsp;CI</a>]]></message>
 	<message key="author.submit.submitArticle">Nộp một bài viết</message>
 	<message key="author.submit.stepsToSubmit">Năm bước nộp bài</message>
-	<message key="author.submit.startHereTitle">Nộp một bài mới</message>
+	<message key="author.submit.startHereTitle">Nộp bài viết mới</message>
 	<message key="author.submit.startHereLink"><![CDATA[<a href="{$submitUrl}" class="action">Nhấp chuột vào đây</a> để chuyển sang bước đầu tiên trong quá trình nộp bài gồm năm bước.]]></message>
 	<message key="author.submit.step1">Bước 1. Bắt đầu nộp bài</message>
 	<message key="author.submit.step2">Bước 2. Tải bài nộp lên</message>
@@ -117,4 +117,136 @@
 	<message key="author.article.copyeditedFile">File đã biên tập bản thảo</message>
 	<message key="author.article.authorRevisedFile">File của Tác giả</message>
 	<message key="author.submit.authorSubmitLoginMessage">Để nộp bài viết cho tạp chí này, quý vị cần có một tài khoản người dùng. Điều này cho phép các biên tập viên theo dõi bài nộp của quý vị và liên lạc với quý vị khi trạng thái của bài nộp thay đổi, hoặc khi cần thêm thông tin từ quý vị.</message>
+
+	 <!-- New item from e version -->
+
+	<message key="author.submissions.queuedReviewSubsequent">Trong phần đánh giá {$round}</message>
+	<message key="author.submissions.queuedReviewRevisions">Trong đánh giá: Yêu cầu chỉnh sửa</message>
+	<message key="author.submissions.queuedEditingCopyedit">Trong biên tập: Sửa bản thảo yêu cầu</message>
+	<message key="author.submissions.queuedEditingProofread">Trong biên tập: Yêu cầu đọc và sửa lại bản in thử</message>
+    <message key="author.submissions.confirmWithdraw">Quý vị có chắc là quý vị muốn rút lại đánh giá của quý vị không? Quý vị không thể hủy hành động này.</message>
+    <message key="author.submissions.confirmArchive">Quý vị có chắc là quý vị muốn gửi đề xuất này đến bộ phận lưu trữ không?</message>
+	<message key="author.submit.submissionLocale">Ngôn ngữ đệ trình</message>
+	<message key="author.submit.submissionLocaleDescription">Trang này châp nhận đệ trình bằng vài ngôn ngữ. Vui lòng chọn ngôn ngữ chính của sự đệ trình bằng cách kéo xuống dưới.</message>
+    <message key="author.submit.submissionChecklist1">Tôi đồng ý đưa ra bản báo cáo cuối cùng của nghiên cứu (cả bản sao điện tử và bản cứng) không quá 12 tháng sau khi hoàn thành việc thu thập dữ liệu/phạm vi làm việc với Trường Đại học y tế Công cộng Hà Nội.</message>
+    <message key="author.submit.form.noFileSelected">Không có file lựa chọn.</message>
+    <message key="author.submit.form.otherInternationalGrantName">Vui lòng chỉ rõ cơ quan</message>
+    <message key="author.submit.form.authorPhoneNumber">Vui lòng nhập số điện thoại của người điều tra</message>
+    <message key="author.submit.form.typeOfResearchRequired">Vui lòng chọn một loại nghiên cứu.</message>
+    <message key="author.submit.form.primarySponsor">Vui lòng chọn  người bảo lãnh chính của quý vị.</message>
+    <message key="author.submit.form.otherPrimarySponsor">Vui lòng chỉ rõ người bảo lãnh chính của quý vị.</message>
+    <message key="author.submit.form.otherSecondarySponsor">Vui lòng chỉ rõ những người bảo lãnh thứ hai.</message>
+    <message key="author.submit.form.multiCountry">Vui lòng chọn nếu nghiên cứu bao gồm các nước khác.</message> 
+    <message key="author.submit.form.country">Vui lòng chọn một nước.</message>n
+	<message key="author.submit.form.localeRequired">Vui lòng chọn một ngôn ngữ đệ trình.</message>
+    <message key="author.submit.form.researchField">Vui lòng chọn ít nhất một phạm vi nghiên cứu</message>
+    <message key="author.submit.form.otherResearchField">Vui lòng chỉ rõ phạm vi nghiên cứu</message>
+	<message key="author.submit.reorder">Cung cấp thêm tên của người điều tra chính</message>
+	<message key="author.article.decision">ERC Quyết định</message>
+    <message key="author.submit.form.scientificTitleRequired">Vui lòng nhập tiêu đề khoa học của đề xuất nghiên cứu.</message>
+    <message key="author.submit.form.engScientificTitleRequired">Vui lòng nhập tiêu đề khoa học tiếng Anh của đề xuất nghiên cứu.</message>
+    <message key="author.submit.form.vietScientificTitleRequired">Vui lòng nhận tiêu đề khoa học tiếng việt của đề xuất nghiên cứu.</message>
+    <message key="author.submit.form.publicTitleRequired">Vui lòng nhập tiêu đề chung của đề xuất nghiên cứu.</message>
+    <message key="author.submit.form.engPublicTitleRequired">Vui lòng nhập tiêu đề chung tiếng anh của đề xuất nghiên cứu.</message>
+    <message key="author.submit.form.vietPublicTitleRequired">Vui lòng nhập tiêu đề chung tiếng việt của đề xuất nghiên cứu.</message>
+    <message key="author.submit.form.studentInitiatedResearch">Vui lòng chọn Có hoặc Không (Sinh viên Bắt đầu Nghiên cứu).</message>
+    <message key="author.submit.form.studentInstitution">Vui lòng chỉ rõ cơ quan của sinh viên.</message>
+	<message key="author.submit.form.academicDegree">Vui lòng chỉ rõ trình độ học vấn của sinh viên.</message>
+	<message key="author.submit.form.supervisorEmailRequired">Vui lòng chỉ rõ email của giáo viên hướng dẫn sinh viên.</message>
+	<message key="author.submit.form.supervisorPhoneRequired">Vui lòng chỉ rõ số điện thoại đầy đủ (với mã số quốc gia) của giáo viên hướng dẫn sinh viên.</message>
+    <message key="author.submit.form.supervisorAffiliationRequired">Vui lòng chỉ rõ sự xác định tư cách của giáo viên hướng dẫn sinh viên.</message>
+    <message key="author.submit.form.supervisorFullNameRequired">Vui lòng chỉ rõ tên đầy đủ và tước vị danh hiệu của giáo viên hướng dẫn sinh viên.</message>
+    <message key="author.submit.form.ethicsCommittee">Vui lòng chọn một Ủy ban đạo đức.</message>
+    <message key="author.submit.form.dataCollection">Vui lòng chọn thu thập dữ liệu.</message>
+    <message key="author.submit.form.engAbstractRequired">Vui lòng nhập tóm tắt tiếng anh của đề xuất nghiên cứu.</message>
+    <message key="author.submit.form.vietAbstractRequired">Vui lòng nhập tóm tắt tiếng việt của đề xuất nghiên cứu.</message>
+    <message key="author.submit.form.engBackgroundRequired">Vui lòng nhập giới thiệu đề xuất nghiên cứu bằng tiếng anh.</message>
+    <message key="author.submit.form.vietBackgroundRequired">Vui lòng nhập giới thiệu đề xuất nghiên cứu bằng tiếng việt.</message>
+	<message key="author.submit.form.engObjectivesRequired">Vui lòng nhập mục tiêu của đề xuất nghiên cứu bằng tiếng anh.</message>
+    <message key="author.submit.form.vietObjectivesRequired">Vui lòng nhập mục tiêu của đề xuất nghiên cứu bằng tiếng việt.</message>
+    <message key="author.submit.form.engStudyMattersRequired">Vui lòng nhập phương pháp nghiên cứu của đề xuất nghiên cứu bằng tiếng anh.</message>
+    <message key="author.submit.form.vietStudyMattersRequired">Vui lòng nhập phương pháp nghiên cứu của đề xuất nghiên cứu bằng tiếng việt.</message>
+    <message key="author.submit.form.engExpectedOutcomesRequired">Vui lòng nhập kết quả mong đợi và ứng dụng của kết quả của đề xuất nghiên cứu bằng tiếng anh.</message>
+    <message key="author.submit.form.vietExpectedOutcomesRequired">Vui lòng nhập kết quả mong đợi và ứng dụng của kết quả của đề xuất nghiên cứu bằng tiếng việt.</message>
+    <message key="author.submit.form.objectivesRequired">Vui lòng nhập mục tiêu của đề xuất nghiên cứu của quý vị.</message> 
+	<message key="author.submit.form.keywordsRequired">Vui lòng nhập từ khóa cho đề xuất nghiên cứu của quý vị.</message>
+    <message key="author.submit.form.engKeywordsRequired">Vui lòng nhập từ khóa tiếng anh cho đề xuất nghiên cứu của quý vị.</message>
+    <message key="author.submit.form.vietKeywordsRequired">Vui lòng nhập từ khóa tiếng việt cho đề xuất nghiên cứu của quý v.</message>
+    <message key="author.submit.form.startDateRequired">Vui lòng nhập ngày bắt đầu của đề xuất nghiên cứu của quý vị.</message>
+    <message key="author.submit.form.otherPrimarySponsor">Vui lòng chỉ rõ người bảo lãnh chính.</message>
+    <message key="author.submit.form.endDateRequired">Vui lòng nhập ngày kết thúc của đề xuất nghiên cứu của quý vị.</message>
+    <message key="author.submit.form.fundsRequiredRequired">Vui lòng nhập kinh phí cần thiết cho nghiên cứu của quý vị.</message>
+        <message key="author.submit.form.selectedCurrency">Vui lòng chọn tiền tệ.</message>
+        <message key="author.submit.form.proposalCountryRequired">Vui lòng chọn ít nhất một phân cấp cho đề xuất này.</message>
+        <message key="author.submit.form.technicalUnitRequired">Vui lòng nhập đơn vị chuyên môn của WHO cho đề xuất này.</message>
+        <message key="author.submit.form.withHumanSubjectsRequired">Vui lòng cho biết nếu nghiên cứu liên quan đến đối tượng con người.</message>
+        <message key="author.submit.form.proposalTypeRequired">Vui lòng nhập loại đề xuất nghiên cứu.</message>
+        <message key="author.submit.form.otherProposalTypeRequired">Vui lòng chỉ rõ loại đề xuất khác.</message>
+        <message key="author.submit.form.submittedAsPiRequired">Vui lòng chọn Có hoặc Không (Đệ trình như người điều tra chính?).</message>
+        <message key="author.submit.form.conflictOfInterestRequired">Vui lòng chọn Có hoặc Không (Xung đột lợi ích?).</message>
+        <message key="author.submit.form.reviewedByOtherErcRequired">Vui lòng chọn Có hoặc Không (Please select Yes or No (Đánh giá b ERC khác?).</message>
+        <message key="author.submit.form.industryGrant">Vui lòng chọn Có hoặc Không (Phụ cấ công nghiệp?).</message>
+        <message key="author.submit.form.nameOfIndustry">Vui lòng chỉ rõ lĩnh vục công nghiệp (Trợ cấp công nghiệp).</message>
+        <message key="author.submit.form.internationalGrant">Vui lòng chọn Có hoặc Không (Trợ cấp cơ quan?).</message>
+        <message key="author.submit.form.internationalGrantName">Vui lòng chọn trợ cấp cơ quan.</message>
+        <message key="author.submit.form.mohGrant">Vui lòng chọn Có hoặc Không (Trợ cấp Bộ y tế?).</message>
+        <message key="author.submit.form.governmentGrant">Vui lòng chọn Có hoặc Không (Trợ cấp chính phủ?).</message>
+        <message key="author.submit.form.governmentGrantName">Vui lòng chỉ rõ trợ cấp chính phủ.</message>
+        <message key="author.submit.form.universityGrant">Vui lòng chọn Có hoặc Không (Trợ cấp của trường đại học?).</message>
+        <message key="author.submit.form.selfFunding">Vui lòng chọn Có hoặc Không (Kinh phí cá nhân?).</message>
+        <message key="author.submit.form.otherGrant">Vui lòng chọn Có hoặc Không.</message>
+        <message key="author.submit.form.specifyOtherGrantField">Vui lòng chỉ rõ các nguồn trợ cấp khác.</message>
+            <message key="author.submit.form.rtoOfficeRequired">Vui lòng chọn cơ quan của quý vị.</message>
+            <message key="author.submit.form.identityRevealedRequired">Vui lòng cho biết nếu đặc điểm của đối tượng nghiên cứu có thể bị tiết lộ trong quá trình nghiên cứu.</message>
+            <message key="author.submit.form.unableToConsentRequired">Vui lòng cho biết nếu (các) đối tượng nghiên cứu có thể không được chấp nhận.</message>
+            <message key="author.submit.form.under18Required">Vui lòng cho biết nếu (các) đối tượng nghiên cứu (có thể) dưới 18 tuổi.</message>
+            <message key="author.submit.form.dependentRelationshipRequired">Vuilòng cho biết nếu (các) đối tượng nghiên cứu (có thể) có mối quan hệ phụ thuộc với bất kỳ thành viên nào của nhóm nghiên cứu.</message>
+            <message key="author.submit.form.ethnicMinorityRequired">Vui lòng cho biết nếu (các) đối tượng nghiên cứu (có thể) đến từ một nhóm dân tộc thiểu số.</message>
+            <message key="author.submit.form.impairmentRequired">Vui lòng cho biết nếu (các) đối tượng nghiên cứu (có thể) bị suy giảm trí tuệ hoặc tinh thần.</message>
+            <message key="author.submit.form.pregnantRequired">Vui lòng cho biết nếu (các) đối tượng nghiên cứu (có thể) là người mang thai.</message>
+            <message key="author.submit.form.newTreatmentRequired">Vui lòng cho biết nếu nghiên cứu bao gồm (các) biện pháp trị liệu, (các) phương thức hoặc kiểm tra y học  mơi.</message>
+            <message key="author.submit.form.bioSamplesRequired">Vui lòng cho biết nếu nghiên cứu bao gồm (các) tập hợp (các) mẫu sinh học bao gồm cả chiết xuất mô.</message>
+            <message key="author.submit.form.radiationRequired">Vui lòng cho biết nếu nghiên cứu bao gồm việc sử dụng bức xạ ion hóa.</message>
+            <message key="author.submit.form.distressRequired">Vui lòng cho biết nếu nghiên cứu bao gồm sự đau đớn hoặc căng thẳng tâm lý.</message>
+            <message key="author.submit.form.inducementsRequired">Vui lòng cho biết nếu nghiên cứu bao gồm sự khuyến khích.</message>
+            <message key="author.submit.form.sensitiveInfoRequired">Vui lòng cho biết nếu nghiên cứu bao gồm việc thu thập các thông tin nhạy cảm.</message>
+            <message key="author.submit.form.deceptionRequired">Vui lòng cho biết nếu nghiên cứu bao gồm sự lừa dối.</message>
+            <message key="author.submit.form.reproTechnologyRequired">Vui lòng cho biết nếu nghiên cứu bao gồm công nghệ hỗ trợ sinh sản.</message>
+            <message key="author.submit.form.geneticsRequired">Vui lòng cho biết nếu nghiên cứu bao gồm các nghiên cứu về hệ gen hoặc gen con người.</message>
+            <message key="author.submit.form.stemCellRequired">Vui lòng cho biết nếu nghiên cứu bao gồm các tế bào gốc.</message>
+            <message key="author.submit.form.biosafetyRequired">Vui lòng cho biết nếu nghiên cứu bao gồm (các) vấn đề an toàn sinh học.</message>
+            <message key="author.submit.form.riskLevelRequired">Vui lòng cho biết mức độ rủi ro của nghiên cứu.</message>
+            <message key="author.submit.form.listRisksRequired">Vui lòng tóm tắt ngắn gọn danh sách các rủi ro.</message>
+            <message key="author.submit.form.howRisksMinimizedRequired">Vui lòng cho biết cách giảm thiểu/quản lý các rủi ro.</message>
+            <message key="author.submit.form.multiInstitutionsRequired">Vui lòng cho biết nếu nghiên cứu liên quan đến nhiều tổ chức.</message>
+        <message key="author.submit.form.withdrawReasonRequired">rút lại lý do cần thiết</message>
+        <message key="author.submit.form.otherReasonRequired">Rút lại các lý do cần thiết khác</message>
+
+        <message key="author.submit.addProgressReport">Nộp báo cáo tiến độ tạm thời</message>
+        <message key="author.submit.withdraw">Rút lại nghiên cứu</message>
+        <message key="author.submit.addCompletionReport">Nộp báo cáo cuối cùng</message>
+        <message key="author.submit.addExtensionRequest">Gửi yêu cầu mở rộng</message>
+            <message key="author.submit.addRawDataFile">Thêm File dữ liệu chưa xử lý</message>
+            <message key="author.submit.addOtherSuppResearchOutput">Thêm kết quả nghiên cứu bổ sung khác</message>
+            
+        <message key="author.submit.reasonsForWithdrawal">Lý do rút lại</message>
+        <message key="author.submit.reasonsForWithdrawal">Vuilòng chỉ rõ lý do khác</message>
+        <message key ="author.proposal.type.CWHS">Thử nghiệm lâm sàng</message>
+        <message key ="author.proposal.type.HSPR">Hệ thống y tế và nghiên cứu chính sách</message>
+        <message key ="author.proposal.type.PBS">Khảo sát dựa trên dân số</message>
+        <message key="author.submit.form.pleaseVerify">Chú ý<![CDATA[<br />]]>Trước khi kết thúc việc nộp xin đảm bảo rằng tất cả các dữ liệu bạn nhập vào là chính xác. Sau khi gửi đề nghị không thể được sửa đổi</message>
+        <message key="author.submit.form.wordCountAlert">Bạn đã vượt quá giới hạn từ tối đa cho tóm tắt.</message>
+        <message key="author.submit.submitInterimProgressReport">Nộp báo cáo tiến độ tạm thời/hàng năm</message>
+        <message key="author.submit.submitFinalReport">Nộp báo cáo cuối cùng</message>
+        <message key="author.submit.submitExtensionRequest">Gửi yêu cầu mở rộng</message>
+        <message key="author.submit.submitExtensionRequestInstruct">RTO yêu cầu tăng thêm thời gian cho nghiên cứu của họ phải gửi thư yêu cầu thông qua tùy chọn này.</message>
+        <message key="author.submit.submitOtherOutputs">Tải lên kết quả nghiên cứu bổ sung khác</message>
+        <message key="author.submit.submitOtherOutputsInstruct">Tạp chí ấn phẩm, tin tức, các mặt hàng hoặc bất kỳ ấn phẩm khác liên quan đến nghiên cứu.</message>
+        <message key="author.submit.uploadRawData">Tải lên dữ liệu chưa qua xử lý</message>
+        <message key="author.submit.uploadRawDataInstruct">Tập hợp dữ liệu cuối cùng sử dụng cho phân tích cuối cùng (Excel, SAS, SPSS hay Stata).</message>
+		<message key="author.submit.replaceSubmissionFile">Thay thế tập tin đệ trình</message>
+    <message key="author.submit.suppFileInstruct">Chọn (các) loại file<![CDATA[<br />]]>(Giữ phím CTRL [hoặc CMD trên mac] để chọn nhiều tùy chọn.)</message>
+    <message key="author.submit.suppFileSpecify">Chỉ rõ loại file "khác"</message>
+    <message key="author.submit.suppFileUploadInstruct">Chọn file để tải lên</message>
+    <message key="author.submit.uploadWithdrawReport">Tải lên báo cáo rút lại</message>
 </locale>

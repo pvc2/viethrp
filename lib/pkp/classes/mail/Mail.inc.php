@@ -329,10 +329,8 @@ class Mail extends DataObject {
 	function send() {
 		$recipients = $this->getRecipientString();
 		$from = $this->getFromString();
-
 		$subject = String::encode_mime_header($this->getSubject());
 		$body = $this->getBody();
-
 		// FIXME Some *nix mailers won't work with CRLFs
 		if (Core::isWindows()) {
 			// Convert LFs to CRLFs for Windows
@@ -341,7 +339,6 @@ class Mail extends DataObject {
 			// Convert CRLFs to LFs for *nix
 			$body = String::regexp_replace("/\r\n/", "\n", $body);
 		}
-
 		if ($this->getContentType() != null) {
 			$this->addHeader('Content-Type', $this->getContentType());
 		} elseif ($this->hasAttachments()) {
@@ -402,7 +399,6 @@ class Mail extends DataObject {
 				$mailBody .= 'Content-disposition: '.$attachment['disposition'].MAIL_EOL.MAIL_EOL;
 				$mailBody .= $attachment['content'].MAIL_EOL.MAIL_EOL;
 			}
-
 			$mailBody .= '--'.$mimeBoundary.'--';
 
 		} else {
@@ -416,7 +412,7 @@ class Mail extends DataObject {
 			$additionalParameters = null;
 		}
 
-		if (HookRegistry::call('Mail::send', array(&$this, &$recipients, &$subject, &$mailBody, &$headers, &$additionalParameters))) return;
+		if (HookRegistry::call('Mail::send', array(&$this, &$recipients, &$subject, &$mailBody, &$headers, &$additionalParameters)))return;
 
 		// Replace all the private parameters for this message.
 		if (is_array($this->privateParams)) {
@@ -424,7 +420,6 @@ class Mail extends DataObject {
 				$mailBody = str_replace($name, $value, $mailBody);
 			}
 		}
-
 		if (Config::getVar('email', 'smtp')) {
 			$smtp =& Registry::get('smtpMailer', true, null);
 			if ($smtp === null) {

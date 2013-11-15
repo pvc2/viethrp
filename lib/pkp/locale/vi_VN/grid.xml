@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../dtd/locale.dtd">
+
+<!--
+  * locale/en_US/grid.xml
+  *
+  * Copyright (c) 2000-2011 John Willinsky
+  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  *
+  * Localization strings for the en_US (English) locale.
+  *
+  * $Id$
+  -->
+
+<locale name="en_US" full_name = "English">
+	<!-- Common -->
+	<message key="grid.noItems">Không có m?c nào</message>
+	<message key="grid.settings">Thi?t l?p</message>
+
+	<message key="grid.action.sort">Lo?i</message>
+	<message key="grid.action.addItem">B? sung m?c</message>
+	<message key="grid.action.delete">Xóa</message>
+	<message key="grid.action.remove">H?y b?</message>
+	<message key="grid.action.edit">S?a</message>
+	<message key="grid.action.approve">Phê duy?t</message>
+	<message key="grid.action.approveForReview">G?i t?i giai ðo?n ðánh giá</message>
+	<message key="grid.action.approveForPub">Phê duy?t cho xu?t b?n</message>
+	<message key="grid.action.decline">T? ch?i</message>
+	<message key="grid.action.moreInformation">Thêm thông tin</message>
+	<message key="grid.action.restoreDefaults">Khôi ph?c m?c ð?nh</message>
+
+	<!-- Common Grid Column Titles -->
+	<message key="grid.columns.actions">Ho?t ð?ng</message>
+	<message key="grid.columns.institution">Cõ quan</message>
+	<message key="grid.columns.url">URL</message>
+
+	<!-- Sponsors Grid -->
+	<message key="grid.sponsor.title">Nhà tài tr?</message>
+
+	<!-- Masthead Grid -->
+	<message key="grid.masthead.title">Trang c?t t?a ð?</message>
+	<message key="grid.masthead.column.groups">Các nhóm</message>
+
+	<!-- Contributor Grid -->
+	<message key="grid.contributor.title">C?ng tác viên</message>
+	<message key="grid.action.addAuthor">Thêm tác gi?</message>
+
+	<!-- Review Forms Grid -->
+	<message key="grid.reviewForm.title">Các h?nh th?c ðánh giá</message>
+
+	<!-- Book File Types Grid -->
+	<message key="grid.bookFileType.form.sortable">Cho phép các t?p tin thu?c lo?i này ðý?c s?p x?p theo thành ph?n (ví d? nhý chýõng)</message>
+
+	<!-- Artwork Files Grid -->
+	<message key="grid.artworkFile.title">Tác ph?m ngh? thu?t/Quy?n</message>
+	<message key="grid.artworkFile.file">T?p tin</message>
+	<message key="grid.artworkFile.form.title">Thêm tác ph?m ngh? thu?t/Quy?n</message>
+	<message key="grid.artworkFile.form.metadata">Siêu d? li?u tác ph?m ngh? thu?t</message>
+	<message key="grid.artworkFile.caption">Chú thích</message>
+	<message key="grid.artworkFile.credit">Th? tín d?ng</message>
+	<message key="grid.artworkFile.captionAndCredit">Chú thích và th? tín d?ng (n?u không bao g?m trong các t?p tin)</message>
+	<message key="grid.artworkFile.copyrightOwner">Ch? s? h?u quy?n tác gi?</message>
+	<message key="grid.artworkFile.copyrightContact">Thông tin liên l?c (n?u không ph?i là tác gi? / nhà xu?t b?n)</message>
+	<message key="grid.artworkFile.permissionTerms">Ði?u kho?n ch?p thu?n</message>
+	<message key="grid.artworkFile.permissionForm">M?u gi?y phép</message>
+	<message key="grid.artworkFile.type">Lo?i</message>
+	<message key="grid.artworkFile.type.table">B?ng</message>
+	<message key="grid.artworkFile.type.figure">H?nh ?nh minh h?a</message>
+	<message key="grid.artworkFile.placement">V? trí trong cu?n sách</message>
+	<message key="grid.artworkFile.placementDetail">S? B?ng/h?nh</message>
+	<message key="grid.artworkFile.contactAuthor">Liên h? v?i tác gi?</message>
+
+	<!-- Library Files -->
+	<message key="grid.libraryFiles.column.files">Các t?p tin</message>
+	<message key="grid.libraryFiles.submission.title">Thý vi?n thông tin</message>
+	<message key="grid.libraryFiles.editorial.title">Thý vi?n biên t?p</message>
+	<message key="grid.libraryFiles.review.title">Thý vi?n ðánh giá</message>
+	<message key="grid.libraryFiles.production.title">Thý vi?n s?n xu?t</message>
+	<message key="grid.libraryFiles.productionTemplate.title">Thý vi?n m?u s?n xu?t</message>
+
+	<!-- SubmissionChecklist -->
+	<message key="grid.submissionChecklist.title">Danh sách ki?m tra g?i</message>
+	<message key="grid.submissionChecklist.column.checklistItem">M?c danh sách ki?m tra</message>
+
+	<!-- Submission Contributors -->
+	<message key="author.users.contributor.name">Tên</message>
+	<message key="author.users.contributor.email">E-mail</message>
+	<message key="author.users.contributor.role">Vai tr?</message>
+	<message key="author.users.contributor.principalContact">Liên h? chính</message>
+
+	<!-- Review Attachments -->
+	<message key="grid.reviewAttachments.title">File ðính kèm c?a ngý?i ðánh giá</message>
+	<message key="grid.reviewAttachments.add">Thêm file ðính kèm cho ngý?i ðánh giá</message>
+
+	<!-- Chapters -->
+	<message key="grid.chapters.title">Chýõng</message>
+</locale>

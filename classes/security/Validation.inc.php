@@ -14,7 +14,6 @@
 
 // $Id$
 
-
 import('classes.security.Role');
 
 class Validation {
@@ -365,12 +364,12 @@ class Validation {
 	 * @param $journalId int
 	 * @return boolean
 	 */
-	/*
+	
 	function isSectionEditor($journalId = -1) {
 		return Validation::isAuthorized(ROLE_ID_SECTION_EDITOR, $journalId);
 	}
-	*/
 	
+	/*
 	/**
 	 * Shortcut for checking authorization as layout editor.
 	 * @param $journalId int

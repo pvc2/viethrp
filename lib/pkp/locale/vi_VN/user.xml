@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE locale SYSTEM "../../dtd/locale.dtd">
 
 <!--
@@ -100,4 +100,53 @@
 	<message key="user.userHome">Người dùng</message>
 	<message key="user.username">Bí danh</message>
 	<message key="user.workingLanguages">Ngôn ngữ sử dụng</message>
+
+
+<!-- New item from e version -->
+
+    <message key="user.uhsStudent">Sinh viên UHS</message>
+    <message key="user.studentId">ID sinh viên</message>
+    <message key="user.tel">Số điện thoại</message>
+	<message key="user.affiliation.description">(cơ quan, ví dụ như: "Đại học y tế Công cộng Hà Nội")</message>
+	<message key="user.authorization.accessDenied">Truy cập bị từ chối.</message>
+	<message key="user.authorization.processAuthenticationTokenRequired">Quá trình xác thực mã thông báo đã bị mất hoặc không hợp lệ.</message>
+	<message key="user.authorization.contextRequired">Quý vị không thể gọi hoạt động này mà không có một ngữ cảnh (báo chí, tạp chí, hội nghị, vv).</message>
+	<message key="user.authorization.loginRequired">Yêu cầu đăng nhập.</message>
+	<message key="user.authorization.privateOperation">Các hoạt động quý vị đã cố gắng để truy cập hoặc là cá nhân hoặc không tồn tại.</message>
+	<message key="user.authorization.restrictedSiteAccess">Quý vị đã bị từ chối truy cập. Truy cập vào trang web này hiện đang bị hạn chế.</message>
+	<message key="user.authorization.roleBasedAccessDenied">Vai trò hiện tại không được tiếp cận với hoạt động này.</message>
+	<message key="user.authorization.userGroupRequired">Quý vị phải thiết lập một nhóm người sử dụng hợp lệ để truy cập hoạt động này.</message>
+	<message key="user.confirmEmail">Xác nhận email</message>
+	<message key="user.gossip">Ghi chú cá nhân</message>
+	<message key="user.profile.form.profileImageInvalid">Định dạng hình ảnh hồ sơ không hợp lệ hoặc hình ảnh quá lớn. Định dạng được chấp nhận là. Gif,. Jpg, hoặc. Png, và hình ảnh không được vượt quá 150x150 pixel.</message>
+	<message key="user.login.lostPassword.confirmationSent">Một xác nhận đã được gửi đến địa chỉ email của quý vị. Hãy làm theo các hướng dẫn trong email để đặt lại mật khẩu của quý vị.</message>
+	<message key="user.login.rememberUsernameAndPassword">Nhớ tên người dùng và mật khẩu của quý vị</message>
+	<message key="user.other">Khác</message>
+	<message key="user.repeatPassword">Lặp lại mật khẩu</message>
+    <message key="user.phoneInstruct">Vui lòng bao gồm các quốc gia và mã vùng.</message>
+	<message key="user.profile.changePasswordInstructions">Nhập mật khẩu hiện tại và mới của quý vị ở dưới để thay đổi mật khẩu cho tài khoản của quý vị.</message>
+    <message key="user.profile.form.affiliationRequired">Yêu cầu bản in thử.</message>
+    <message key="user.profile.form.phoneRequired">Yêu cầu số điện thoại.</message>
+    <message key="user.profile.form.mailingAddressRequired">Yêu cầu địa chỉ email.</message>
+    <message key="user.profile.form.countryRequired">Yêu cầu quốc gia cư trú.</message>
+	<message key="user.profile.form.openAccessNotifications">Các thông báo email truy cập ấn phẩm mở</message>
+	<message key="user.profile.form.publishedNotifications">Thông báo email các ấn phẩm mới xuất bản</message>
+	<message key="user.profile.form.healthAffiliationRequired">Vui lòng chọn Có hoặc Không (Có nếu liên quan đến sức khỏe)</message>
+	<message key="user.profile.form.wproAffiliationRequired">Vui lòng chọn Có hoặc Không (Có nếu liên quan đến WPRO).</message>
+	<message key="user.profile.form.healthAffiliation">Người dùng liên quan đến tổ chức y tế?</message>
+	<message key="user.profile.form.wproAffiliation">Người dùng liên quan đến WPRO?</message>
+	<message key="user.profile.healthWproAffiliation">Chi nhánh y tế/WPRo</message>
+	<message key="user.profile.healthAffiliated">Hội y tế</message>
+	<message key="user.profile.nonHealth">Không y tế</message>
+	<message key="user.profile.wproAffiliated">Hội WPRO</message>
+	<message key="user.profile.nonWpro">không WPRO</message>
+	<message key="user.register.form.passwordsDoNotMatch">Các mật khẩu không phù hợp.</message>
+	<message key="user.register.form.emailsDoNotMatch">Các phạm vi địa chỉ email không phù hợp.</message>
+	<message key="user.register.form.usernameAlphaNumeric">Tên người dùng chỉ có thể chứa ký tự chữ và số, gạch dưới, và dấu gạch ngang, và phải bắt đầu và kết thúc với một ký tự chữ số.</message>
+	<message key="user.register.passwordLengthRestriction">Mật khẩu phải có ít nhất {$length} ký tự.</message>
+	<message key="user.role.technicalReviewers">Người đánh giá chuyên môn</message>
+    <message key="user.salutation.dr">Tiến sĩ</message>
+    <message key="user.salutation.prof">Giáo sư</message>
+    <message key="user.salutation.mr">Ông</message>
+    <message key="user.salutation.ms">Bà</message>
 </locale>

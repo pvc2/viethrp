@@ -579,18 +579,6 @@ class ReviewerSubmission extends Article {
                 return $status;
 	}
 	
-	/**
-	 * Check if submission is due for continuing review (1-year since it was approved)
-	 * @return boolean
-	 */
-	function isSubmissionDue() {         
-        $today = time();
-        $startdate = strtotime($this->getStartDate($this->getLocale()));
-        $dueDate = strtotime ('+1 year', $startdate) ;
-    	$approvalDate = strtotime($this->getApprovalDate($this->getLocale()));    	
-        $approvalDue = strtotime ('+1 year', $approvalDate) ;
-    	return ($today >= $dueDate && $today >= $approvalDue);
-    }
 }
 
 ?>

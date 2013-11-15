@@ -43,7 +43,7 @@ class SubmitHandler extends AuthorHandler {
 
             if($articleDAO->getProposalStatus($articleId) == PROPOSAL_STATUS_RETURNED ||
                     ($lastDecision['decision'] == SUBMISSION_EDITOR_DECISION_RESUBMIT && !($articleDAO->isProposalResubmitted($articleId))) ||
-                    ($lastDecision['decision'] == SUBMISSION_EDITOR_DECISION_ACCEPT && $authorSubmission->isSubmissionDue())
+                    ($lastDecision['decision'] == SUBMISSION_EDITOR_DECISION_ACCEPT)
               )
                     
             {
@@ -54,7 +54,7 @@ class SubmitHandler extends AuthorHandler {
                 $submissionFile =& $authorSubmission->getSubmissionFile();
                 if(!empty($submissionFile)) {
                     $articleFileDao =& DAORegistry::getDAO('ArticleFileDAO');
-                    $articleFileDao->deleteArticleFileBySourceFileId($submissionFile->getFileId());
+                    //$articleFileDao->deleteArticleFileBySourceFileId($submissionFile->getFileId());
                 }
 
                 
@@ -123,11 +123,11 @@ class SubmitHandler extends AuthorHandler {
 	 * @param $request Request
 	 */
 	function saveSubmit($args, &$request) {
+		
 		$step = isset($args[0]) ? (int) $args[0] : 0;
 		$articleId = $request->getUserVar('articleId');
-                
+		//echo 'Here: '.$request->getUserVar('articleId');
 		$journal =& $request->getJournal();
-
 		$this->validate($articleId, $step);
 		$this->setupTemplate(true);
 		$article =& $this->article;
@@ -137,7 +137,7 @@ class SubmitHandler extends AuthorHandler {
 
 		$submitForm = new $formClass($article, $journal);
 		$submitForm->readInputData();
-
+		
 		if (!HookRegistry::call('SubmitHandler::saveSubmit', array($step, &$article, &$submitForm))) {
                 
 			// Check for any special cases before trying to save
@@ -217,7 +217,6 @@ class SubmitHandler extends AuthorHandler {
                                         }
                                         break;
 			}
-
 			if (!isset($editData) && $submitForm->validate()) {
 				$articleId = $submitForm->execute($request);
 				HookRegistry::call('Author::SubmitHandler::saveSubmit', array(&$step, &$article, &$submitForm));
@@ -225,43 +224,8 @@ class SubmitHandler extends AuthorHandler {
 				if ($step == 5) {
 					
 					// Rename uploaded files
-					$this->renameSubmittedFiles(); /*Added by MSB, Sept29, 2011*/
-								
-					// Send a notification to associated users
-					import('lib.pkp.classes.notification.NotificationManager');
-					$notificationManager = new NotificationManager();
-					$articleDao =& DAORegistry::getDAO('ArticleDAO');
-					$article =& $articleDao->getArticle($articleId);
-					$roleDao =& DAORegistry::getDAO('RoleDAO');
-					$notificationUsers = array();
-					$editors = $roleDao->getUsersByRoleId(ROLE_ID_EDITOR);
-
-                                        /** Buggy notification code (?), AIM, Jan 20 2012
-					$notifyUsers = $editors->toArray();
-					while ($editor =& $editors->next()) {
-						$url = $request->url(null, 'editor', 'submission', $articleId);
-						$notificationManager->createNotification(
-							$editor->getId(), 'notification.type.articleSubmitted',
-							$article->getLocalizedTitle(), $url, 1, NOTIFICATION_TYPE_ARTICLE_SUBMITTED
-						);
-						unset($editor);
-					}
-                                        **/
-
-                                        //Added by AIM, Jan 20, 2012
-                                        while (!$editors->eof()) {
-                                                $editor =& $editors->next();
-                                                $notificationUsers[] = array('id' => $editor->getId());
-                                                unset($editor);
-                                        }
-                                        $url = $request->url(null, 'editor', 'submission', $articleId);
-                                        foreach ($notificationUsers as $userRole) {
-                                                $notificationManager->createNotification(
-                                                        $userRole['id'], 'notification.type.articleSubmitted',
-                                                        $article->getLocalizedTitle(), $url, 1, NOTIFICATION_TYPE_ARTICLE_SUBMITTED
-                                                );
-                                        }
-
+					$this->renameSubmittedFiles(); /*Added by MSB, Sept29, 2011*/                
+                                        
 					$journal =& $request->getJournal();
 					$templateMgr =& TemplateManager::getManager();
 					$templateMgr->assign_by_ref('journal', $journal);
@@ -316,11 +280,11 @@ class SubmitHandler extends AuthorHandler {
 
                 // Bypass displaying the supplementay submission form (pass articleId and proposalType)
                 $suppFileType = $fileTypes[0];
-                if($suppFileType == Locale::translate('common.other') && $otherFileType != "") $suppFileType = $otherFileType;
+                if($suppFileType == 'OTHER' && $otherFileType != "") $suppFileType = $otherFileType;
                 $count = 1;
                 foreach ($fileTypes as $type) {
                     if($count > 1) {
-                        if($type == Locale::translate('common.other') && $otherFileType != "")
+                        if($type == 'OTHER' && $otherFileType != "")
                             $type = $otherFileType;
 
                         $suppFileType = $suppFileType . ', ' . $type;
@@ -328,7 +292,25 @@ class SubmitHandler extends AuthorHandler {
                     $count++;
                 }
                 
-                Request::redirect(null, null, 'saveSubmitSuppFile', $suppFileId, array('articleId' => $articleId, 'type' => $suppFileType));
+                $countTitle = 0;
+                foreach ($fileTypes as $type) {
+                    if($countTitle >= 1) {
+                        if($type == 'OTHER' && $otherFileType != ""){
+                            $type = $otherFileType;
+                        	$suppFileTitle = $suppFileTitle . ', ' . $type;
+                        }
+                        else $suppFileTitle = $suppFileTitle . ', ' . $this->getTypeByKey($type);
+                    } else if ($countTitle < 1) {
+                        if($type == 'OTHER' && $otherFileType != ""){
+                            $type = $otherFileType;
+                        	$suppFileTitle = $type;
+                        }
+                        else $suppFileTitle = $this->getTypeByKey($type);              
+                    }	
+                    $countTitle++;
+                }
+                
+                Request::redirect(null, null, 'saveSubmitSuppFile', $suppFileId, array('articleId' => $articleId, 'type' => $suppFileType, 'title' => $suppFileTitle));
                 // End Edit Raf Tan 04/30/2011
 	}
 
@@ -365,6 +347,7 @@ class SubmitHandler extends AuthorHandler {
                 // Start Edit Raf Tan 04/30/2011
                 $type = $request->getUserVar('type');
                 // End Edit Raf Tan 04/30/2011
+                $title = $request->getUserVar('title');
 		$suppFileId = isset($args[0]) ? (int) $args[0] : 0;
 		$journal =& $request->getJournal();
 
@@ -392,7 +375,7 @@ class SubmitHandler extends AuthorHandler {
                // $suppFileDao = DAORegistry::getDAO('SuppFileDAO');
                // $suppFileCount = count($suppFileDao->getSuppFilesByArticle($articleId));
                 //$submitForm->setData('title', array($article->getLocale() => ('SuppFile'.$suppFileCount)));
-                $submitForm->setData('title', array($article->getLocale() => ($type)));
+                $submitForm->setData('title', array($article->getLocale() => ($title)));
 
                 $submitForm->setData('type', $type);
                 $submitForm->execute();
@@ -471,6 +454,43 @@ class SubmitHandler extends AuthorHandler {
                 
 		$this->article =& $article;
 		return true;
+	}
+
+	/**
+	 * Get type (method/approach).
+	 * @return string
+	 */
+	function getTypeByKey($key) {
+		switch ($key) {
+			case 'SUMMARY':
+				return Locale::translate('common.submit.suppFile.who.summary');
+			case 'INFORMED_CONSENT':
+				return Locale::translate('common.submit.suppFile.who.informedConsent');
+			case 'FUNDING':
+				return Locale::translate('common.submit.suppFile.who.funding');
+			case 'CV':
+				return Locale::translate('common.submit.suppFile.who.cv');
+			case 'QUESTIONNAIRE':
+				return Locale::translate('common.submit.suppFile.who.questionnaire');
+			case 'PROOF_OF_REGISTRATION':
+				return Locale::translate('common.submit.suppFile.who.proofOfRegistration');
+			case 'ERC_DECISION':
+				return Locale::translate('common.submit.suppFile.who.otherErcDecision');
+			case 'FINAL_DECISION':
+				return Locale::translate('common.submit.suppFile.who.finalDecision');
+			case 'RAW_DATA':
+				return Locale::translate('common.submit.suppFile.who.rawData');
+			case 'EXTENSION_REQUEST':
+				return Locale::translate('common.submit.suppFile.who.extensionRequest');
+			case 'COMPLETION_REPORT':
+				return Locale::translate('common.submit.suppFile.who.completionReport');
+			case 'PROGRESS_REPORT':
+				return Locale::translate('common.submit.suppFile.who.progressReport');
+			case 'OTHER_OUTPUTS':
+				return Locale::translate('common.submit.suppFile.who.otherOutputs');
+			default:
+				return Locale::translate('common.other');
+		}
 	}
 }
 ?>

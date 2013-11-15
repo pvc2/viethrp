@@ -20,6 +20,7 @@ import('lib.pkp.classes.form.FormError');
 
 // Import all form validators for convenient use in sub-classes
 import('lib.pkp.classes.form.validation.FormValidatorAlphaNum');
+import('lib.pkp.classes.form.validation.FormValidatorNumeric');
 import('lib.pkp.classes.form.validation.FormValidatorArray');
 import('lib.pkp.classes.form.validation.FormValidatorArrayCustom');
 import('lib.pkp.classes.form.validation.FormValidatorControlledVocab');
@@ -75,7 +76,6 @@ class Form {
 	 * @param $template string the path to the form template file
 	 */
 	function Form($template = null, $callHooks = true, $requiredLocale = null, $supportedLocales = null) {
-
 		if ($requiredLocale === null) $requiredLocale = Locale::getPrimaryLocale();
 		$this->requiredLocale = $requiredLocale;
 		if ($supportedLocales === null) $supportedLocales = Locale::getSupportedFormLocales();

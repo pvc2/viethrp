@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : proposaltypes.xml
+    Created on : May 12, 2011, 6:18 PM
+    Author     : anne
+    Description:
+        Proposal Types.
+    Updated    : 21 Dec 2011 - removed Proposal with Human Subjects; removed Operation Research types
+                 18 Nov 2011 - added Intervention Evaluation Research and Operation Research types
+    Note       : If adding proposal types, also add key to author.xml (author.proposal.type.<code>)
+-->
+
+<researchFields>
+    <researchField name="Tai nạn thương tích" code="AI" />
+    <researchField name="Sức khỏe trê em" code="CH" />
+    <researchField name="Chất lượng thuốc" code="DQ" />
+    <researchField name="Kế hoạch hóa gia đình" code="FP" />
+    <researchField name="Tình dục và giới tính" code="GS" />
+    <researchField name="Sử dụng dịch vụ y tế" code="HCS" />
+    <researchField name="Tài chính y tế" code="HF" />
+    <researchField name="HIV/AIDS" code="HIV" />
+    <researchField name="Tiêm chủng/vaccine phòng ngừa bệnh tật" code="IPD" />
+    <researchField name="Bệnh truyền nhiễm" code="ID" />
+    <researchField name="Sốt rét" code="MAL" />
+    <researchField name="Bệnh không truyền nhiễm" code="NCD" />
+    <researchField name="Dinh dưỡng" code="NU" />
+    <researchField name="Sức khỏe sinh sản" code="RH" />
+    <researchField name="Bệnh lao" code="TU" />
+    <researchField name="Các bệnh khác" code="OTHER" />
+</researchFields>

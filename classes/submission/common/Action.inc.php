@@ -16,7 +16,6 @@
  * @brief Application-specific submission actions.
  */
 
-
 /* These constants correspond to editing decision "decision codes". */
 define('SUBMISSION_EDITOR_DECISION_ACCEPT', 1);		//APPROVED
 define('SUBMISSION_EDITOR_DECISION_RESUBMIT', 2);	//REVISE AND RESUBMIT
@@ -42,11 +41,13 @@ define('SUBMISSION_FIELD_REVIEWER', 4);
 define('SUBMISSION_FIELD_COPYEDITOR', 5);
 define('SUBMISSION_FIELD_LAYOUTEDITOR', 6);
 define('SUBMISSION_FIELD_PROOFREADER', 7);
+define('SUBMISSION_FIELD_ID', 8);
 
 define('SUBMISSION_FIELD_DATE_SUBMITTED', 4);
 define('SUBMISSION_FIELD_DATE_COPYEDIT_COMPLETE', 5);
 define('SUBMISSION_FIELD_DATE_LAYOUT_COMPLETE', 6);
 define('SUBMISSION_FIELD_DATE_PROOFREADING_COMPLETE', 7);
+define('SUBMISSION_FIELD_DATE_APPROVED', 8);
 
 import('lib.pkp.classes.submission.common.PKPAction');
 
@@ -90,7 +91,6 @@ class Action extends PKPAction {
 			$journal =& $request->getJournal();
 			$metadataForm = new MetadataForm($article, $journal);
 			$metadataForm->readInputData();
-
 			// Check for any special cases before trying to save
 			if ($request->getUserVar('addAuthor')) {
 				// Add an author
@@ -148,7 +148,6 @@ class Action extends PKPAction {
 				}
 				$metadataForm->setData('authors', $authors);
 			}
-
 			if (isset($editData)) {
 				$metadataForm->display();
 				return false;
@@ -169,7 +168,6 @@ class Action extends PKPAction {
 						$article->getLocalizedTitle(), $url, 1, NOTIFICATION_TYPE_METADATA_MODIFIED
 					);
 				}
-
                                 //Added by AIM, Jan 20, 2012
                                 $notificationUsers = array();
                                 $roleDao =& DAORegistry::getDAO('RoleDAO');

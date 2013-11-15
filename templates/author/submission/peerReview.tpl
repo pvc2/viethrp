@@ -18,62 +18,72 @@
 {assign var=editorFiles value=$submission->getEditorFileRevisions($round)}
 {assign var="viewableFiles" value=$authorViewableFilesByRound[$round]}
 
-<h4>{translate key="submission.round" round=$round}</h4>
+<!--<h4>{translate key="submission.round" round=$round}</h4>-->
+{assign var="status" value=$submission->getSubmissionStatus()}
 
 <table class="data" width="100%">
 	<tr valign="top">
 		<td class="label" width="20%">
-			{translate key="submission.reviewVersion"}
+			{translate key="submission.technicalReview"}
 		</td>
 		<td class="value" width="80%">
-			{assign var="reviewFile" value=$reviewFilesByRound[$round]}
-			{if $reviewFile}
-				<a href="{url op="downloadFile" path=$submission->getId()|to_array:$reviewFile->getFileId():$reviewFile->getRevision()}" class="file">{$reviewFile->getFileName()|escape}</a>&nbsp;&nbsp;{$reviewFile->getDateModified()|date_format:$dateFormatShort}
+			{if $status == PROPOSAL_STATUS_SUBMITTED || $status == PROPOSAL_STATUS_RESUBMITTED || $status == PROPOSAL_STATUS_DRAFT}
+				{translate key="common.none"}<br/>
+			{elseif $lastDecisionArray.technicalReview == 0}
+				{translate key="submission.notRequired"}<br/>
+			{elseif $status == PROPOSAL_STATUS_CHECKED}
+				{translate key="submission.undergoing"}<br/>
+			{elseif $status == PROPOSAL_STATUS_RETURNED}
+				{translate key="submission.proposalIncomplete"}<br/>
 			{else}
-				{translate key="common.none"}
+				{translate key="reviewer.article.decision.accept"}<br/>
 			{/if}
-		</td>
-	</tr>
-	<tr valign="top">
-		<td class="label" width="20%">
-			{translate key="submission.initiated"}
-		</td>
-		<td class="value" width="80%">
-			{if $reviewEarliestNotificationByRound[$round]}
-				{$reviewEarliestNotificationByRound[$round]|date_format:$dateFormatShort}
-			{else}
-				&mdash;
-			{/if}
-		</td>
-	</tr>
-	<tr valign="top">
-		<td class="label" width="20%">
-			{translate key="submission.lastModified"}
-		</td>
-		<td class="value" width="80%">
-			{if $reviewModifiedByRound[$round]}
-				{$reviewModifiedByRound[$round]|date_format:$dateFormatShort}
-			{else}
-				&mdash;
-			{/if}
-		</td>
-	</tr>
-	<tr valign="top">
-		<td class="label" width="20%">
-			{translate key="common.uploadedFile"}
-		</td>
-		<td class="value" width="80%">
 			{foreach from=$viewableFiles item=reviewerFiles key=reviewer}
 				{foreach from=$reviewerFiles item=viewableFilesForReviewer key=reviewId}
 					{assign var="roundIndex" value=$reviewIndexesByRound[$round][$reviewId]}
 					{assign var=thisReviewer value=$start+$roundIndex|chr}
 					{foreach from=$viewableFilesForReviewer item=viewableFile}
-						{translate key="user.role.reviewer"} {$thisReviewer|escape}
-						<a href="{url op="downloadFile" path=$submission->getId()|to_array:$viewableFile->getFileId():$viewableFile->getRevision()}" class="file">{$viewableFile->getFileName()|escape}</a>&nbsp;&nbsp;{$viewableFile->getDateModified()|date_format:$dateFormatShort}<br />
+						<!--{translate key="user.role.reviewer"} {$thisReviewer|escape}-->
+						{if $viewableFile->getReviewType() == '4'}
+						<a href="{url op="downloadFile" path=$submission->getId()|to_array:$viewableFile->getFileId():$viewableFile->getRevision()}" class="file">{$viewableFile->getFileName()|escape}</a>&nbsp;&nbsp;{$viewableFile->getDateModified()|date_format:$dateFormatLong}<br />
+						{/if}
 					{/foreach}
 				{/foreach}
-			{foreachelse}
-				{translate key="common.none"}
+			{/foreach}
+		</td>
+	</tr>
+	<tr valign="top">
+		<td class="label" width="20%">
+			{translate key="submission.ethicalReview"}
+		</td>
+		<td class="value" width="80%">
+			{if $status == PROPOSAL_STATUS_SUBMITTED || $status == PROPOSAL_STATUS_RESUBMITTED || $status == PROPOSAL_STATUS_CHECKED}
+				{translate key="common.none"}<br/>
+			{elseif $status == PROPOSAL_STATUS_EXEMPTED}
+				{translate key="editor.article.decision.exempted"}<br/>
+			{elseif $status == PROPOSAL_STATUS_EXPEDITED}
+				{translate key="submission.expeditedReviewUndergoing"}<br/>
+			{elseif $status == PROPOSAL_STATUS_ASSIGNED}
+				{translate key="submission.fullReviewUndergoing"}<br/>
+			{elseif $status == PROPOSAL_STATUS_REVIEWED || PROPOSAL_STATUS_WITHDRAWN || PROPOSAL_STATUS_ARCHIVED || $status == PROPOSAL_STATUS_COMPLETED}
+				{if $lastDecisionArray.decision == SUBMISSION_EDITOR_DECISION_ACCEPT}
+					{translate key="reviewer.article.decision.accept"}<br/>
+				{elseif $lastDecisionArray.decision == SUBMISSION_EDITOR_DECISION_DECLINE}
+					{translate key="reviewer.article.decision.decline"}<br/>
+				{elseif $lastDecisionArray.decision == SUBMISSION_EDITOR_DECISION_RESUBMIT}
+					{translate key="submission.reviseAndResubmit"}<br/>
+				{/if}
+			{/if}
+			{foreach from=$viewableFiles item=reviewerFiles key=reviewer}
+				{foreach from=$reviewerFiles item=viewableFilesForReviewer key=reviewId}
+					{assign var="roundIndex" value=$reviewIndexesByRound[$round][$reviewId]}
+					{assign var=thisReviewer value=$start+$roundIndex|chr}
+					{foreach from=$viewableFilesForReviewer item=viewableFile}
+						{if $viewableFile->getReviewType() != '4'}
+						<a href="{url op="downloadFile" path=$submission->getId()|to_array:$viewableFile->getFileId():$viewableFile->getRevision()}" class="file">{$viewableFile->getFileName()|escape}</a>&nbsp;&nbsp;{$viewableFile->getDateModified()|date_format:$dateFormatLong}<br />
+						{/if}
+					{/foreach}
+				{/foreach}
 			{/foreach}
 		</td>
 	</tr>

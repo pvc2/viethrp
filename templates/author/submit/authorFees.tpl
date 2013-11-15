@@ -9,16 +9,20 @@
  *}
 <div id="authorFees">
 <h3>{translate key="payment.authorFees"}</h3>
-<p>{translate key="about.authorFeesMessage"}</p>
+{*<p>{translate key="about.authorFeesMessage"}</p>*}
 {if $currentJournal->getSetting('submissionFeeEnabled')}
+	<!-- Doesn't allow dual languages
 	<p>{$currentJournal->getLocalizedSetting('submissionFeeName')|escape}:
 	{if $submissionPayment}
 		{translate key="payment.paid"} {$submissionPayment->getTimestamp()|date_format:$datetimeFormatLong}
 	{else}
 		{$currentJournal->getSetting('submissionFee')|string_format:"%.2f"} ({$currentJournal->getSetting('currency')}) 
-		{if $showPayLinks}<a class="action" href="{url op="paySubmissionFee" path=$articleId}">{translate key="payment.payNow"}</a>{/if}
+		{*if $showPayLinks}<a class="action" href="{url op="paySubmissionFee" path=$articleId}">{translate key="payment.payNow"}</a>{/if*}
 	{/if}
 	<br />{$currentJournal->getLocalizedSetting('submissionFeeDescription')|nl2br}</p>
+	-->
+	{translate key="payment.authorFeesAmount"}<br/>
+	{translate key="payment.authorFeesDescription"}
 {/if}
 {if $currentJournal->getSetting('fastTrackFeeEnabled')}
 	<p>{$currentJournal->getLocalizedSetting('fastTrackFeeName')|escape}: 
@@ -35,6 +39,6 @@
 	<br />{$currentJournal->getLocalizedSetting('publicationFeeDescription')|nl2br}</p>	
 {/if}
 {if $currentJournal->getLocalizedSetting('waiverPolicy') != ''}
-	<p>{$currentJournal->getLocalizedSetting('waiverPolicy')}</p>
+	{*<p>{$currentJournal->getLocalizedSetting('waiverPolicy')}</p>*}
 {/if}
 </div>

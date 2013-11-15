@@ -146,7 +146,7 @@ class ReviewerSubmissionDAO extends DAO {
 		$this->articleDao->_articleFromRow($reviewerSubmission, $row);
 
 		HookRegistry::call('ReviewerSubmissionDAO::_returnReviewerSubmissionFromRow', array(&$reviewerSubmission, &$row));
-
+		
 		return $reviewerSubmission;
 	}
 
@@ -225,8 +225,8 @@ class ReviewerSubmissionDAO extends DAO {
 		$result =& $this->retrieve(
 			$sql,
 			array(
-				'cleanTitle', // Article title
-				'cleanTitle',
+				'cleanScientificTitle', // Article title
+				'cleanScientificTitle',
 				$locale,
 				'title', // Section title
 				$primaryLocale,
@@ -262,30 +262,20 @@ class ReviewerSubmissionDAO extends DAO {
 											  $technicalUnitField = null, $countryField = null, $rangeInfo = null, $sortBy = null, $sortDirection = SORT_DIRECTION_ASC) {
 		$primaryLocale = Locale::getPrimaryLocale();
 		$locale = Locale::getLocale();
+		
+		// Modified by EL on August 18, 2012: Even if a reviewer didn t complete a review he can see it in archive		
 		$params = array(
-				'cleanTitle', // Article title
-				'cleanTitle',
-				$locale,
-				'technicalUnit',
-				'technicalUnit',
+				'cleanScientificTitle', // Article title
+				'cleanScientificTitle',
 				$locale,
 				'proposalCountry',
 				'proposalCountry',
-				$locale,
-				'title', // Section title
-				$primaryLocale,
-				'title',
-				$locale,
-				'abbrev', // Section abbreviation
-				$primaryLocale,
-				'abbrev',
 				$locale,
 				$journalId,
-				$reviewerId,
-				SUBMISSION_EDITOR_DECISION_ASSIGNED);
+				$reviewerId);
 		$searchSql = '';
-		$technicalUnitSql = '';
 		$countrySql = '';
+		
 		if (!empty($search)) switch ($searchField) {
 			case SUBMISSION_FIELD_TITLE:
 				if ($searchMatch === 'is') {
@@ -328,51 +318,39 @@ class ReviewerSubmissionDAO extends DAO {
 				}
 				break;
 		}
-		
-		if (!empty($technicalUnitField)) {
-			$technicalUnitSql = " AND LOWER(COALESCE(atu.setting_value, atpu.setting_value)) = '" . $technicalUnitField . "'";
-		}
 											  	
 		if (!empty($countryField)) {
 			$countrySql = " AND LOWER(COALESCE(apc.setting_value, appc.setting_value)) = '" . $countryField . "'";
 		}
+		
+		// Modified by EL on August 18, 2012: Even if a reviewer didn t complete a review he can see it in archive		
 		$sql = 'SELECT	a.*,
 				r.*,
-				r2.review_revision,
 				u.first_name, u.last_name,
-				COALESCE(atl.setting_value, atpl.setting_value) AS submission_title,
-				COALESCE(stl.setting_value, stpl.setting_value) AS section_title,
-				COALESCE(sal.setting_value, sapl.setting_value) AS section_abbrev
+				COALESCE(atl.setting_value, atpl.setting_value) AS submission_title
 			FROM	articles a
 				LEFT JOIN authors aa ON (aa.submission_id = a.article_id AND aa.primary_contact = 1)
 				LEFT JOIN review_assignments r ON (a.article_id = r.submission_id)
 				LEFT JOIN article_settings atpl ON (atpl.article_id = a.article_id AND atpl.setting_name = ? AND atpl.locale = a.locale)
 				LEFT JOIN article_settings atl ON (atl.article_id = a.article_id AND atl.setting_name = ? AND atl.locale = ?)
-				LEFT JOIN article_settings atpu ON (a.article_id = atpu.article_id AND atpu.setting_name = ? AND atpu.locale = a.locale)
-				LEFT JOIN article_settings atu ON (a.article_id = atu.article_id AND atu.setting_name = ? AND atu.locale = ?)
 				LEFT JOIN article_settings appc ON (a.article_id = appc.article_id AND appc.setting_name = ? AND appc.locale = a.locale)
 				LEFT JOIN article_settings apc ON (a.article_id = apc.article_id AND apc.setting_name = ? AND apc.locale = ?)
-				LEFT JOIN sections s ON (s.section_id = a.section_id)
 				LEFT JOIN users u ON (r.reviewer_id = u.user_id)
-				LEFT JOIN review_rounds r2 ON (r.submission_id = r2.submission_id AND r.round = r2.round)
-				LEFT JOIN section_settings stpl ON (s.section_id = stpl.section_id AND stpl.setting_name = ? AND stpl.locale = ?)
-				LEFT JOIN section_settings stl ON (s.section_id = stl.section_id AND stl.setting_name = ? AND stl.locale = ?)
-				LEFT JOIN section_settings sapl ON (s.section_id = sapl.section_id AND sapl.setting_name = ? AND sapl.locale = ?)
-				LEFT JOIN section_settings sal ON (s.section_id = sal.section_id AND sal.setting_name = ? AND sal.locale = ?)
 				LEFT JOIN edit_decisions ed ON (ed.article_id = a.article_id)
 			WHERE	a.journal_id = ? AND
 				r.reviewer_id = ? AND
 				r.date_notified IS NOT NULL AND
-				ed.decision = ? ';
-		/*
+				r.date_due IS NOT NULL';	
+		
+		// Modified by EL on August 18, 2012: Even if a reviewer didn t complete a review he can see it in archive		
 		if ($active) {
-			$sql .=  ' AND r.date_completed IS NULL AND r.declined <> 1 AND (r.cancelled = 0 OR r.cancelled IS NULL)';
+			$sql .=  ' AND r.date_completed IS NULL AND r.declined <> 1 AND (r.cancelled = 0 OR r.cancelled IS NULL) AND (ed.decision = '.SUBMISSION_EDITOR_DECISION_ASSIGNED.' OR ed.decision = '.SUBMISSION_EDITOR_DECISION_EXPEDITED.' OR (ed.decision = '.SUBMISSION_EDITOR_DECISION_COMPLETE.' AND r.review_type = "4"))';
 		} else {
-			$sql .= ' AND (r.date_completed IS NOT NULL OR r.cancelled = 1 OR r.declined = 1)';
+			$sql .= ' AND (r.date_completed IS NOT NULL OR r.cancelled = 1 OR r.declined = 1 OR ed.decision = '.SUBMISSION_EDITOR_DECISION_ACCEPT.' OR ed.decision = '.SUBMISSION_EDITOR_DECISION_RESUBMIT.' OR ed.decision = '.SUBMISSION_EDITOR_DECISION_DECLINE.' OR ed.decision = '.SUBMISSION_EDITOR_DECISION_DONE.' OR ((ed.decision ='.SUBMISSION_EDITOR_DECISION_ASSIGNED.' OR ed.decision = '.SUBMISSION_EDITOR_DECISION_EXPEDITED.' OR ed.decision = '.SUBMISSION_EDITOR_DECISION_EXEMPTED.') AND r.review_type = "4"))';
 		}
-		*/
+		
 		$result =& $this->retrieveRange(
-			$sql . ' ' . $searchSql . $technicalUnitSql . $countrySql . ($sortBy?(' ORDER BY ' . $this->getSortMapping($sortBy) . ' ' . $this->getDirectionMapping($sortDirection)) : ''),
+			$sql . ' ' . $searchSql . $countrySql . ($sortBy?(' ORDER BY ' . $this->getSortMapping($sortBy) . ' ' . $this->getDirectionMapping($sortDirection)) : ''),
 			count($params)===1?array_shift($params):$params,
 			$rangeInfo
 		);
@@ -380,6 +358,70 @@ class ReviewerSubmissionDAO extends DAO {
 		$returner = new DAOResultFactory($result, $this, '_returnReviewerSubmissionFromRow');
 		return $returner;
 	}
+	
+	function getSubmissionsForFullReview($reviewerId){
+		$userDao =& DAORegistry::getDAO('UserDAO');
+		$user =& $userDao->getUser($reviewerId);
+		$section = (string)' ';
+		if ($user->isHsphMember() && !$user->isCrecMember()) $section = 'AND a.section_id = 1';
+		else if (!$user->isHsphMember() && $user->isCrecMember()) $section = 'AND a.section_id = 2';
+		$sql = 'SELECT a.*
+			FROM articles a
+				LEFT JOIN edit_decisions ed ON (a.article_id = ed.article_id)
+			WHERE ed.decision = 7';
+		
+		$result =& $this->retrieveRange(
+			$sql . ' ' . $section
+		);
+		
+		$returner = new DAOResultFactory($result, $this, '_returnReviewerSubmissionFromRow');
+		return $returner;
+	}
+
+	/**
+	 * Retrieve a submission for Full Review by article ID.
+	 * @param $articleId int
+	 * @param $reviewerId int
+	 * @return ReviewerSubmission
+	 */
+	function &getSubmissionForFullReview($articleId) {
+		$primaryLocale = Locale::getPrimaryLocale();
+		$locale = Locale::getLocale();
+		$result =& $this->retrieve(
+			'SELECT	a.*,
+				COALESCE(stl.setting_value, stpl.setting_value) AS section_title,
+				COALESCE(sal.setting_value, sapl.setting_value) AS section_abbrev
+			FROM	articles a
+				LEFT JOIN sections s ON (s.section_id = a.section_id)
+				LEFT JOIN section_settings stpl ON (s.section_id = stpl.section_id AND stpl.setting_name = ? AND stpl.locale = ?)
+				LEFT JOIN section_settings stl ON (s.section_id = stl.section_id AND stl.setting_name = ? AND stl.locale = ?)
+				LEFT JOIN section_settings sapl ON (s.section_id = sapl.section_id AND sapl.setting_name = ? AND sapl.locale = ?)
+				LEFT JOIN section_settings sal ON (s.section_id = sal.section_id AND sal.setting_name = ? AND sal.locale = ?)
+			WHERE	a.article_id = ?',
+			array(
+				'title',
+				$primaryLocale,
+				'title',
+				$locale,
+				'abbrev',
+				$primaryLocale,
+				'abbrev',
+				$locale,
+				$articleId
+			)
+		);
+
+		$returner = null;
+		if ($result->RecordCount() != 0) {
+			$returner =& $this->_returnReviewerSubmissionFromRow($result->GetRowAssoc(false));
+		}
+
+		$result->Close();
+		unset($result);
+
+		return $returner;
+	}
+	
 
 	/**
 	 * FIXME Move this into somewhere common (SubmissionDAO?) as this is used in several classes.
@@ -447,34 +489,56 @@ class ReviewerSubmissionDAO extends DAO {
 		$submissionsCount = array();
 		$submissionsCount[0] = 0;
 		$submissionsCount[1] = 0;
+		$submissionsCount[2] = 0;
 
-		$sql = 'SELECT	r.date_completed, r.declined, r.cancelled
+		$sql = 'SELECT	r.date_completed, r.declined, r.cancelled, r.review_type, ed.decision
 			FROM	articles a
 				LEFT JOIN review_assignments r ON (a.article_id = r.submission_id)
 				LEFT JOIN sections s ON (s.section_id = a.section_id)
 				LEFT JOIN users u ON (r.reviewer_id = u.user_id)
-				LEFT JOIN review_rounds r2 ON (r.submission_id = r2.submission_id AND r.round = r2.round)
 				LEFT JOIN edit_decisions ed ON (ed.article_id = a.article_id)
 			WHERE	a.journal_id = ? AND
 				r.reviewer_id = ? AND
-				r.date_notified IS NOT NULL AND 
-				ed.decision = ? ';
+				r.date_notified IS NOT NULL AND
+				r.date_due IS NOT NULL';
 
-		$result =& $this->retrieve($sql, array($journalId, $reviewerId, SUBMISSION_EDITOR_DECISION_ASSIGNED));
+		$result =& $this->retrieve($sql, array($journalId, $reviewerId));
 		
 		while (!$result->EOF) {
-			/*if ($result->fields['date_completed'] == null && $result->fields['declined'] != 1 && $result->fields['cancelled'] != 1) {
+			if ($result->fields['date_completed'] == null && $result->fields['declined'] != 1 && $result->fields['cancelled'] != 1 && (($result->fields['decision'] == 7 || $result->fields['decision'] == 8) || $result->fields['decision'] == 4 && $result->fields['review_type'] == 4)) {
 				$submissionsCount[0] += 1;
 			} else {
 				$submissionsCount[1] += 1;
-			}*/
-			$submissionsCount[0] += 1;
+			}
 			$result->moveNext();
 		}
 
 		$result->Close();
 		unset($result);
+		
+		$sql ='SELECT s.section_id
+			FROM articles a
+				LEFT JOIN sections s ON (s.section_id = a.section_id)
+				LEFT JOIN edit_decisions ed ON (ed.article_id = a.article_id)
+			WHERE a.journal_id = ? AND
+			ed.decision = ?';
+		
+		$userDao =& DAORegistry::getDAO('UserDAO');
+		$user =& $userDao->getUser($reviewerId);
+		
+		if ($user->isHsphMember() && !$user->isCrecMember()) $sql .= ' AND s.section_id = 1';
+		else if (!$user->isHsphMember() && $user->isCrecMember()) $sql .= ' AND s.section_id = 2';
+					
+		$result =& $this->retrieve($sql, array($journalId, SUBMISSION_EDITOR_DECISION_ASSIGNED));
 
+		while (!$result->EOF) {
+			$submissionsCount[2] += 1;
+			$result->moveNext();
+		}
+		
+		$result->Close();
+		unset($result);
+		
 		return $submissionsCount;
 	}
 

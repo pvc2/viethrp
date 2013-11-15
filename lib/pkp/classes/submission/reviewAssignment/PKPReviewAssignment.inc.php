@@ -40,6 +40,8 @@ define('SUBMISSION_REVIEW_METHOD_BLIND', 1);
 define('SUBMISSION_REVIEW_METHOD_DOUBLEBLIND', 2);
 define('SUBMISSION_REVIEW_METHOD_OPEN', 3);
 
+// For Technical Review
+define('SUBMISSION_REVIEW_METHOD_TECHNICAL', 4);
 
 class PKPReviewAssignment extends DataObject {
 	/** @var array The revisions of the reviewer file */

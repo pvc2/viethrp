@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE locale SYSTEM "../../dtd/locale.dtd">
 
 <!--
@@ -157,4 +157,28 @@
 	<message key="rt.version.title">Tiêu đề</message>
 	<message key="rt.version">Phiên bản</message>
 	<message key="rt.viewMetadata">Dữ liệu mô tả chỉ mục</message>
+
+<!-- New item from e version -->
+
+
+	<message key="comments.titleRequired">Yêu cầu một tiêu đề bình luận.</message>
+	<message key="rt.admin.sharing">Chia sẻ</message>
+	<message key="rt.admin.sharing.enabled">Cho phép chia sẻ</message>
+	<message key="rt.admin.sharing.description"><![CDATA[Để cho phép độc giả của quý vị chia sẻ các bài báo, hãy đăng ký một tài khoản với<a href="http://addthis.com">addthis.com</a>, và sao chép/dán vào nút chia sẻ dưới đây.]]></message>
+
+	<message key="rt.admin.sharing.basic">Cài đặt cơ bản</message>
+	<message key="rt.admin.sharing.userNameLabel">AddThis.com Tên người dùng</message>
+	<message key="rt.admin.sharing.buttonStyleLabel">Kiểu nút</message>
+	<message key="rt.admin.sharing.dropDownMenuLabel">Sử dụng trình đơn kéo xuống</message>
+	<message key="rt.admin.sharing.advanced">Cài đặt nâng cao (tùy chọn)</message>
+	<message key="rt.admin.sharing.customizationLink"><![CDATA[See the <a href="http://www.addthis.com/help/customize/custom-button/">Tài liệu tùy biến AddThis.com </ a> để tham khảo.]]></message>
+	<message key="rt.admin.sharing.brandLabel">Nhãn hiệu</message>
+	<message key="rt.admin.sharing.dropDownLabel"><![CDATA[Lựa chọn kéo xuống <br /> (Danh sách phân cách bằng dấu phẩy)]]></message>
+	<message key="rt.admin.sharing.languageLabel">Ngôn ngữ</message>
+	<message key="rt.admin.sharing.logolabel">Logo</message>
+	<message key="rt.admin.sharing.logoBackgroundLabel">Nền lô-gô</message>
+	<message key="rt.admin.sharing.logoColorLabel">Màu Lô-gô</message>
+	<message key="rt.admin.configureSharing">Cấu hình AddThis</message>
+	<message key="rt.captureCite.web">trang Web</message>	
 </locale>
+

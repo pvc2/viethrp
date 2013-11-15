@@ -16,13 +16,15 @@
 <h3>{translate key="about.people"}</h3>
 <ul class="plain">
 	{*{if not (empty($journalSettings.mailingAddress) && empty($journalSettings.contactName) && empty($journalSettings.contactAffiliation) && empty($journalSettings.contactMailingAddress) && empty($journalSettings.contactPhone) && empty($journalSettings.contactFax) && empty($journalSettings.contactEmail) && empty($journalSettings.supportName) && empty($journalSettings.supportPhone) && empty($journalSettings.supportEmail))}*}{*Not useful anymore. EL on April 18, 2012*}
-		<li>&#187; <a href="{url op="contact"}">{translate key="about.contact"}</a></li>
+		<li>&#187; <a href="{url op="contact"}">{translate key="about.hsph"}</a></li>
+		<li>&#187; {*<a href="{url op="contact"}">*}{translate key="about.researcherDirectory"} <i>({translate key="common.soonAvailable"})</i>{*</a>*}</li>
 	{*{/if}*}{*Not useful anymore. EL on April 18, 2012*}
-	<li>&#187; <a href="{url op="editorialTeam"}">{translate key="about.editorialTeam"}</a></li>
+	{*<li>&#187; <a href="{url op="editorialTeam"}">{translate key="about.editorialTeam"}</a></li>*}
 	{*{iterate from=peopleGroups item=peopleGroup}
 		<li>&#187; <a href="{url op="displayMembership" path=$peopleGroup->getId()}">{$peopleGroup->getLocalizedTitle()|escape}</a></li>
 	{/iterate}
 	{call_hook name="Templates::About::Index::People"}*}{*Not useful anymore. EL on April 18, 2012*}
+	
 </ul>
 </div>
 <div id="aboutPolicies">
@@ -31,7 +33,8 @@
 <ul class="plain">
 
 {* "policie" page changed for SOP pdf by EL on April 10 2012*}
-<li>&#187; <a title="WPRO Standard Operating Procedures" href="/public/WPRO_ERC_SOP_Final2010_web.pdf" target="_blank">WPRO ERC Standard Operating Procedures.<br /></a></li>
+<li>&#187; {*<a title="Standard Operating Procedures" href="/vnhrp/public/HSPH_form.pdf" target="_blank">*}{translate key="about.sop"} <i>({translate key="common.soonAvailable"})</i>{*</a>*}</li>
+<li>&#187; {*<a title="Userguide for investigators" href="/vnhrp/public/FHRP_User_Guide.pdf" target="_blank">*}{translate key="about.investigatorUserguide"} <i>({translate key="common.soonAvailable"})</i>{*</a>*}</li>
 </ul>
 </div>
 

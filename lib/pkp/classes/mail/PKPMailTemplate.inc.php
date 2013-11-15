@@ -218,14 +218,13 @@ class PKPMailTemplate extends Mail {
 	function send($clearAttachments = true) {
 		if ($this->attachmentsEnabled) {
 			foreach ($this->persistAttachments as $persistentAttachment) {
-				$this->addAttachment(
+					$this->addAttachment(
 					$persistentAttachment->getFilePath(),
 					$persistentAttachment->getOriginalFileName(),
 					$persistentAttachment->getFileType()
 				);
 			}
 		}
-
 		$user =& Request::getUser();
 
 		if ($user && $this->bccSender) {
@@ -241,7 +240,6 @@ class PKPMailTemplate extends Mail {
 		if ($clearAttachments && $this->attachmentsEnabled) {
 			$this->_clearAttachments($user->getId());
 		}
-
 		return $result;
 	}
 

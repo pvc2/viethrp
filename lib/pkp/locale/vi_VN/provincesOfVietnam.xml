@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : provincesOfVietnam.xml
+    Created on : May 2012
+    Author     : Edouard Lavaud
+    Description:
+        For use in country where proposal is submitted.
+-->
+
+<countries>
+    <country code="CHDL" name="Tỉnh tỉnh Đắk Lắk"/>
+    <country code="CHDN" name="Tỉnh Đắc Nông"/>
+    <country code="CHGL" name="Tỉnh Gia Lai"/>
+    <country code="CHKT" name="Tỉnh Kon Tum"/>
+    <country code="CHLD" name="Tỉnh Lâm Đồng"/>
+    <country code="MDAG" name="Tỉnh An Giang"/>
+    <country code="MDBL" name="Tỉnh Bạc Liêu"/>
+    <country code="MDBT" name="Tỉnh Bến Tre"/>
+    <country code="MDCM" name="Tỉnh Cà Mau"/>
+    <country code="MDCT" name="Thành phố Cần Thơ"/>
+    <country code="MDDT" name="Tỉnh Đồng Tháp"/>
+    <country code="MDHG" name="Tỉnh Hậu Giang"/>
+    <country code="MDKG" name="Tỉnh Kiên Giang"/>
+    <country code="MDLA" name="Tỉnh Long An"/>
+    <country code="MDST" name="Tỉnh Sóc Trăng"/>
+    <country code="MDTG" name="Tỉnh Tiền Giang"/>
+    <country code="MDTV" name="Tỉnh Trà Vinh"/>
+    <country code="MDVL" name="Tỉnh Vinh Long"/>
+    <country code="NCCHT" name="Tỉnh Hà Long"/>
+    <country code="NCCNA" name="Tỉnh Nghệ An"/>
+    <country code="NCCQB" name="Tỉnh Quảng Bình"/>
+    <country code="NCCQT" name="Tỉnh Quảng Trị"/>
+    <country code="NCCTH" name="Tỉnh Thanh Hóa"/>
+    <country code="NCCTT" name="Tỉnh Thừa Thiên Huế"/>
+    <country code="NEBG" name="Tỉnh Bắc Giang"/>
+    <country code="NEBK" name="Tỉnh Bắc Kạn"/>
+    <country code="NECB" name="Tỉnh Cao Bằng"/>
+    <country code="NEDB" name="Tỉnh Điện Biên"/>
+    <country code="NEHB" name="Tỉnh Hòa Bình"/>
+    <country code="NEHG" name="Tình Hà Giang"/>
+    <country code="NELC" name="Tỉnh Lào Cai"/>
+    <country code="NELCh" name="Tỉnh Lai Châu"/>
+    <country code="NELS" name="Tỉnh Lạng Sơn"/>
+    <country code="NEPT" name="Tỉnh Phú Thọ"/>
+    <country code="NEQN" name="Tỉnh Quang Ninh"/>
+    <country code="NESL" name="Tỉnh Sơn La"/>
+    <country code="NETN" name="Tỉnh Thái Nguyên"/>
+    <country code="NETG" name="Tỉnh Tuyên Quang"/>
+    <country code="NEYB" name="Tỉnh Yên Bái"/>
+    <country code="RRDBN" name="Tỉnh Bắc Ninh"/>
+    <country code="RRDHD" name="Tỉnh Hải Dương"/>
+    <country code="RRDHN" name="Tỉnh Hà Nam"/>
+    <country code="RRDHNc" name="Thành phố Hà Nội"/>
+    <country code="RRDHP" name="Thành phố Hải Phòng"/>
+    <country code="RRDHY" name="Tỉnh Hưng Yên"/>
+    <country code="RRDND" name="Tỉnh Nam Định"/>
+    <country code="RRDNB" name="Tỉnh Ninh Bình"/>
+    <country code="RRDTB" name="Tỉnh Thái Bình"/>
+    <country code="RRDVP" name="Tỉnh Vĩnh Phúc"/>
+    <country code="SCCBD" name="Tỉnh Bình Định"/>
+    <country code="SCCBT" name="Tỉnh Bình Thuận"/>
+    <country code="SCCDN" name="Thành phố Đà Nẵng"/>
+    <country code="SCCKH" name="Tỉnh Khánh Hòa"/>
+    <country code="SCCNT" name="Tỉnh Ninh Thuận"/>
+    <country code="SCCPY" name="Tỉnh Phú Yên"/>
+    <country code="SCCQN" name="Tỉnh Quảng Nam"/>
+    <country code="SCCQNg" name="Tỉnh Quảng Ngãi"/>
+    <country code="SEBR" name="Tình Bà Rịa - Vũng Tàu"/>
+    <country code="SEBD" name="Tỉnh Bình Dương"/>
+    <country code="SEBP" name="Tỉnh Bình Phước"/>
+    <country code="SEDN" name="Tỉnh Đồng Nai"/>
+    <country code="SETN" name="Tỉnh Tây Ninh"/>
+    <country code="SETP" name="Thành phố Hồ Chí Minh"/>
+</countries>

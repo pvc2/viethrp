@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : reviewingInterests.xml
+    Created on : December 18, 2012
+    Author     : EL
+    Description: List of possible reviewing interests
+-->
+
+<reviewingInterests>
+    <reviewingInterest name="Tai nạn và thương tích" code="AI" />
+    <reviewingInterest name="Sức khỏe vị thành niên" code="AH" />
+    <reviewingInterest name="Kháng thuốc" code="AR" />
+    <reviewingInterest name="Bệnh nhiễm trùng" code="BD" />
+    <reviewingInterest name="Thống kê y tế" code="Bi" />
+    <reviewingInterest name="Mùa lòa và  các bệnh về mắt" code="BED" />
+    <reviewingInterest name="An toàn truyền máu" code="BS" />
+    <reviewingInterest name="Ung thư" code="Ca" />
+    <reviewingInterest name="Bệnh tim mạch" code="CaD" />
+    <reviewingInterest name="An toàn hóa chất" code="CS" />
+    <reviewingInterest name="Sức khỏe trẻ em" code="CH" />
+    <reviewingInterest name="Bệnh tả" code="Ch" />
+    <reviewingInterest name="Bệnh mãn tính" code="ChD" />
+    <reviewingInterest name="Complementary and alternative medicine" code="CAM" />
+    <reviewingInterest name="Bệnh truyền nhiễm" code="CoD" />
+    <reviewingInterest name="Điếc" code="Dea" />
+    <reviewingInterest name="Dân số học" code="Dem" />
+    <reviewingInterest name="Bệnh đái tháo đường" code="DM" />
+    <reviewingInterest name="Bệnh tiêu chảy" code="Drh" />
+    <reviewingInterest name="Khuyết tật" code="Dsb" />
+    <reviewingInterest name="Thảm họa" code="Dss" />
+    <reviewingInterest name="Giáo dục và đào tạo" code="ET" />
+    <reviewingInterest name="Dịch vụ y tế khẩn cấp" code="EM" />
+    <reviewingInterest name="Sức khỏe môi trường" code="EH" />
+    <reviewingInterest name="Dịch tễ học" code="Epd" />
+    <reviewingInterest name="Động kinh" code="Epl" />
+    <reviewingInterest name="Thuốc thiết yếu và dược phẩm" code="EMP" />
+    <reviewingInterest name="Food Insecurity" code="FI" />
+    <reviewingInterest name="An toàn thực phẩm" code="FS" />
+    <reviewingInterest name="Bệnh nấm da" code="FD" />
+    <reviewingInterest name="Bệnh về gen" code="Gen" />
+    <reviewingInterest name="Kinh tế y tế" code="HEc" />
+    <reviewingInterest name="Công bằng y tế" code="HEq" />
+    <reviewingInterest name="Tài chinh và bảo hiểm y tế" code="HFI" />
+    <reviewingInterest name="Sức khỏe người cao tuổi" code="HEl" />
+    <reviewingInterest name="Chính sách y tế" code="HPo" />
+    <reviewingInterest name="Nâng cao sức khỏe" code="HPr" />
+    <reviewingInterest name="Phát triển dịch vụ y tế" code="HSD" />
+    <reviewingInterest name="Viêm gan siêu vi trùng" code="Hep" />
+    <reviewingInterest name="HIV/AIDS" code="HIV" />
+    <reviewingInterest name="Human reproduction" code="HR" />
+    <reviewingInterest name="Nguồn nhân lực cho y tế" code="HRH" />
+    <reviewingInterest name="Tiêm chủng/Vaccines" code="IV" />
+    <reviewingInterest name="Laboratory techniques and procedures" code="LTP" />
+    <reviewingInterest name="Legislation (health)" code="Leg" />
+    <reviewingInterest name="Leprosy" code="Lep" />
+    <reviewingInterest name="Bệnh cúm" code="Inf" />
+    <reviewingInterest name="Bệnh giun chỉ bạch huyết" code="LF" />
+    <reviewingInterest name="Sốt rét" code="Mal" />
+    <reviewingInterest name="Sức khỏe bà mẹ và trẻ sơ sinh" code="MaH" />
+    <reviewingInterest name="Bệnh sởi" code="Mea" />
+    <reviewingInterest name="Sức khỏe tâm trí" code="MeH" />
+    <reviewingInterest name="Di cư" code="Mig" />
+    <reviewingInterest name="Tử vong" code="Mor" />
+    <reviewingInterest name="Công nghệ y học" code="MT" />
+    <reviewingInterest name="Mô hình hóa bệnh tật" code="Mod" />
+    <reviewingInterest name="Sức khỏe trẻ sơ sinh" code="NH" />
+    <reviewingInterest name="Điều dưỡng hộ sinh" code="NM" />
+    <reviewingInterest name="Dinh dưỡng" code="Nut" />
+    <reviewingInterest name="Bệnh không truyền nhiễm" code="NCD" />
+    <reviewingInterest name="Bệnh béo phì" code="Obe" />
+    <reviewingInterest name="Sức khỏe nghể nghiệp" code="OcH" />
+    <reviewingInterest name="Sức khỏe răng miệng" code="OrH" />
+    <reviewingInterest name="Bệnh đau măt hột" code="Tra" />
+    <reviewingInterest name="Cấy ghép" code="Tra" />
+    <reviewingInterest name="Bệnh ký sinh trùng" code="PD" />
+    <reviewingInterest name="Bệnh bại liệt" code="Pol" />
+    <reviewingInterest name="Chăm sóc sức khỏe ban đầu" code="PHC" />
+    <reviewingInterest name="Phương pháp luận định tính" code="QM" />
+    <reviewingInterest name="Đánh giá định tính" code="QA" />
+    <reviewingInterest name="Thử nghiệm ngẫu nhiên có kiểm soát" code="RCT" />
+    <reviewingInterest name="Sức khỏe sinh sản" code="RH" />
+    <reviewingInterest name="Bệnh đường hô hấp" code="RTD" />
+    <reviewingInterest name="Tâm thần phân liệt" code="Sch" />
+    <reviewingInterest name="Bệnh lây truyền qua đường tình dục" code="STI" />
+    <reviewingInterest name="Sức khỏe giới tính" code="SH" />
+    <reviewingInterest name="Hút thuốc lá/thuốc lá" code="ST" />
+    <reviewingInterest name="Lạm dụng thuốc" code="SA" />
+    <reviewingInterest name="Tự tử" code="Sui" />
+    <reviewingInterest name="Điều tra giám sát" code="Sur" />
+    <reviewingInterest name="Systematic reviews/meta-analyses" code="SMA" />
+    <reviewingInterest name="Độc chất học" code="Tox" />
+    <reviewingInterest name="Y tế đô thị" code="UH" />
+    <reviewingInterest name="Lao" code="Tub" />
+    <reviewingInterest name="Vector control" code="VC" />
+    <reviewingInterest name="Veterinary public health" code="VPH" />
+    <reviewingInterest name="Bạo lực" code="Vio" />
+    <reviewingInterest name="Viral diseases" code="VD" />
+    <reviewingInterest name="Vệ sinh nguồn nước" code="WS" />
+    <reviewingInterest name="Sức khỏe phụ nữ" code="WH" />
+</reviewingInterests>

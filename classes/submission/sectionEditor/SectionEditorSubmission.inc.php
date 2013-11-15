@@ -182,21 +182,7 @@ class SectionEditorSubmission extends Article {
                 //For all other statuses
                 return $status;
 	}
-	
-	
-	function isSubmissionDue() {
-        $today = time();
-        $startdate = strtotime($this->getStartDate($this->getLocale()));
-        $dueDate = strtotime ('+1 year', $startdate) ;
-    	$approvalDate = strtotime($this->getApprovalDate($this->getLocale()));    	
-        $approvalDue = strtotime ('+1 year', $approvalDate) ;
-    	if($today >= $dueDate && $today >= $approvalDue) {
-    		return true;
-    	} else {
-    		return false;
-    	}
-    }
-	
+		
 	/*
 	 * Override getProposalStatusKey in Submission.inc.php
 	 */
@@ -356,6 +342,23 @@ class SectionEditorSubmission extends Article {
 		return $this->setData('reviewFile', $reviewFile);
 	}
 
+	/**
+	 * Get previousFiles.
+	 * @return ArticleFile
+	 */
+	function &getPreviousFiles() {
+		$returner =& $this->getData('previousFiles');
+		return $returner;
+	}
+
+	/**
+	 * Set previousFiles.
+	 * @param $reviewFile ArticleFile
+	 */
+	function setPreviousFiles($previousFiles) {
+		return $this->setData('previousFiles', $previousFiles);
+	}
+	
 	/**
 	 * Get all editor file revisions.
 	 * @return array ArticleFiles

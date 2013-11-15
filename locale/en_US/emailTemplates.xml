@@ -889,5 +889,19 @@ Copy-Editor, {$journalName}
 </body>
 		<description>This email allows copyeditors to request additional information about references from authors.</description>
 	</email_text>
+    <email_text key="NEW_MEETING">
+		<subject>Submission Acknowledgement</subject>
+		<body>{$authorName}:
+
+Thank you for submitting the proposal, "{$articleTitle}" to the Ethics Review Committee. With the online proposal management system that we are using, you will be able to track its progress through the review process by logging in to the ERC web site:
+
+Proposal URL: {$submissionUrl}
+Username: {$authorUsername}
+
+If you have any questions, please contact me. 
+
+{$editorialContactSignature}</body>
+		<description>This email, when enabled, is automatically sent to the RTO when he or she completes the process of submitting a proposal to the ERC. It provides information about tracking the submission through the process and thanks the RTO for the submission.</description>
+	</email_text>
 </email_texts>
 

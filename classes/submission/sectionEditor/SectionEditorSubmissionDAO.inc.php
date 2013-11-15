@@ -131,6 +131,7 @@ class SectionEditorSubmissionDAO extends DAO {
 		$sectionEditorSubmission->setSubmissionFile($this->articleFileDao->getArticleFile($row['submission_file_id']));
 		$sectionEditorSubmission->setRevisedFile($this->articleFileDao->getArticleFile($row['revised_file_id']));
 		$sectionEditorSubmission->setReviewFile($this->articleFileDao->getArticleFile($row['review_file_id']));
+		$sectionEditorSubmission->setPreviousFiles($this->articleFileDao->getPreviousFilesByArticleId($row['article_id']));
 		$sectionEditorSubmission->setSuppFiles($this->suppFileDao->getSuppFilesByArticle($row['article_id']));
 		$sectionEditorSubmission->setEditorFile($this->articleFileDao->getArticleFile($row['editor_file_id']));
 
@@ -180,10 +181,10 @@ class SectionEditorSubmissionDAO extends DAO {
 					if ($editorDecision['editDecisionId'] == null) {
 						$this->update(
 							sprintf('INSERT INTO edit_decisions
-								(article_id, round, editor_id, decision, date_decided, resubmit_count)
-								VALUES (?, ?, ?, ?, %s, ?)',
+								(article_id, round, editor_id, decision, date_decided, resubmit_count, technical_review)
+								VALUES (?, ?, ?, ?, %s, ?, ?)',
 								$this->datetimeToDB($editorDecision['dateDecided'])),
-							array($sectionEditorSubmission->getArticleId(), $sectionEditorSubmission->getCurrentRound(), $editorDecision['editorId'], $editorDecision['decision'], $editorDecision['resubmitCount'])
+							array($sectionEditorSubmission->getArticleId(), $sectionEditorSubmission->getCurrentRound(), $editorDecision['editorId'], $editorDecision['decision'], $editorDecision['resubmitCount'], $editorDecision['technicalReview'])
 						);
 					}
 	/********************************************************
@@ -196,10 +197,10 @@ class SectionEditorSubmissionDAO extends DAO {
 					else {
 						$this->update(
 							sprintf('UPDATE edit_decisions SET
-								round = ?, decision = ?, date_decided = %s, resubmit_count = ? 
+								round = ?, decision = ?, date_decided = %s, resubmit_count = ?, technical_review = ? 
 								WHERE edit_decision_id = ?',
 								$this->datetimeToDB($editorDecision['dateDecided'])),
-							array($sectionEditorSubmission->getCurrentRound(), $editorDecision['decision'],  $editorDecision['resubmitCount'], $editorDecision['editDecisionId'])
+							array($sectionEditorSubmission->getCurrentRound(), $editorDecision['decision'],  $editorDecision['resubmitCount'], $editorDecision['technicalReview'], $editorDecision['editDecisionId'])
 						);
 					}
 				}
@@ -242,7 +243,7 @@ class SectionEditorSubmissionDAO extends DAO {
 		foreach ($sectionEditorSubmission->getReviewAssignments() as $roundReviewAssignments) {
 			foreach ($roundReviewAssignments as $reviewAssignment) {
 				if ($reviewAssignment->getId() > 0) {
-					$this->reviewAssignmentDao->updateReviewAssignment($reviewAssignment);
+					//$this->reviewAssignmentDao->updateReviewAssignment($reviewAssignment);
 				} else {
 					$this->reviewAssignmentDao->insertReviewAssignment($reviewAssignment);
 				}
@@ -362,8 +363,8 @@ class SectionEditorSubmissionDAO extends DAO {
 			$primaryLocale,
 			'abbrev',
 			$locale,
-			'cleanTitle', // Article title
-			'cleanTitle',
+			'cleanScientificTitle', // Article title
+			'cleanScientificTitle',
 			$locale,
 			'technicalUnit',
 			'technicalUnit',
@@ -508,6 +509,7 @@ class SectionEditorSubmissionDAO extends DAO {
 				LEFT JOIN article_settings atu ON (a.article_id = atu.article_id AND atu.setting_name = ? AND atu.locale = ?)
 				LEFT JOIN article_settings appc ON (a.article_id = appc.article_id AND appc.setting_name = ? AND appc.locale = a.locale)
 				LEFT JOIN article_settings apc ON (a.article_id = apc.article_id AND apc.setting_name = ? AND apc.locale = ?)
+				
 				LEFT JOIN edit_decisions edec ON (a.article_id = edec.article_id)
 				LEFT JOIN edit_decisions edec2 ON (a.article_id = edec2.article_id AND edec.edit_decision_id < edec2.edit_decision_id)
 			WHERE	a.journal_id = ?
@@ -787,7 +789,7 @@ class SectionEditorSubmissionDAO extends DAO {
 		}
 
 		$result =& $this->retrieveRange(
-			'SELECT DISTINCT
+			"SELECT DISTINCT
 				u.user_id,
 				u.last_name,
 				ar.review_id,
@@ -806,13 +808,16 @@ class SectionEditorSubmissionDAO extends DAO {
 				LEFT JOIN controlled_vocabs cv ON (cv.assoc_type = ? AND cv.assoc_id = u.user_id AND cv.symbolic = ?)
 				LEFT JOIN controlled_vocab_entries cve ON (cve.controlled_vocab_id = cv.controlled_vocab_id)
 				LEFT JOIN controlled_vocab_entry_settings cves ON (cves.controlled_vocab_entry_id = cve.controlled_vocab_entry_id)
+				LEFT JOIN user_settings us ON (us.user_id = u.user_id AND us.setting_name = 'technicalReviewer')
 			WHERE u.user_id = r.user_id AND
+				us.setting_value = 'Yes' AND
 				r.journal_id = ? AND
-				r.role_id = ? ' . $searchSql . 'GROUP BY u.user_id, u.last_name, ar.review_id' .
+				r.role_id = ? " . $searchSql . 'GROUP BY u.user_id, u.last_name, ar.review_id' .
 			($sortBy?(' ORDER BY ' . $this->getSortMapping($sortBy) . ' ' . $this->getDirectionMapping($sortDirection)) : ''),
 			$paramArray, $rangeInfo
 		);
-
+/*
+				*/
 		$returner = new DAOResultFactory($result, $this, '_returnReviewerUserFromRow');
 		return $returner;
 	}
@@ -1188,7 +1193,8 @@ class SectionEditorSubmissionDAO extends DAO {
 			case 'subProof': return 'proofread_completed';
 			case 'reviewerName': return 'u.last_name';
 			case 'quality': return 'average_quality';
-			case 'done': return 'completed';
+			case 'status': return 'a.status';
+                        case 'done': return 'completed';
 			case 'latest': return 'latest';
 			case 'active': return 'active';
 			case 'average': return 'average';
@@ -1209,11 +1215,11 @@ class SectionEditorSubmissionDAO extends DAO {
 
 		if ($round == null) {
 			$result =& $this->retrieve(
-				'SELECT edit_decision_id, editor_id, decision, date_decided,resubmit_count FROM edit_decisions WHERE article_id = ? ORDER BY edit_decision_id ASC', $articleId
+				'SELECT edit_decision_id, editor_id, decision, date_decided, resubmit_count, technical_review FROM edit_decisions WHERE article_id = ? ORDER BY edit_decision_id ASC', $articleId
 			);
 		} else {
 			$result =& $this->retrieve(
-				'SELECT edit_decision_id, editor_id, decision, date_decided, resubmit_count FROM edit_decisions WHERE article_id = ? AND round = ? ORDER BY edit_decision_id ASC',
+				'SELECT edit_decision_id, editor_id, decision, date_decided, resubmit_count, technical_review FROM edit_decisions WHERE article_id = ? AND round = ? ORDER BY edit_decision_id ASC',
 				array($articleId, $round)
 			);
 		}
@@ -1224,7 +1230,8 @@ class SectionEditorSubmissionDAO extends DAO {
 				'editorId' => $result->fields['editor_id'],
 				'decision' => $result->fields['decision'],
 				'dateDecided' => $this->datetimeFromDB($result->fields['date_decided']),
-				'resubmitCount' => $result->fields['resubmit_count']
+				'resubmitCount' => $result->fields['resubmit_count'],
+				'technicalReview' => $result->fields['technical_review']
 			);
 			$result->moveNext();
 		}
@@ -1235,7 +1242,7 @@ class SectionEditorSubmissionDAO extends DAO {
 	}
 
 	/*
-	 * Get names of review Committe members and external reviewers from reviewcommittee.xml
+	 * Get names of review Committe members and technical reviewers from reviewcommittee.xml
 	 * Added by aglet
 	 * Last Update: 6/6/2011
 	 */
@@ -1255,12 +1262,12 @@ class SectionEditorSubmissionDAO extends DAO {
 		                        array_push($committee, $committeeMember);
 				}
                          }
-            $data = $xmlDao->parseStruct($filename, array('committee', 'externalreviewer'));
+            $data = $xmlDao->parseStruct($filename, array('committee', 'technicalreviewer'));
             if (isset($data['committee'])) {
-				foreach ($data['externalreviewer'] as $extData) {
+				foreach ($data['technicalreviewer'] as $extData) {
 		                        $committeeMember['value'] = $extData['attributes']['value'];
 		                        $committeeMember['name'] = $extData['attributes']['name'];
-		                        $committeeMember['type']="External Reviewer";
+		                        $committeeMember['type']="Technical Reviewer";
 		                        array_push($committee, $committeeMember);
 				}
             }
@@ -1405,7 +1412,7 @@ class SectionEditorSubmissionDAO extends DAO {
 		}
 
 		$result =& $this->retrieveRange(
-			'SELECT DISTINCT
+			"SELECT DISTINCT
 				u.user_id,
 				u.last_name,
 				ar.review_id,
@@ -1426,7 +1433,7 @@ class SectionEditorSubmissionDAO extends DAO {
 				LEFT JOIN controlled_vocab_entry_settings cves ON (cves.controlled_vocab_entry_id = cve.controlled_vocab_entry_id)
 			WHERE u.user_id = r.user_id AND
 				r.journal_id = ? AND
-				r.role_id = ? ' . $searchSql . 'GROUP BY u.user_id, u.last_name, ar.review_id' .
+				r.role_id = ? " . $searchSql . 'GROUP BY u.user_id, u.last_name, ar.review_id' .
 			($sortBy?(' ORDER BY ' . $this->getSortMapping($sortBy) . ' ' . $this->getDirectionMapping($sortDirection)) : ''),
 			$paramArray, $rangeInfo
 		);
@@ -1436,9 +1443,10 @@ class SectionEditorSubmissionDAO extends DAO {
 			$result->MoveNext();
 		}
 
+
 		$result->Close();
 		unset($result);
-		return $reviewers;				
+		return $reviewers;			
 	}
 
 	function getRemainingSubmissionsForInitialReview($meetingId) {

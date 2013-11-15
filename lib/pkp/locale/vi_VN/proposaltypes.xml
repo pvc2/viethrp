@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : proposaltypes.xml
+    Created on : May 12, 2011, 6:18 PM
+    Author     : anne
+    Description:
+        Proposal Types.
+    Updated    : 21 Dec 2011 - removed Proposal with Human Subjects; removed Operation Research types
+                 18 Nov 2011 - added Intervention Evaluation Research and Operation Research types
+    Note       : If adding proposal types, also add key to author.xml (author.proposal.type.<code>)
+-->
+
+<proposaltypes>
+    <proposaltype name="Clinical Trial with Human Subjects" code="CWHS" />
+    <proposaltype name="Nghiên cứu chính sách và hệ thống y tế" code="HSPR" />
+    <proposaltype name="Điều tra dân số cơ bản" code="PBS" />
+<!--    <proposaltype name="Proposal with Human Subjects" code="PWHS" /> --> 
+    <proposaltype name="Proposal without Human Subjects" code="PNHS" />
+    <proposaltype name="Nghiên cứu định tính" code="QS" />
+    <proposaltype name="Nghiên cứu đánh giá can thiệp" code="IER" />
+    <proposaltype name="Operational Research" code="OR" />
+    <proposaltype name="Nghiên cứu khác" code="OTHER" />
+    <!-- Do not change code of OTHER -->
+</proposaltypes>

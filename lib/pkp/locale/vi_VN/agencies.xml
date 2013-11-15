@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : agencies.xml
+
+-->
+
+<agencies>
+    <agency name="Ngân hàng phát triển Châu Á" code="ADB" />
+    <agency name="Cơ quan Phát triển Quốc tế Australia (AusAID)" code="AUSAID" />
+    <agency name="Bộ Y tế" code="MoH" />
+    <agency name="Viện Paster" code="IP" />
+    <agency name="Quĩ Nhi đồng Liên hợp quốc(UNICEF)" code="UNICEF" />
+    <agency name="Cơ quan Phát triển Hoa Kỳ(USAID)" code="USAID" />
+    <agency name="Ngân hàng Thế giới" code="WB" />
+    <agency name="Tổ chức Y tế Thế giới" code="WHO" />
+    <agency name="Các tổ chức khác" code="OTHER" />
+    <!-- Do not change code of OTHER -->
+</agencies>

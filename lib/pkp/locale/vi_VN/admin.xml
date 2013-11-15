@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE locale SYSTEM "../../dtd/locale.dtd">
 
 <!--
@@ -43,7 +43,7 @@
 	<message key="admin.server.apacheVersion">Phiên bản Apache</message>
 	<message key="admin.server.dbDriver">Driver của CSDL</message>
 	<message key="admin.server.dbVersion">Phiên bản CSDL</message>
-	<message key="admin.serverInformationDescription"><![CDATA[Thông tin căn bản về hiệu điều hành và các phiên bản phần mềm máy chủ. Nhấp chuột vào <span class="highlight">Thông tin về PHP mở rộng</span> để xem thông tin chi tiết hơn về cấu hình PHP trên máy chủ này.]]></message>
+	<message key="admin.serverInformationDescription"><![CDATA[Thông tin căn bản về hệ điều hành và các phiên bản phần mềm máy chủ. Nhấp chuột vào <span class="highlight">Thông tin về PHP mở rộng</span> để xem thông tin chi tiết hơn về cấu hình PHP trên máy chủ này.]]></message>
 	<message key="admin.serverInformation">Thông tin về Máy chủ</message>
 	<message key="admin.server.phpVersion">Phiên bản PHP</message>
 	<message key="admin.server.platform">Hệ điều hành</message>
@@ -71,8 +71,8 @@
 	<message key="admin.systemInformation">Thông tin về hệ thống</message>
 	<message key="admin.versionBuild">Tạo</message>
 	<message key="admin.version.checkForUpdates">Kiểm tra xem có bản mới cập nhật</message>
-	<message key="admin.version.downloadPackage">Download</message>
-	<message key="admin.version.downloadPatch">Download bản bổ sung (Patch)</message>
+	<message key="admin.version.downloadPackage">Tải về</message>
+	<message key="admin.version.downloadPatch">Tải về bản bổ sung (Patch)</message>
 	<message key="admin.versionHistory">Lịch sử phiên bản</message>
 	<message key="admin.version.latest">Phiên bản mới nhất</message>
 	<message key="admin.versionMajor">Chính</message>

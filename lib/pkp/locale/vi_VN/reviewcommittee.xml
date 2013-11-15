@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+	Added by aglet
+	Last Update: 6/5/2011
+-->
+
+<committee>
+	<ercmember name="Ti?n s? John Ehrenberg" value="1" />
+	<ercmember name="Ti?n s? Susan Mercado" value="2" />
+	<ercmember name="Bà Anjana Bhusban" value="3" />
+	<ercmember name="Ti?n s? Eva-Maria Christophel" value="4" />
+	<ercmember name="Ti?n s? Christopher James" value="5" />
+	<ercmember name="Ti?n s? Ardi Kaptiningshi" value="6" />
+	<ercmember name="Ti?n s? Patanjali Nayar" value="7" />
+	<ercmember name="Ti?n s? Daniel Sagebiel" value="8" />
+	<ercmember name="Ti?n s? Dean Shuey" value="9" />
+	<ercmember name="Ti?n s? David Sniadack" value="10" />
+	<ercmember name="Ti?n s? Cherian Varghese" value="11" />
+	<ercmember name="Ti?n s? Ying Chen" value="12" />
+	<ercmember name="Ti?n s? Chin-Kei Lee" value="13" />
+	<externalreviewer name="Ti?n s? Vicente Belizario, Jr." value="14" />
+	<externalreviewer name="Ti?n s? Poonam Dhavan" value="15" />
+</committee>
+
