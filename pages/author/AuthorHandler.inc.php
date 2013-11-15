@@ -56,7 +56,6 @@ class AuthorHandler extends Handler {
 		$toDate = Request::getUserDateVar('dateTo', 32, 12, null, 23, 59, 59);
 		if ($toDate !== null) $toDate = date('Y-m-d H:i:s', $toDate);
 		
-		$technicalUnitField = Request::getUserVar('technicalUnitField');
 		$countryField = Request::getUserVar('countryField');
 		
 		$page = isset($args[0]) ? $args[0] : '';
@@ -76,7 +75,7 @@ class AuthorHandler extends Handler {
 		if ($sort == 'status') {
 			// FIXME Does not pass $rangeInfo else we only get partial results
 			$unsortedSubmissions = $authorSubmissionDao->getAuthorSubmissions($user->getId(), $journal->getId(), $active, $searchField, $searchMatch, $search, $dateSearchField, $fromDate, $toDate, 
-											  $technicalUnitField, $countryField, null, $sort, $sortDirection);
+											  null, $countryField, null, $sort, $sortDirection);
 
 			// Sort all submissions by status, which is too complex to do in the DB
 			$submissionsArray = $unsortedSubmissions->toArray();
@@ -94,16 +93,16 @@ class AuthorHandler extends Handler {
                         $submissions3 =& ArrayItemIterator::fromRangeInfo($submissionsArray, $rangeInfo);
                         $submissions4 =& ArrayItemIterator::fromRangeInfo($submissionsArray, $rangeInfo);
 		} else {
-			$submissions1 = $authorSubmissionDao->getAuthorSubmissions($user->getId(), $journal->getId(), $active, $searchField, $searchMatch, $search, $dateSearchField, $fromDate, $toDate, $technicalUnitField, $countryField, $rangeInfo, $sort, $sortDirection);
+			$submissions1 = $authorSubmissionDao->getAuthorSubmissions($user->getId(), $journal->getId(), $active, $searchField, $searchMatch, $search, $dateSearchField, $fromDate, $toDate, null, $countryField, $rangeInfo, $sort, $sortDirection);
                         //Clumsy workaround due to lack of iterate reset, AIM, June 1, 2011  TODO: Find better way
-            $submissions2 = $authorSubmissionDao->getAuthorSubmissions($user->getId(), $journal->getId(), $active, $searchField, $searchMatch, $search, $dateSearchField, $fromDate, $toDate, $technicalUnitField, $countryField, $rangeInfo, $sort, $sortDirection);
-                        
-            $submissions3 = $authorSubmissionDao->getAuthorSubmissions($user->getId(), $journal->getId(), $active, $searchField, $searchMatch, $search, $dateSearchField, $fromDate, $toDate, $technicalUnitField, $countryField,$rangeInfo, $sort, $sortDirection);
-                        
-            $submissions4 = $authorSubmissionDao->getAuthorSubmissions($user->getId(), $journal->getId(), $active, $searchField, $searchMatch, $search, $dateSearchField, $fromDate, $toDate, $technicalUnitField, $countryField,$rangeInfo, $sort, $sortDirection);
+                        $submissions2 = $authorSubmissionDao->getAuthorSubmissions($user->getId(), $journal->getId(), $active, $searchField, $searchMatch, $search, $dateSearchField, $fromDate, $toDate, null, $countryField, $rangeInfo, $sort, $sortDirection);
+
+                        $submissions3 = $authorSubmissionDao->getAuthorSubmissions($user->getId(), $journal->getId(), $active, $searchField, $searchMatch, $search, $dateSearchField, $fromDate, $toDate, null, $countryField,$rangeInfo, $sort, $sortDirection);
+
+                        $submissions4 = $authorSubmissionDao->getAuthorSubmissions($user->getId(), $journal->getId(), $active, $searchField, $searchMatch, $search, $dateSearchField, $fromDate, $toDate, null, $countryField,$rangeInfo, $sort, $sortDirection);
         
 		}
-        $templateMgr =& TemplateManager::getManager();
+                $templateMgr =& TemplateManager::getManager();
 		$templateMgr->assign('pageToDisplay', $page);
 		if (!$active) {
 			// Make view counts available if enabled.
@@ -111,16 +110,16 @@ class AuthorHandler extends Handler {
 		}
 
 		$templateMgr->assign_by_ref('submissions1', $submissions1);
-        $templateMgr->assign_by_ref('submissions2', $submissions2);
-        $templateMgr->assign_by_ref('submissions3', $submissions3);
-        $templateMgr->assign_by_ref('submissions4', $submissions4);
+                $templateMgr->assign_by_ref('submissions2', $submissions2);
+                $templateMgr->assign_by_ref('submissions3', $submissions3);
+                $templateMgr->assign_by_ref('submissions4', $submissions4);
         
 		/*********************************************************************
 		 * Add search fields to template
 		 * Added by:  Ayvee Mallare
 		 * Last Updated: Sept 25, 2011
          *********************************************************************/
-        $duplicateParameters = array(
+                $duplicateParameters = array(
 			'searchField', 'searchMatch', 'search',
 			'dateFromMonth', 'dateFromDay', 'dateFromYear',
 			'dateToMonth', 'dateToDay', 'dateToYear',
@@ -129,7 +128,7 @@ class AuthorHandler extends Handler {
 		foreach ($duplicateParameters as $param)
 			$templateMgr->assign($param, Request::getUserVar($param));
                 
-        $templateMgr->assign('dateFrom', $fromDate);
+                $templateMgr->assign('dateFrom', $fromDate);
 		$templateMgr->assign('dateTo', $toDate);
 		$templateMgr->assign('fieldOptions', Array(
 			SUBMISSION_FIELD_TITLE => 'article.title',
@@ -140,14 +139,9 @@ class AuthorHandler extends Handler {
 			SUBMISSION_FIELD_DATE_SUBMITTED => 'submissions.submitted',
 		));
 		
-		$technicalUnitDAO =& DAORegistry::getDAO('TechnicalUnitDAO');
-		$technicalUnits =& $technicalUnitDAO->getTechnicalUnits();
-        $countryDAO =& DAORegistry::getDAO('ProvincesOfVietnamDAO');
-        $countries =& $countryDAO->getProvincesOfVietnam();
-       	
-       	
-		$templateMgr->assign_by_ref('technicalUnits', $technicalUnits);
-        $templateMgr->assign_by_ref('countries', $countries);
+                $countryDAO =& DAORegistry::getDAO('ProvincesOfVietnamDAO');
+                $countries =& $countryDAO->getProvincesOfVietnam();       	
+                $templateMgr->assign_by_ref('countries', $countries);
         
 		// assign payment 
 		import('classes.payment.ojs.OJSPaymentManager');
@@ -168,7 +162,6 @@ class AuthorHandler extends Handler {
 		$templateMgr->assign('sort', $sort);
 		$templateMgr->assign('sortDirection', $sortDirection);
 		// Added by igm 9/24/11
-		$templateMgr->assign('technicalUnitField', $technicalUnitField);
 		$templateMgr->assign('countryField', $countryField);
 		$templateMgr->display('author/index.tpl');
 	}

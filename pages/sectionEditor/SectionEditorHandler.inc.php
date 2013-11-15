@@ -64,7 +64,6 @@ class SectionEditorHandler extends Handler {
 		 * Added by: Ayvee Mallare
 		 * Last Updated: Sept 24, 2011
 		 */
-		$technicalUnitField = Request::getUserVar('technicalUnitField');
 		$countryField = Request::getUserVar('countryField');
 		
 		$sectionDao =& DAORegistry::getDAO('SectionDAO');
@@ -111,16 +110,16 @@ class SectionEditorHandler extends Handler {
 		//workaround for multiple use of iterator in one page 3/21/2012
 		$submissions =& $sectionEditorSubmissionDao->$functionName(
 			$user->getId(), $journalId, $filterSection, $searchField, $searchMatch, $search, $dateSearchField, $fromDate,
-			$toDate, $technicalUnitField, $countryField, $rangeInfo, $sort, $sortDirection);
+			$toDate, null, $countryField, $rangeInfo, $sort, $sortDirection);
 		$submissions1 =& $sectionEditorSubmissionDao->$functionName(
 			$user->getId(), $journalId, $filterSection, $searchField, $searchMatch, $search, $dateSearchField, $fromDate,
-			$toDate, $technicalUnitField, $countryField, $rangeInfo, $sort, $sortDirection);
+			$toDate, null, $countryField, $rangeInfo, $sort, $sortDirection);
 		$submissions2 =& $sectionEditorSubmissionDao->$functionName(
 			$user->getId(), $journalId, $filterSection, $searchField, $searchMatch, $search, $dateSearchField, $fromDate,
-			$toDate, $technicalUnitField, $countryField, $rangeInfo, $sort, $sortDirection);
+			$toDate, null, $countryField, $rangeInfo, $sort, $sortDirection);
 		$submissions3 =& $sectionEditorSubmissionDao->$functionName(
 			$user->getId(), $journalId, $filterSection, $searchField, $searchMatch, $search, $dateSearchField, $fromDate,
-			$toDate, $technicalUnitField, $countryField, $rangeInfo, $sort, $sortDirection);
+			$toDate, null, $countryField, $rangeInfo, $sort, $sortDirection);
 
 		$templateMgr =& TemplateManager::getManager();
 		$templateMgr->assign('helpTopicId', $helpTopicId);
@@ -157,18 +156,10 @@ class SectionEditorHandler extends Handler {
 			SUBMISSION_FIELD_DATE_LAYOUT_COMPLETE => 'submissions.layoutComplete',
 			SUBMISSION_FIELD_DATE_PROOFREADING_COMPLETE => 'submissions.proofreadingComplete'
 		));
-		/*********************************************************************
-		 * Get list of WHO technical units from the XML file and get all countries
-		 * Added by:  Ayvee Mallare
-		 * Last Updated: Sept 24, 2011
-         *********************************************************************/
-		$technicalUnitDAO =& DAORegistry::getDAO('TechnicalUnitDAO');
-		$technicalUnits =& $technicalUnitDAO->getTechnicalUnits();
-        $countryDAO =& DAORegistry::getDAO('ProvincesOfVietnamDAO');
-        $countries =& $countryDAO->getProvincesOfVietnam();
-       
-		$templateMgr->assign_by_ref('technicalUnits', $technicalUnits);
-        $templateMgr->assign_by_ref('countries', $countries);
+
+                $countryDAO =& DAORegistry::getDAO('ProvincesOfVietnamDAO');
+                $countries =& $countryDAO->getProvincesOfVietnam();
+                $templateMgr->assign_by_ref('countries', $countries);
         
 		import('classes.issue.IssueAction');
 		$issueAction = new IssueAction();
@@ -177,7 +168,6 @@ class SectionEditorHandler extends Handler {
 		$templateMgr->assign('sortDirection', $sortDirection);
 		
 		// Added by igm 9/24/11
-		$templateMgr->assign('technicalUnitField', $technicalUnitField);
 		$templateMgr->assign('countryField', $countryField);
 
 		$templateMgr->display('sectionEditor/index.tpl');
