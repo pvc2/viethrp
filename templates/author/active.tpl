@@ -148,7 +148,7 @@
                     	{translate key="submissions.proposal.approved"}
                     {/if}
                     {if $submission->isSubmissionDue()}
-                    	&nbsp;{translate key="submissions.proposal.forContinuingReview"}
+                    	&nbsp;<i>({translate key="submissions.proposal.forContinuingReview"})</i>
                     	<br />
 						<a href="{url op="addExtensionRequest" path=$articleId}" title="{translate key="author.submit.submitExtensionRequestInstruct"}" class="action">&#187; {translate key="author.submit.submitExtensionRequest"}</a><br />
                     {else}

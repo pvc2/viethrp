@@ -2570,13 +2570,13 @@ class Submission extends DataObject {
 	/*
 	 * check if the submission is due
 	 */
-    function isSubmissionDue() {
-    	if ($this->getApprovalDate($this->getLocale()) == null) $startdate = strtotime($this->getDateStatusModified());   
-    	else $startdate = strtotime($this->getApprovalDate($this->getLocale()));
-        $afteroneyear = $newdate = strtotime ('+1 year', $startdate);
-        $today = time();
-        return ($today >= $afteroneyear);
-    }
+        function isSubmissionDue() {
+            $startdate = strtotime($this->getStartDate($this->getLocale()));
+            $afteroneyear = strtotime ('+1 year', $startdate);
+            $today = time();
+            if ($today >= $afteroneyear) return true;
+            else return false;
+        }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////

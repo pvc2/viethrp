@@ -43,7 +43,7 @@ class SubmitHandler extends AuthorHandler {
 
             if($articleDAO->getProposalStatus($articleId) == PROPOSAL_STATUS_RETURNED ||
                     ($lastDecision['decision'] == SUBMISSION_EDITOR_DECISION_RESUBMIT && !($articleDAO->isProposalResubmitted($articleId))) ||
-                    ($lastDecision['decision'] == SUBMISSION_EDITOR_DECISION_ACCEPT && $authorSubmission->isSubmissionDue())
+                    ($lastDecision['decision'] == SUBMISSION_EDITOR_DECISION_ACCEPT)
               )
                     
             {
